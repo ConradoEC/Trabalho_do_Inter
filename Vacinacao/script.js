@@ -43,7 +43,7 @@ const vaccination_card_close = document.getElementsByClassName('vaccination_card
 var ids;
 var maxVaccine;
 
-fetch('http://localhost:3000/vaccine')
+fetch('https://node-api-0bwb.onrender.com/vaccine')
 .then(res=>res.json())
 .then((json) =>
 {
@@ -261,7 +261,7 @@ fetch('http://localhost:3000/vaccine')
         }
 
         const form_vaccine = document.createElement('form')
-        form_vaccine.setAttribute('class', 'vaccine_card_update'), form_vaccine.setAttribute('action', 'http://localhost:3000/vaccine'), form_vaccine.setAttribute('method', 'POST'), form_vaccine.setAttribute('data-backgrounds_darkGray', 'backgrounds_darkGray')
+        form_vaccine.setAttribute('class', 'vaccine_card_update'), form_vaccine.setAttribute('action', 'https://node-api-0bwb.onrender.com/vaccine'), form_vaccine.setAttribute('method', 'POST'), form_vaccine.setAttribute('data-backgrounds_darkGray', 'backgrounds_darkGray')
         form_vaccine.innerHTML = `
             <label for="vaccine_card_box1" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">NOME</label>
             <input type="text" value="${json[ids - 1].name_vaccine}" class="vaccine_card_box_update" disabled>
@@ -333,7 +333,7 @@ fetch('http://localhost:3000/vaccine')
         }
     })
 
-    maxVaccine = [json[0].max_dose_vaccine, json[1].max_dose_vaccine, json[2].max_dose_vaccine, json[3].max_dose_vaccine]
+    maxVaccine = [json[0].max_dose_vaccine, json[1].max_dose_vaccine, json[2].max_dose_vaccine, json[3].max_dose_vaccine, json[4].max_dose_vaccine, json[5].max_dose_vaccine, json[6].max_dose_vaccine, json[7].max_dose_vaccine, json[8].max_dose_vaccine, json[9].max_dose_vaccine, json[10].max_dose_vaccine, json[11].max_dose_vaccine, json[12].max_dose_vaccine, json[13].max_dose_vaccine, json[14].max_dose_vaccine, json[15].max_dose_vaccine, json[16].max_dose_vaccine, json[17].max_dose_vaccine]
     // maxVaccine = [json[0].max_dose_vaccine, json[1].max_dose_vaccine, json[2].max_dose_vaccine, json[3].max_dose_vaccine, json[4].max_dose_vaccine, json[5].max_dose_vaccine]
 })
 
@@ -677,6 +677,7 @@ vaccination_selector.addEventListener('input', function()
 {
     for(i = 0; i < vaccine_card.length; i++)
     {
+
         switch(vaccination_selector.value)
         {
             case 'Dose':
