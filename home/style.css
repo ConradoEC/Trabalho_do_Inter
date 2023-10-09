@@ -107,7 +107,7 @@ header ul img
 #menuSide
 {
     /* height: calc(100vh - 20px); */
-    height: 90vh;
+    height: 30vh;
     /* width: calc(75vw - 10px); */
     width: 75vw;
     z-index: 2;
