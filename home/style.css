@@ -23,7 +23,7 @@ body
 {
     height: 100vh;
     background-color: gray;
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
 }
 
 header
@@ -33,7 +33,6 @@ header
     justify-content: space-between;
     align-items: center;
     padding: 0px 8vw;
-    background-color: rgb(163, 57, 57);
 }
 
 header img
