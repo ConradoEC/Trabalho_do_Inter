@@ -520,6 +520,7 @@ function responsivity()
     {
         perfil.style.setProperty('display', 'block')
         menuButton.style.setProperty('display', 'none')
+        document.getElementsByClassName('img_border')[1].src = 'https://i.im.ge/2023/08/19/m2MOhK.image.png'
 
         if(counter_menu == 1)
         {
