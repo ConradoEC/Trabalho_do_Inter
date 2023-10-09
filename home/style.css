@@ -110,8 +110,8 @@ header ul img
     width: calc(75vw - 10px);
     z-index: 2;
     background-color: white;
-    /* position: fixed; */
-    bottom: 0;
+    position: fixed;
+    bottom: -10%;
     right: -100%;
 
     transition: right 1s ease-out;
