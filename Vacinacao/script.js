@@ -41,7 +41,6 @@ function NotScroll()
 
 const vaccination_card_close = document.getElementsByClassName('vaccination_card_close')[0]
 var ids;
-var maxVaccine;
 
 fetch('https://node-api-0bwb.onrender.com/vaccine')
 .then(res=>res.json())
@@ -183,7 +182,7 @@ fetch('https://node-api-0bwb.onrender.com/vaccine')
                 <input type="text" value="${item.name_vaccine}" id="vaccine_card_box1" class="vaccine_card_box" disabled>
                 <label for="vaccine_card_box2" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">DATA DE VACINAÇÃO</label>
                 <input type="text" value="${item.date_vaccine}" id="vaccine_card_box2" class="vaccine_card_box" disabled>
-                <label for="vaccine_card_box3" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">${item.max_dose_vaccine} DOSE/DOSES</label>
+                <label for="vaccine_card_box3" class="vaccine_card_box_label"  data-backgrounds_darkGray="backgrounds_darkGray">${item.max_dose_vaccine} DOSE/DOSES</label>
                 <input type="text" value="${item.dose_vaccine}" id="vaccine_card_box3" class="vaccine_card_box" disabled>
                 <label for="vaccine_card_box4" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">REFORÇO</label>
                 <input type="text" value="${newReinforc}" id="vaccine_card_box4" class="vaccine_card_box" disabled>
@@ -332,9 +331,6 @@ fetch('https://node-api-0bwb.onrender.com/vaccine')
                 updateGrade()
         }
     })
-
-    maxVaccine = [json[0].max_dose_vaccine, json[1].max_dose_vaccine, json[2].max_dose_vaccine, json[3].max_dose_vaccine, json[4].max_dose_vaccine, json[5].max_dose_vaccine, json[6].max_dose_vaccine, json[7].max_dose_vaccine, json[8].max_dose_vaccine, json[9].max_dose_vaccine, json[10].max_dose_vaccine, json[11].max_dose_vaccine, json[12].max_dose_vaccine, json[13].max_dose_vaccine, json[14].max_dose_vaccine, json[15].max_dose_vaccine, json[16].max_dose_vaccine, json[17].max_dose_vaccine]
-    // maxVaccine = [json[0].max_dose_vaccine, json[1].max_dose_vaccine, json[2].max_dose_vaccine, json[3].max_dose_vaccine, json[4].max_dose_vaccine, json[5].max_dose_vaccine]
 })
 
 
@@ -632,9 +628,6 @@ function redirecionar()
 }
 
 
-
-
-
 increaseA.addEventListener('click', increase)
 
 decreaseA.addEventListener('click', decrease)
@@ -677,11 +670,13 @@ vaccination_selector.addEventListener('input', function()
 {
     for(i = 0; i < vaccine_card.length; i++)
     {
+        const vaccine_card_max_vaccine = vaccine_card[i].getElementsByTagName('label')[2].innerText[0]
+        console.log(vaccine_card_max_vaccine)
 
         switch(vaccination_selector.value)
         {
             case 'Dose':
-                if(maxVaccine[i] != '1')
+                if(vaccine_card_max_vaccine != '1')
                 {
                     vaccine_card[i].style.setProperty('display', 'none')
                 }
@@ -691,7 +686,7 @@ vaccination_selector.addEventListener('input', function()
                 }
             break
             case 'Doses':
-                if(maxVaccine[i] == '1')
+                if(vaccine_card_max_vaccine == '1')
                 {
                     vaccine_card[i].style.setProperty('display', 'none')
                 }
