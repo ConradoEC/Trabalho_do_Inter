@@ -111,7 +111,7 @@ header ul img
     z-index: 2;
     background-color: white;
     position: fixed;
-    bottom: -10%;
+    top: 0%;
     right: -100%;
 
     transition: right 1s ease-out;
