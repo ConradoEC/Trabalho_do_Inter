@@ -106,12 +106,14 @@ header ul img
 
 #menuSide
 {
-    height: calc(100vh - 20px);
-    width: calc(75vw - 10px);
+    /* height: calc(100vh - 20px); */
+    height: 100vh;
+    /* width: calc(75vw - 10px); */
+    width: 75vw;
     z-index: 2;
     background-color: white;
     position: fixed;
-    top: 0%;
+    bottom: 0%;
     right: -100%;
 
     transition: right 1s ease-out;
