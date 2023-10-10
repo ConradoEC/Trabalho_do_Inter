@@ -1,0 +1,475 @@
+*
+{
+    padding: 0;
+    margin: 0;
+}
+
+body
+{
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+header
+{
+    height: 12.5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 8vw;
+    background-color: whitesmoke;
+}
+
+header img
+{
+    height: 80%;
+}
+
+header ul
+{
+    min-width: 55%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    font-family: sans-serif;
+    font-size: 1.5em;
+}
+
+.item
+{
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+}
+
+header ul img
+{
+    width: 70px;
+}
+
+.material-symbols-outlined
+{
+    font-size: max(2vw, 40px);
+}
+
+#search
+{
+    background-color: rgb(208, 161, 161);
+}
+
+.item:nth-child(6)
+{
+    background-color: gray;
+    width: 35%;
+}
+
+
+
+#menu_button
+{
+    position: relative;
+    cursor: pointer;
+    display: none;
+}
+
+#menuSide_back
+{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: black;
+    opacity: 0.6;
+    z-index: 2;
+    bottom: 0;
+    right: 0;
+    transition: opacity 1s ease-out;
+    display: none;
+}
+
+#menuSide
+{
+    height: calc(100vh - 20px);
+    width: calc(75vw - 10px);
+    z-index: 2;
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    right: -100%;
+
+
+    transition: right 1s ease-out;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+#menuSide_close
+{
+    display: flex;
+    align-items: center;
+    /* height: 6.5%; */
+    height: 44px;
+    background-color: red;
+    border-radius: 100%;
+    color: white;
+}
+
+#menuSide_ul
+{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5%;
+    /* background-color: blue; */
+}
+
+.menuSide_ul_li_perfil
+{
+    /* background-color: red; */
+    height: max(30vh, 170px);
+    width: max(30vh, 170px);
+    padding: 3%;
+}
+
+.menuSide_ul_perfil
+{
+    width: 100%;
+    height: 100%;
+    /* background-color: blue; */
+}
+
+.img_div
+{
+    margin: auto;
+    border-radius: 100%;
+    background-image: url(https://img.freepik.com/fotos-gratis/homem-bonito-e-confiante-sorrindo-com-as-maos-cruzadas-no-peito_176420-18743.jpg);
+    background-position: center;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    height: 73%;
+    border: 1px solid black;
+    max-width: 73%;
+    background-color: gray;
+}
+
+.menuSide_ul_li_text
+{
+    height: 27%;
+    /* background-color: green; */
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menuSide_li
+{
+    /* background-color: red; */
+    background-image: linear-gradient(to right, rgb(243, 61, 61) 60%, white 100%);
+    padding: 3% 0%;
+    /* rgb(245, 100, 100) */
+    width: calc(100% + 20px);
+    height: auto;
+    font-size: 23px;
+}
+
+.menuSide_li:nth-child(2)
+{
+    margin-top: 7%;
+}
+
+.menuSide_li a
+{
+    text-decoration: none;
+    color: white;
+    padding: 0% 3%;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    gap: 3%;
+}
+
+.menuSide_li a span
+{
+    font-size: 35px;
+}
+
+.menu_transition
+{
+    animation: menuBack 0.6s;
+}
+
+@keyframes menuBack
+{
+    0%
+    {
+        opacity: 0;
+    }
+
+    100%
+    {
+        opacity: 0.6;
+    }
+}
+
+.menu_transition2
+{
+    animation: menuBack2 0.7s;
+}
+
+@keyframes menuBack2
+{
+    0%
+    {
+        opacity: 0.6;
+    }
+
+    100%
+    {
+        opacity: 0;
+    }
+}
+
+.pages
+{
+    height: 8vh;
+    padding: 0% 15%;
+    background-color: rgb(113, 113, 253);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+    color: white;
+    font-size: max(2.7vh, 18px);
+    font-family: sans-serif;
+    border-bottom: 2px solid black;
+}
+
+/* CONTEÚDO QUE NÃO FAZ PARTE DO CABEÇALHO */
+
+
+
+
+
+
+
+#section2
+{
+    background-color: red;
+    width: 70vw;
+    height: auto;
+    margin: auto;
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    gap: 8vh;
+}
+
+.disease_container
+{
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+.disease_img
+{
+    background-color: blue;
+    width: 55%;
+    height: 40vh;
+}
+
+.disease_description
+{
+    text-align: justify;
+    background-color: antiquewhite;
+    height: fit-content;
+    width: 45%;
+    padding: 10px;
+
+}
+
+.disease_symptoms
+{
+    /* padding: 20px 0px; */
+    /* background-color: pink; */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.disease_symptoms_li
+{
+    background-color: green;
+    width: 45%;
+}
+
+
+
+
+
+.disease_related
+{
+    background-color: brown;
+}
+
+.disease_h1
+{
+    font-size: 3vw;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.disease_related_newspaper
+{
+    padding: 40px 0px;
+    background-color: beige;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+}
+
+.disease_related_newspaper_news
+{
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+}
+
+.news_img
+{
+    background-color: red;
+    max-width: 250px;
+    max-height: 250px;
+    min-width: 200px;
+    min-height: 200px;
+}
+
+.news_text
+{
+
+}
+
+.news_text:nth-child(1)
+{
+    text-align: right;
+}
+
+
+
+
+.disease_advices
+{
+    background-color: yellow;
+}
+
+.disease_advices_divs
+{
+    width: 100%;
+    min-height: 60vh;
+    height: 70vh;
+    background-color: purple;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.disease_advices_div
+{
+    background-color: orange;
+    width: 28%;
+    height: 78%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.advice_title
+{
+    font-size: 2.3vw;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+}
+
+.advice_icon
+{
+    font-size: 80px;
+}
+
+.advice_text
+{
+    text-align: justify;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.contraste
+{
+    color: yellow;
+    background-color: black;
+    background-image: none;
+}
+
+
+
+
+/* PEQUENOS AJUSTES */
+
+@media(max-width: 1100px)
+{
+
+    .item:nth-child(5), .item:nth-child(6)
+    {
+        display: none;
+    }
+}
+
+
+
+@media(max-width: 500px)
+{
+    header ul
+    {
+        width: auto;
+    }
+
+    .hidden
+    {
+        display: none;
+    }
+
+    .pages
+    {
+        display: none;
+    }
+}
