@@ -74,30 +74,36 @@ fetch('https://node-api-0bwb.onrender.com/vaccine')
                 }
         }
 
-        switch (item.reinforc_vaccine)
+        switch (item.dose_vaccine)
         {
-            case 0:
+            case item.max_dose_vaccine:
+                switch (item.reinforc_vaccine)
+                {
+                    case 0:
+                        break
+                    default:
+                        if(item.counter_reinforc_vaccine != 1)
+                        {
+                            const data = new Date()
+                            const day = String(data.getDate()).padStart(2,'0')
+                            const month = String(data.getMonth() + 1).padStart(2,'0')
+                            const year = data.getFullYear()
+                            const dataAtual = `${year}-${month}-${day}`
+        
+                            const stringDataPrevista = new Date(item.date_vaccine)
+                            const newDataPrevista = `${stringDataPrevista.getFullYear()}-${String(stringDataPrevista.getMonth() + 3).padStart(2,'0')}-${String(stringDataPrevista.getDate() + 1).padStart(2,'0')}`
+
+                            switch (dataAtual)
+                            {
+                                case newDataPrevista:
+                                    item.date_vaccine = ''
+                                    break
+                                default:
+                            }
+                        }
+                }
                 break
             default:
-                if(item.counter_reinforc_vaccine != 1)
-                {
-                    const data = new Date()
-                    const day = String(data.getDate()).padStart(2,'0')
-                    const month = String(data.getMonth() + 1).padStart(2,'0')
-                    const year = data.getFullYear()
-                    const dataAtual = `${year}-${month}-${day}`
-
-                    const stringDataPrevista = new Date(item.date_vaccine)
-                    const newDataPrevista = `${stringDataPrevista.getFullYear()}-${String(stringDataPrevista.getMonth() + 1).padStart(2,'0')}-${String(stringDataPrevista.getDate() + 2).padStart(2,'0')}`
-
-                    switch (dataAtual)
-                    {
-                        case newDataPrevista:
-                            item.date_vaccine = ''
-                            break
-                        default:
-                    }
-                }
         }
 
         switch (item.everyYear_vaccine)
@@ -151,11 +157,11 @@ fetch('https://node-api-0bwb.onrender.com/vaccine')
                 case 1:
                     switch (item.counter_reinforc_vaccine)
                     {
-                        case 0:
-                            newReinforc = 'Não tomou'
+                        case 1:
+                            newReinforc = 'Tomou'
                             break
                         default:
-                            newReinforc = 'Tomou'
+                            newReinforc = 'Não tomou'
                     }
                     break
                 default:
@@ -211,6 +217,7 @@ fetch('https://node-api-0bwb.onrender.com/vaccine')
     {
         var newReinforc;
         var newCounterReinforc = json[ids - 1].counter_reinforc_vaccine
+        var doseVaccine_forReinforc = json[ids - 1].dose_vaccine
         var neweveryYear;
         var newMax_dose_vaccine;
 
@@ -229,18 +236,32 @@ fetch('https://node-api-0bwb.onrender.com/vaccine')
                 newReinforc = 'Não possui'
                 break
             case 1:
-                if(newCounterReinforc < 1)
+                if(doseVaccine_forReinforc == 1)
                 {
-                    newCounterReinforc = newCounterReinforc + 1
+                    if(newCounterReinforc < 1)
+                    {
+                        newCounterReinforc = newCounterReinforc + 1
+                    }
+                }
+                else if(doseVaccine_forReinforc == json[ids - 1].max_dose_vaccine)
+                {
+                    if(newCounterReinforc < 1)
+                    {
+                        newCounterReinforc = newCounterReinforc + 1
+                    }
+                }
+                else
+                {
+                    newCounterReinforc = newCounterReinforc
                 }
 
                 switch (newCounterReinforc)
                     {
-                        case 0:
-                            newReinforc = 'Não tomou'
+                        case 1:
+                            newReinforc = 'Tomou'
                             break
                         default:
-                            newReinforc = 'Tomou'
+                            newReinforc = 'Não tomou'
                     }
                 break
             default:
