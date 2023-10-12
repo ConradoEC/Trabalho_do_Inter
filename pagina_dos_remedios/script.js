@@ -63,7 +63,6 @@ function filtrar()
     filter = medicine_search.value.toUpperCase();
 
     li = ul.getElementsByTagName('li');
-    console.log(li[0])
     for(i = 0; i < li.length; i++)
     {
         div = li[i].getElementsByTagName('div')[0]

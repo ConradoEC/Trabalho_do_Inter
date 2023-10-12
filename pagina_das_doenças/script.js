@@ -14,6 +14,34 @@ const body = document.querySelector('body')
 let text = document.querySelectorAll('.data-font');
 
 
+
+// PARTE DA BARRA DE PESQUISA {
+
+const search_text = document.getElementById('search_text')
+const mini_search_space = document.getElementById('mini_search_space')
+
+
+// fetch()
+// .then(res=>res.json())
+// .then((json) =>
+// {
+//     json.forEach(item =>
+//     {
+//         const div = document.createElement('div')
+
+//         div.innerHTML = `
+//         <div class="mini_search_space_div">
+//             <span class="mini_search_space_div_span">${item.dvssdvsvsv}</span>
+//         </div>
+//         `;
+
+//         mini_search_space.appendChild(div)
+//     })
+// })
+
+// PARTE DA BARRA DE PESQUISA }
+
+
 var remover = 0;
 counter_menu = 0;
 var on = 0;
@@ -225,6 +253,57 @@ function menuBar()
     }
 }
 
+function filtrar()
+{
+    var count = 0
+    var filter = search_text.value.toUpperCase();
+    const divs = mini_search_space.getElementsByClassName('mini_search_space_div')
+
+    for(i = 0; i < divs.length; i++)
+    {
+        const spans = divs[i].getElementsByClassName('mini_search_space_div_span')[0]
+        textValue = spans.innerText
+
+        if(textValue.toLocaleUpperCase().indexOf(filter) > -1)
+        {
+            divs[i].style.setProperty('display', 'flex')
+            count++
+            console.log(count)
+        }
+        else
+        {
+            divs[i].style.setProperty('display', 'none')
+            count--
+        }
+
+        spanText = spans
+        // console.log(span)
+        if(spanText)
+        {
+            spanText.innerHTML = textValue.replace(new RegExp(filter, 'gi'), (match) => {
+                return "<strong>" + match + "</strong>"
+            })
+        }
+        else
+        {
+            divs[i].style.setProperty('display', 'none')
+        }
+
+        if(count > 5)
+        {
+            divs[i].style.setProperty('display', 'none')
+        }
+    }
+
+    if(count < -5) //  ÉRA "0" O VALOR DE COMPARAÇÃO
+    {
+        mini_search_space.style.setProperty('display', 'none')
+    }
+    else
+    {
+        mini_search_space.style.setProperty('display', '')
+    }
+}
 
 
 
@@ -259,8 +338,6 @@ window.addEventListener('resize', () =>
 })
 
 menuButton.addEventListener('click', menuBar)
-
-
 
 
 /* SLIDER */
