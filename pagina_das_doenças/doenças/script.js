@@ -19,7 +19,64 @@ var on = 0;
 
 // PARTE COPIADA }
 
+const urlParams = new URLSearchParams(window.location.search)
+const ids = urlParams.get('id')
+const disease_img = document.getElementById('disease_img')
 
+fetch('./diseaseContent.json')
+.then(res=>res.json())
+.then((json) =>
+{
+    disease_img.src = `${json[ids - 1].content.image}`
+    disease_description.innerText = `${json[ids - 1].content.description}`
+
+    json[ids - 1].content.symptoms.forEach(item =>
+    {
+        const issueLi = document.createElement('li')
+        issueLi.innerHTML = `<li class="disease_symptoms_li">${item}</li>`
+
+        disease_symptoms.appendChild(issueLi)
+    })
+
+    disease_h1.innerText = `Relacionados com ${json[ids - 1].content.name}`
+
+    for(i = 0; i < json[ids - 1].content.news.length; i++)
+    {
+        const div = document.createElement('div')
+        div.setAttribute('class', 'disease_related_newspaper_news')
+
+        if(i % 2 != 0 )
+        {
+            div.innerHTML = `
+            <p class="news_text">${json[ids - 1].content.news[i].new[0]}</p>
+            <a href="${json[ids - 1].content.news[i].new[2]}" target="blanck"><img src="${json[ids - 1].content.news[i].new[1]}" alt="" class="news_img"></a>
+            `
+        }
+        else
+        {
+            div.innerHTML = `
+            <a href="${json[ids - 1].content.news[i].new[2]}" target="blanck"><img src="${json[ids - 1].content.news[i].new[1]}" alt="" class="news_img"></a>
+            <p class="news_text">${json[ids - 1].content.news[i].new[0]}</p>
+            `
+        }
+
+        disease_related_newspaper.appendChild(div)
+    }
+
+    for(i = 0; i < json[ids - 1].content.advices.length; i++)
+    {
+        const div = document.createElement('div')
+        div.setAttribute('class', 'disease_advices_div')
+        
+        div.innerHTML = `
+        <span class="advice_title">${json[ids - 1].content.advices[i].title}</span>
+        <span class="advice_icon">${json[ids - 1].content.advices[i].icon}</span>
+        <p class="advice_text">${json[ids - 1].content.advices[i].text}</p>
+        `
+
+        disease_advices_divs.appendChild(div)
+    }
+})
 
 
 function increase()

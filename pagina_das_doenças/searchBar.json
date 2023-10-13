@@ -1,0 +1,25 @@
+[
+    {
+        "id": "1",
+        "content": 
+        {
+            "name": "Poliomielite"
+        }
+    },
+
+    {
+        "id": "2",
+        "content": 
+        {
+            "name": "Gripe"
+        }
+    },
+
+    {
+        "id": "3",
+        "content": 
+        {
+            "name": "Dor de cabeça"
+        }
+    }
+]

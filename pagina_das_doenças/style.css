@@ -282,6 +282,12 @@ header ul img
   left: 0;
 }
 
+.mini_search_space_link
+{
+  text-decoration: none;
+  color: black;
+}
+
 .mini_search_space_div
 {
   height: 4vh;
@@ -289,11 +295,13 @@ header ul img
   display: none;
   align-items: center;
   border-bottom: 1px solid black;
+  cursor: pointer;
 }
 
 .mini_search_space_div_span
 {
   font-size: 1.5vw;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 

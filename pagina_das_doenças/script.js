@@ -21,23 +21,25 @@ const search_text = document.getElementById('search_text')
 const mini_search_space = document.getElementById('mini_search_space')
 
 
-// fetch()
-// .then(res=>res.json())
-// .then((json) =>
-// {
-//     json.forEach(item =>
-//     {
-//         const div = document.createElement('div')
+fetch('./searchBar.json')
+.then(res=>res.json())
+.then((json) =>
+{
+    json.forEach(item =>
+    {
+        const div = document.createElement('div')
 
-//         div.innerHTML = `
-//         <div class="mini_search_space_div">
-//             <span class="mini_search_space_div_span">${item.dvssdvsvsv}</span>
-//         </div>
-//         `;
+        div.innerHTML = `
+        <a class="mini_search_space_link" href="./doenças/index.html?id=${item.id}">
+            <div class="mini_search_space_div">
+                <span class="mini_search_space_div_span">${item.content.name}</span>
+            </div>
+        </a>
+        `;
 
-//         mini_search_space.appendChild(div)
-//     })
-// })
+        mini_search_space.appendChild(div)
+    })
+})
 
 // PARTE DA BARRA DE PESQUISA }
 

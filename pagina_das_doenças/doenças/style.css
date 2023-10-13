@@ -286,6 +286,7 @@ header ul img
     background-color: blue;
     width: 55%;
     height: 40vh;
+    background-image: url();
 }
 
 .disease_description
@@ -311,7 +312,9 @@ header ul img
 .disease_symptoms_li
 {
     background-color: green;
-    width: 45%;
+    width: 30vw;
+    font-size: 2vw;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 
@@ -347,13 +350,20 @@ header ul img
     gap: 60px;
 }
 
-.news_img
+.disease_related_newspaper_news a
 {
     background-color: red;
     max-width: 250px;
     max-height: 250px;
     min-width: 200px;
     min-height: 200px;
+    display: flex;
+}
+
+.news_img
+{
+    width: 100%;
+    height: 100%;
 }
 
 .news_text
