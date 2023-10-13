@@ -23,7 +23,7 @@ const urlParams = new URLSearchParams(window.location.search)
 const ids = urlParams.get('id')
 const disease_img = document.getElementById('disease_img')
 
-fetch('./diseaseContent.json')
+fetch('https://conradoec.github.io/Trabalho_do_Inter/pagina_das_doen%C3%A7as/doen%C3%A7as/diseaseContent.json')
 .then(res=>res.json())
 .then((json) =>
 {
