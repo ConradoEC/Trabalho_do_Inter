@@ -163,6 +163,7 @@ const menuButton = document.getElementById('menu_button')
 const menuSide_back = document.getElementById('menuSide_back')
 const menuSide = document.getElementById('menuSide')
 const items = document.querySelectorAll('.hidden')
+const loading_background = document.getElementById('loading_background')
 const body = document.querySelector('body');
 
 const move = document.getElementById('move');
@@ -223,8 +224,11 @@ var counter_description = 0;
 
 function NotScroll()
 {
-    console.log(view_modal)
     if(view_modal.style.display != 'none') 
+    {
+        body.style.overflowY = 'hidden';
+    }
+    else if(loading_background.style.display != 'none')
     {
         body.style.overflowY = 'hidden';
     }
@@ -583,31 +587,23 @@ function backSlider()
 
 function menu_modal(container_sliders_window)
 {
-    // console.log(sliders[2].getElementsByTagName('span'))
-    console.log(container_sliders_window.target.id + ' sim')
+    var ids = container_sliders_window.target.id
+
     if(container_sliders_window.target.id != 'container_sliders_window')
     {
-        view_modal.style.setProperty('display', 'flex')
-        modal.classList.add('show_up')
-        modal_background.style.setProperty('display', 'block')
+        container_loading.style.setProperty('display', 'flex');
         NotScroll()
-        if(container_sliders_window.target.tagName != 'DIV')
-        {
-            container_sliders_window.target.id = container_sliders_window.target.parentNode.id;
-        }
-
-        var ids = container_sliders_window.target.id
-        const url_post = 'https://node-api-0bwb.onrender.com/form'
-        comments_box_link[0].setAttribute('id', `${ids}`)
-        comments_box_link[0].setAttribute('href', `${url_post}?id=${ids}`)
-
-        view_comments.setAttribute('id', `${ids}`)
-        console.log(view_comments)
 
         fetch(url)
         .then(res=>res.json())
         .then((json) =>
-        {
+        {   var ids = container_sliders_window.target.id
+            console.log(container_sliders_window.target)
+
+            const url_post = 'https://node-api-0bwb.onrender.com/form'
+            comments_box_link[0].setAttribute('id', `${ids}`)
+            comments_box_link[0].setAttribute('href', `${url_post}?id=${ids}`)
+
             medicine_description_p.innerText = json[ids].mediText
             
             medicine_img.style.backgroundImage = `url(${json[ids].image})`
@@ -622,32 +618,35 @@ function menu_modal(container_sliders_window)
             medicine_list1_li2[0].innerText = json[ids].nIndItem3
             medicine_list1_li2[1].innerText = json[ids].nIndItem4
             medicine_list1_li2[2].innerText = json[ids].nIndItem5
-            // medicine_list1_li2[i].innerText = json[i].listDESEN
+
+            view_modal.style.setProperty('display', 'flex')
+            modal.classList.add('show_up')
+            modal_background.style.setProperty('display', 'block')
+            container_loading.style.setProperty('display', 'none');
         })
+
+        if(container_sliders_window.target.tagName != 'DIV')
+        {
+            container_sliders_window.target.id = container_sliders_window.target.parentNode.id;
+        }
+
+        view_comments.setAttribute('id', `${container_sliders_window.target.id}`)
     }
 }
 
 function takeComments(view_comments)
 {
     const comment_content2 = comment_informations.getElementsByClassName('comment_content')
-
+    
+    container_loading.style.setProperty('display', 'flex');
+    NotScroll()
+    
     ids = view_comments.target.id
+    console.log(ids + 'No inicio')
 
     var indicator = 1
 
-    // for(i = 0; i < comment_content2.length; i++)
-    //         {
-    //             if(comment_content2[i].id != ids)
-    //             {
-    //                 // console.log(comment_content2[i].id)
-    //                 // console.log(comment_content2.length)
-    //                 // comment_informations.removeChild(comment_content2[i])
-    //                 // console.log(comment_content2.length)
-                    
-    //             }
-    //         }
-
-    fetch('http://localhost:3000/form/takeData')
+    fetch('https://node-api-0bwb.onrender.com/form/takeData')
     .then(res=>res.json())
     .then((json) =>
     {
@@ -656,7 +655,7 @@ function takeComments(view_comments)
             if(comment_content2[i].id == ids)
             {
                 console.log('Os novos comentários não foram adicionados')
-                indicator = 0
+                indicator = 1
             }
             else
             {
@@ -684,6 +683,16 @@ function takeComments(view_comments)
             {
                 comment_image_img.setAttribute('src', `${json[ids].image}`)
                 console.log(comment_image_img)
+                comment.style.setProperty('z-index', '1')
+                
+                teste_comment.style.setProperty('display', 'flex')
+                comment_background.style.setProperty('display', 'block')
+                if(teste_comment.style.display != 'none')
+                {
+                    body.style.overflowY = 'hidden';
+                }
+
+                container_loading.style.setProperty('display', 'none');
             })
 
             var sla2 = ''
@@ -715,12 +724,11 @@ function takeComments(view_comments)
                 }
             })
             text = document.querySelectorAll('.data-font')
-            console.log(text)
         }
     })
-    
-}
 
+    console.log(ids + 'No final')
+}
 
 increaseA.addEventListener('click', increase)
 
@@ -793,19 +801,7 @@ view_comments.addEventListener('click', (view_comments) =>
     else
     {
         takeComments(view_comments)
-        setTimeout(function()
-        {
-            comment.style.setProperty('z-index', '1')
-            teste_comment.style.setProperty('display', 'flex')
-            comment_background.style.setProperty('display', 'block')
-            if(teste_comment.style.display != 'none')
-            {
-                body.style.overflowY = 'hidden';
-            }
-        }, 150)
-        
     }
-    // comment.style.setProperty('background-color', 'blue')
 })
 
 close_comments.addEventListener('click', () => 
