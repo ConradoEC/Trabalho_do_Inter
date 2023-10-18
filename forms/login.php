@@ -1,6 +1,6 @@
 <div class="wrapper">
     <form action="" method="POST">
-        <h1>Login</h1>
+        <h1 id="statusLogin">Login</h1>
         
         <div class="input-box">
             <input type="text" placeholder="Primeiro nome" name="nome" required>

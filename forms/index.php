@@ -11,7 +11,7 @@
 
     <body>
         <?php
-            include_once("./conexao.php");
+            include_once("./forms-cadastro/conexao.php");
 
             if(!isset($_SESSION['login']))
             {
@@ -20,7 +20,6 @@
                     $name = $_POST['nome'];
                     $password = $_POST['senha'];
                     $email = $_POST['email'];
-                    $phrase = 'Login';
 
                     $sql = "SELECT * FROM cadastro_intermedic WHERE nome = '$name' AND senha = '$password' AND email = '$email'";
                     mysqli_query($logins, $sql);
@@ -32,7 +31,7 @@
                     }
                     else
                     {  
-                        header('Location: index.php?algoEstaErrado');
+                        header('Location: index.php?indice=algoEstaErrado');
                     }
                 };
 
@@ -47,7 +46,7 @@
                     header('Location: index.php');
                 }
 
-                include('idk.html');
+                include('login.html');
             }
         ?>
         <script src="script.js"></script>
