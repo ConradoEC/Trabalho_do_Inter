@@ -431,8 +431,6 @@ function menuBar()
         menuButton.style.setProperty('position', 'static')
         menu.style.setProperty('position', 'relative')
         counter_menu = 1;
-        console.log(counter_menu)
-        console.log(menuSide)
     }
     else
     {
