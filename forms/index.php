@@ -22,11 +22,14 @@
                     $email = $_POST['email'];
 
                     $sql = "SELECT * FROM cadastro_intermedic WHERE nome = '$name' AND senha = '$password' AND email = '$email'";
-                    mysqli_query($logins, $sql);
-                    $obj = mysqli_fetch_object(mysqli_query($logins, $sql));
+                    mysqli_query($conexao, $sql);
+                    $obj = mysqli_fetch_object(mysqli_query($conexao, $sql));
                     if($obj->nome != '')
                     {
-                        $_SESSION['login'] = true;  
+                        $_SESSION['login'] = $name;
+                        setcookie('nome', $name);
+                        setcookie('senha', $password);
+                        setcookie('email', $email);
                         header('Location: index.php');
                     }
                     else
@@ -43,6 +46,9 @@
                 {
                     unset($_SESSION['login']);
                     session_destroy();
+                    setcookie('nome', null, -1);
+                    setcookie('senha', null, -1);
+                    setcookie('email', null, -1);
                     header('Location: index.php');
                 }
 

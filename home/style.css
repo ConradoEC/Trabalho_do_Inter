@@ -64,6 +64,12 @@ header ul img
     width: 70px;
 }
 
+.header_links
+{
+    text-decoration: none;
+    color: currentColor;
+}
+
 .material-symbols-outlined
 {
     font-size: max(2vw, 40px);

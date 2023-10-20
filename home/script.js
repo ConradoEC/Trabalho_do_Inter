@@ -458,12 +458,12 @@ function menuBar()
 window.onload = function()
 {
     fonts = [
-    text[0].style.fontSize, 
-    text[1].style.fontSize,
-    text[2].style.fontSize,
-    text[4].style.fontSize,
-    text[9].style.fontSize,
-    links[0].style.fontSize
+        text[0].style.fontSize, 
+        text[1].style.fontSize,
+        text[2].style.fontSize,
+        text[4].style.fontSize,
+        text[9].style.fontSize,
+        links[0].style.fontSize
     ]
 
     phrase.innerHTML = phrases[time]
@@ -473,10 +473,20 @@ window.onload = function()
         remover = 1;
     }
 
+    if(document.cookie.split(';')[3].split('=')[0] == 'PHPSESSID')
+    {
+        perfil.innerText = 'search'
+        perfil.src = 'https://conradoec.github.io/Trabalho_do_Inter/'
+    }
+    else
+    {
+        perfil.innerText = 'account_circle'
+        perfil.src = 'https://conradoec.github.io/Trabalho_do_Inter/forms'
+    }
+
     responsivity()
 
     // 13 E 14 SÃO OS DA SEÇÃO QUE APARECEM SÓ DEPOIS 
-
 }
 
 
