@@ -1,4 +1,3 @@
-<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -17,6 +16,7 @@
             {
                 if(isset($_POST['datas']))
                 {
+                    session_start();
                     $name = $_POST['nome'];
                     $password = $_POST['senha'];
                     $email = $_POST['email'];
@@ -26,11 +26,11 @@
                     $obj = mysqli_fetch_object(mysqli_query($conexao, $sql));
                     if($obj->nome != '')
                     {
-                        $_SESSION['login'] = $name;
-                        setcookie('nome', $name);
-                        setcookie('senha', $password);
-                        setcookie('email', $email);
-                        header('Location: index.php');
+                        $_SESSION['login'] = true;
+                        setcookie('nome', $name, time() + 3600);
+                        setcookie('senha', $password, time() + 3600);
+                        setcookie('email', $email, time() + 3600);
+                        header('Location: https://conradoec.github.io/Trabalho_do_Inter/');
                     }
                     else
                     {  
@@ -40,20 +40,19 @@
 
                 include('login.php');
             }
-            else
-            {
-                if(isset($_GET['logout']))
-                {
-                    unset($_SESSION['login']);
-                    session_destroy();
-                    setcookie('nome', null, -1);
-                    setcookie('senha', null, -1);
-                    setcookie('email', null, -1);
-                    header('Location: index.php');
-                }
+            // else
+            // {
+            //     unset($_SESSION['login']);
+            //     setcookie('nome', null, -1);
+            //     setcookie('senha', null, -1);
+            //     setcookie('email', null, -1);
+            //     session_destroy();
+            //     header('Location: index.php');
 
-                include('login.html');
-            }
+            //     // if(isset($_GET['logout'])){
+
+            //     // }
+            // }
         ?>
         <script src="script.js"></script>
     </body>

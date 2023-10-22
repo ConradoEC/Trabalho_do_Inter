@@ -89,6 +89,7 @@ var position = 0;
 var counter = 1;
 var news_size = 0;
 counter_menu = 0;
+var logado = sessionStorage.getItem('N1');
 
 
 if(titles[0].classList.contains('data-font'))
@@ -473,15 +474,34 @@ window.onload = function()
         remover = 1;
     }
 
-    if(document.cookie.split(';')[3].split('=')[0] == 'PHPSESSID')
+    // const cookies = document.cookie.split(';')[3].split('=')[0]
+
+    // console.log(cookies)
+    
+    // if(cookies == 'nome')
+    // {
+    //     perfil.innerText = 'circle'
+    //     perfil.parentNode.href = './forms/logout.php'
+    //     sessionStorage.setItem('teste', 'Apenas um teste')
+    // }
+    // else
+    // {
+    //     perfil.innerText = 'account_circle'
+    //     perfil.parentNode.href = './forms/index.php'
+    //     sessionStorage.clear()
+    //     sessionStorage.setItem('teste', 'Olá')
+    // }
+
+    if(logado)
     {
-        perfil.innerText = 'search'
-        perfil.src = 'https://conradoec.github.io/Trabalho_do_Inter/'
+        perfil.innerText = 'circle'
+        perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/logout.php'
+        Login.innerText = 'Bem vindo, ' + sessionStorage.getItem('Nome') + '!'
     }
     else
     {
         perfil.innerText = 'account_circle'
-        perfil.src = 'https://conradoec.github.io/Trabalho_do_Inter/forms'
+        perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms'
     }
 
     responsivity()
@@ -567,6 +587,20 @@ arrows[1].addEventListener('click', function()
         {
             item.style.setProperty('left', `${position}%`);
         })
+    }
+})
+
+perfil.addEventListener('click', function()
+{
+    
+    if(logado)
+    {
+        sessionStorage.removeItem('N1')
+        sessionStorage.removeItem('Nome')
+    }
+    else
+    {
+        sessionStorage.setItem('N2', 'Deslogado')
     }
 })
 

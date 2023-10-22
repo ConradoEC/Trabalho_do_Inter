@@ -3,7 +3,7 @@
         <h1 id="statusLogin">Login</h1>
         
         <div class="input-box">
-            <input type="text" placeholder="Primeiro nome" name="nome" required>
+            <input type="text" id="account_name" placeholder="Primeiro nome" name="nome" required>
             <i class='bx bxs-user-circle'></i>
             <small class="error-message"></small>
         </div>
@@ -24,7 +24,7 @@
             <label><input type="checkbox"> Lembrar-me</label>
         </div>
 
-        <input type="submit" name="datas" class="btn" value="Enviar"></input>
+        <input type="submit" id="sendInformations" name="datas" class="btn" value="Entrar"></input>
             
         <div class="resgister-link">
             <p>Não possuí conta? <a href="forms-cadastro/cadastro.html">Cadastre-se</a></p>

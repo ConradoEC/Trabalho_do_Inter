@@ -1,16 +1,46 @@
+const sendInformations = document.getElementById('sendInformations');
+const account_name = document.getElementById('account_name')
+
 function mistake()
 {
   const urlMistake = new URLSearchParams(window.location.search);
   const algoEstaErrado = urlMistake.get('indice')
-  console.log(algoEstaErrado)
-
+  
   if(algoEstaErrado == 'algoEstaErrado')
   {
     statusLogin.innerText = 'Algo está errado'
   }
+
+  const deslogadoMasLogado = sessionStorage.getItem('N1')
+  if(deslogadoMasLogado)
+  {
+      sessionStorage.removeItem('N1')
+      sessionStorage.removeItem('Nome')
+  }
 }
 
 window.onload = mistake()
+
+
+sendInformations.addEventListener('click', function()
+{
+  const account = `${account_name.value}`
+  const urlParams = new URLSearchParams(window.location.search)
+  const indice = urlParams.get('indice')
+
+    const deslogado = sessionStorage.getItem('N2')
+    if(deslogado)
+    {
+        sessionStorage.removeItem('N2')
+        sessionStorage.setItem('N1', 'Logado')
+    }
+    else
+    {
+      sessionStorage.setItem('N1', 'Logado')
+    }
+    
+    sessionStorage.setItem('Nome', `${account}`)
+})
 
 
 // document.addEventListener("DOMContentLoaded", function () {
