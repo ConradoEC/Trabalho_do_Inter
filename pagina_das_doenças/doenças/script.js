@@ -16,14 +16,16 @@ let text = document.querySelectorAll('.data-font');
 var remover = 0;
 counter_menu = 0;
 var on = 0;
+counter_replace_advices_icons = 0;
 
 // PARTE COPIADA }
 
-const urlParams = new URLSearchParams(window.location.search)
-const ids = urlParams.get('id')
-const disease_img = document.getElementById('disease_img')
+const urlParams = new URLSearchParams(window.location.search);
+const ids = urlParams.get('id');
+const disease_img = document.getElementById('disease_img');
 
-fetch('https://conradoec.github.io/Trabalho_do_Inter/pagina_das_doen%C3%A7as/doen%C3%A7as/diseaseContent.json')
+// fetch('https://conradoec.github.io/Trabalho_do_Inter/pagina_das_doen%C3%A7as/doen%C3%A7as/diseaseContent.json')
+fetch('./diseaseContent.json')
 .then(res=>res.json())
 .then((json) =>
 {
@@ -49,15 +51,18 @@ fetch('https://conradoec.github.io/Trabalho_do_Inter/pagina_das_doen%C3%A7as/doe
         {
             div.innerHTML = `
             <p class="news_text">${json[ids - 1].content.news[i].new[0]}</p>
-            <a href="${json[ids - 1].content.news[i].new[2]}" target="blanck"><img src="${json[ids - 1].content.news[i].new[1]}" alt="" class="news_img"></a>
+            <a href="${json[ids - 1].content.news[i].new[2]}" target="blanck"><div class="news_img"></div></a>
             `
+            div.getElementsByClassName('news_img')[0].style.backgroundImage = `url(${json[ids - 1].content.news[i].new[1]})`
         }
         else
         {
             div.innerHTML = `
-            <a href="${json[ids - 1].content.news[i].new[2]}" target="blanck"><img src="${json[ids - 1].content.news[i].new[1]}" alt="" class="news_img"></a>
+            <a href="${json[ids - 1].content.news[i].new[2]}" target="blanck"><div class="news_img"></div></a>
             <p class="news_text">${json[ids - 1].content.news[i].new[0]}</p>
             `
+
+            div.getElementsByClassName('news_img')[0].style.backgroundImage = `url(${json[ids - 1].content.news[i].new[1]})`
         }
 
         disease_related_newspaper.appendChild(div)
@@ -67,14 +72,34 @@ fetch('https://conradoec.github.io/Trabalho_do_Inter/pagina_das_doen%C3%A7as/doe
     {
         const div = document.createElement('div')
         div.setAttribute('class', 'disease_advices_div')
+        div.setAttribute('id', 'disease_advices_div')
         
         div.innerHTML = `
         <span class="advice_title">${json[ids - 1].content.advices[i].title}</span>
-        <span class="advice_icon">${json[ids - 1].content.advices[i].icon}</span>
+        <span id="advice_icon" class="advice_icon">${json[ids - 1].content.advices[i].icon}</span>
         <p class="advice_text">${json[ids - 1].content.advices[i].text}</p>
-        `
-
+        `        
         disease_advices_divs.appendChild(div)
+    }
+
+    if(counter_replace_advices_icons == 0)
+    {
+        if(window.innerWidth <= 800)
+        {
+            for(i = 0; i < advice_icon.length - 1; i++)
+            {
+                disease_advices_divs.replaceChild(advice_icon[i], disease_advices_div[0])
+            }
+            disease_advices_divs.replaceChild(advice_icon[2], disease_advices_div)
+            counter_replace_advices_icons = 1
+        }
+        else
+        {
+            if(window.innerWidth <= 800)
+            {
+                counter_replace_advices_icons = 0
+            }
+        }
     }
 })
 
@@ -202,6 +227,27 @@ function contrastEffect()
 
 function responsivity()
 {
+    if(counter_replace_advices_icons == 0)
+    {
+        if(window.innerWidth <= 800)
+        {
+            for(i = 0; i < advice_icon.length; i++)
+            {
+                disease_advices_divs.replaceChild(advice_icon[i], disease_advices_div[i])
+                counter_replace_advices_icons = 1
+                console.log(counter_replace_advices_icons)
+            }
+        }
+    }
+    else
+    {
+        if(window.innerWidth > 800)
+        {
+            counter_replace_advices_icons = 0
+            console.log(counter_replace_advices_icons)
+        }
+    }
+
     if(window.innerWidth <= 500)
     {
         perfil.style.setProperty('display', 'none')
@@ -298,9 +344,12 @@ window.onload = function()
     {
         remover = 1;
     }
-
-    responsivity()
 }
+
+window.addEventListener('resize', () =>
+{
+    responsivity()
+})
 
 window.addEventListener('resize', () =>
 {
