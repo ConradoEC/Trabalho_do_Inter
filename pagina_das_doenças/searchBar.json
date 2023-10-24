@@ -11,7 +11,7 @@
         "id": "2",
         "content": 
         {
-            "name": "Gripe"
+            "name": "Gripe Suína"
         }
     },
 
@@ -20,6 +20,38 @@
         "content": 
         {
             "name": "Dor de cabeça"
+        }
+    },
+
+    {
+        "id": "4",
+        "content": 
+        {
+            "name": "Dengue"
+        }
+    },
+
+    {
+        "id": "5",
+        "content": 
+        {
+            "name": "Osteoporose"
+        }
+    },
+
+    {
+        "id": "6",
+        "content": 
+        {
+            "name": "HIV"
+        }
+    },
+
+    {
+        "id": "7",
+        "content": 
+        {
+            "name": "Colesterol alto"
         }
     }
 ]

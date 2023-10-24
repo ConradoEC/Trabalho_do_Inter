@@ -278,8 +278,7 @@ header ul img
 {
     width: 100%;
     height: auto;
-    /* overflow: auto; */
-    /* background-color: blue; */
+    
 }
 
 .disease_img
@@ -308,7 +307,8 @@ header ul img
 .disease_symptoms
 {
     /* padding: 20px 0px; */
-    /* background-color: pink; */
+    margin: auto;
+    width: 75%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -328,10 +328,7 @@ header ul img
 
 
 
-.disease_related
-{
-    /* background-color: rgba(104, 238, 253, 1); */
-}
+
 
 .disease_h1
 {
@@ -348,6 +345,7 @@ header ul img
     display: flex;
     gap: 30px;
     flex-direction: column;
+    align-items: center;
 }
 
 .disease_related_newspaper_news
@@ -355,11 +353,11 @@ header ul img
     /* background-color: aqua; */
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
     gap: 60px;
     border: 2px solid rgba(255, 44, 44, 1);
     border-radius: 5px;
     overflow: hidden;
+    width: 96%;
 }
 
 .disease_related_newspaper_news:nth-child(2)
@@ -369,7 +367,6 @@ header ul img
     align-items: center;
     justify-content: right;
     gap: 60px;
-    border: 2px solid black;
     border: 2px solid rgba(255, 44, 44, 1);
 }
 
@@ -404,20 +401,16 @@ header ul img
 
 
 
-.disease_advices
-{
-    /* background-color: yellow; */
-}
-
 .disease_advices_divs
 {
     width: 100%;
     min-height: 60vh;
     height: 70vh;
-    background-color: purple;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    gap: 30px;
+    background-color: purple;
 }
 
 .disease_advices_div
@@ -431,12 +424,22 @@ header ul img
     justify-content: space-around;
     padding: 10px;
     border-radius: 10px;
+    margin: auto;
     /* background-color: rgba(175, 159, 255, 1); */
+}
+
+.container_advice_icons
+{
+    margin: auto;
+    width: auto;
+    height: auto;
+    display: none;
+    gap: max(5vw, 40px);
 }
 
 .advice_title
 {
-    font-size: 2.3vw;
+    font-size: max(2.3vw, 40px );
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
 }
@@ -449,6 +452,9 @@ header ul img
 .advice_text
 {
     text-align: justify;
+    font-size: max(1.3vw, 23px);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
 
@@ -467,6 +473,13 @@ header ul img
     background-color: black;
     background-image: none;
 }
+
+.disease_advices_divs_id
+{
+    height: 10vh;
+}
+
+
 
 
 
@@ -496,11 +509,6 @@ header ul img
     }
 }
 
-@media(max-width: 900px)
-{
-
-}
-
 @media(max-width: 800px)
 {
     .disease_advices_divs
@@ -508,12 +516,19 @@ header ul img
         align-items: baseline;
         min-height: auto;
         height: auto;
+        flex-direction: column;
     }
-/* 
-    .advice_icon
+
+    .disease_advices_div
     {
-        display: block;
-    } */
+        height: 50%;
+        width: 60%;
+    }
+
+    .advice_text
+    {
+        text-align: center;
+    }
 }
 
 @media(max-width: 500px)
@@ -531,5 +546,91 @@ header ul img
     .pages
     {
         display: none;
+    }
+
+    #section2
+    {
+        margin-top: 15vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .disease_container
+    {
+        width: 95%;
+    }
+
+    .disease_img
+    {
+        height: 30vh;
+    }
+
+    .disease_symptoms
+    {
+        width: auto;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    .disease_symptoms_li
+    {
+        text-align: center;
+    }
+
+    .disease_h1
+    {
+        width: 100%;
+        padding-left: 0px;
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .disease_related
+    {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .disease_related_newspaper
+    {
+        width: 96%;
+    }
+
+    .disease_related_newspaper_news
+    {
+        gap: 20px;
+    }
+
+    .disease_related_newspaper_news:nth-child(2)
+    {
+        gap: 20px;
+    }
+
+    .disease_related_newspaper_news a
+    {
+        width: 80%;
+    }
+
+    .disease_advices
+    {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;        
+    }
+
+    .disease_advices_divs
+    {
+        width: 90%;
+    }
+
+    .disease_advices_div
+    {
+        height: 70vh;
+        width: 90%;
     }
 }

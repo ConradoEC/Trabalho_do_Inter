@@ -23,6 +23,10 @@ counter_replace_advices_icons = 0;
 const urlParams = new URLSearchParams(window.location.search);
 const ids = urlParams.get('id');
 const disease_img = document.getElementById('disease_img');
+const disease_advices_divs_id = document.getElementById('disease_advices_divs');
+const advice_icons = document.getElementsByClassName('advice_icon');
+const advice_text = document.getElementsByClassName('advice_text');
+const container_advice_icons = document.getElementById('container_advice_icons');
 
 // fetch('https://conradoec.github.io/Trabalho_do_Inter/pagina_das_doen%C3%A7as/doen%C3%A7as/diseaseContent.json')
 fetch('./diseaseContent.json')
@@ -30,7 +34,7 @@ fetch('./diseaseContent.json')
 .then((json) =>
 {
     disease_img.src = `${json[ids - 1].content.image}`
-    disease_description.innerText = `${json[ids - 1].content.description}`
+    disease_description.innerHTML = `${json[ids - 1].content.description}`
 
     json[ids - 1].content.symptoms.forEach(item =>
     {
@@ -75,7 +79,7 @@ fetch('./diseaseContent.json')
         div.setAttribute('id', 'disease_advices_div')
         
         div.innerHTML = `
-        <span class="advice_title">${json[ids - 1].content.advices[i].title}</span>
+        <span id="advice_title" class="advice_title">${json[ids - 1].content.advices[i].title}</span>
         <span id="advice_icon" class="advice_icon">${json[ids - 1].content.advices[i].icon}</span>
         <p class="advice_text">${json[ids - 1].content.advices[i].text}</p>
         `        
@@ -86,19 +90,13 @@ fetch('./diseaseContent.json')
     {
         if(window.innerWidth <= 800)
         {
-            for(i = 0; i < advice_icon.length - 1; i++)
+            container_advice_icons.style.setProperty('display', 'flex')
+            for(i = 0; i < 3; i++)
             {
-                disease_advices_divs.replaceChild(advice_icon[i], disease_advices_div[0])
+                container_advice_icons.appendChild(advice_icons[i])
+                disease_advices_div[i].style.setProperty('display', 'none')
             }
-            disease_advices_divs.replaceChild(advice_icon[2], disease_advices_div)
             counter_replace_advices_icons = 1
-        }
-        else
-        {
-            if(window.innerWidth <= 800)
-            {
-                counter_replace_advices_icons = 0
-            }
         }
     }
 })
@@ -231,20 +229,29 @@ function responsivity()
     {
         if(window.innerWidth <= 800)
         {
-            for(i = 0; i < advice_icon.length; i++)
+            container_advice_icons.style.setProperty('display', 'flex')
+            for(i = 0; i < 3; i++)
             {
-                disease_advices_divs.replaceChild(advice_icon[i], disease_advices_div[i])
-                counter_replace_advices_icons = 1
-                console.log(counter_replace_advices_icons)
+                container_advice_icons.appendChild(advice_icons[i])
+                disease_advices_div[i].style.setProperty('display', 'none')
+                console.log('Valor do i: ' + i)
             }
+            disease_advices_divs_id.style.setProperty('height', 'auto')
+            counter_replace_advices_icons = 1
         }
     }
     else
     {
         if(window.innerWidth > 800)
         {
+            container_advice_icons.style.setProperty('display', 'none')
+            for(i = 0; i < 3; i++)
+            {
+                disease_advices_div[i].insertBefore(advice_icons[0], advice_text[i])
+                disease_advices_div[i].style.setProperty('display', 'flex')
+            }
+            disease_advices_divs_id.style.setProperty('height', '70vh')
             counter_replace_advices_icons = 0
-            console.log(counter_replace_advices_icons)
         }
     }
 
@@ -320,6 +327,32 @@ function menuBar()
     }
 }
 
+function showAdvices(disease_advices_divs)
+{
+    if(disease_advices_divs.target.id == 'advice_icon')
+    {
+        disease_advices_divs_id.style.setProperty('height', '55vh')
+        switch(disease_advices_divs.target)
+        {
+            case advice_icons[0]:
+                disease_advices_div[0].style.setProperty('display', 'flex')
+                disease_advices_div[1].style.setProperty('display', 'none')
+                disease_advices_div[2].style.setProperty('display', 'none')
+                break
+            case advice_icons[1]:
+                disease_advices_div[1].style.setProperty('display', 'flex')
+                disease_advices_div[2].style.setProperty('display', 'none')
+                disease_advices_div[0].style.setProperty('display', 'none')
+                break
+            case advice_icons[2]:
+                disease_advices_div[2].style.setProperty('display', 'flex')
+                disease_advices_div[1].style.setProperty('display', 'none')
+                disease_advices_div[0].style.setProperty('display', 'none')
+                break
+        }
+    }
+}
+
 
 
 
@@ -351,9 +384,6 @@ window.addEventListener('resize', () =>
     responsivity()
 })
 
-window.addEventListener('resize', () =>
-{
-    responsivity()
-})
-
 menuButton.addEventListener('click', menuBar)
+
+disease_advices_divs.addEventListener('click', showAdvices)
