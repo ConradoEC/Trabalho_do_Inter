@@ -90,13 +90,13 @@ var counter = 1;
 var news_size = 0;
 counter_menu = 0;
 
-sessionStorage.setItem('N1', 'Logado')
+sessionStorage.setItem('N1', 'logado')
 sessionStorage.setItem('Nome', 'Erick')
 
 var logado = sessionStorage.getItem('N1');
 const id_from_url = new URLSearchParams(window.location.search)
 const urlId = id_from_url.get('id')
-
+const urlSobrenome = id_from_url.get('lastName')
 
 if(titles[0].classList.contains('data-font'))
 {
@@ -487,11 +487,14 @@ window.onload = function()
         perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/logout.php'
         Login.innerText = 'Bem vindo, ' + sessionStorage.getItem('Nome') + '!'
         sessionStorage.setItem('Id', `${urlId}`)
+        sessionStorage.setItem('Sobrenome', `${urlSobrenome}`)
+        menuSide_span.innerText = sessionStorage.getItem('Nome') + ' ' + sessionStorage.getItem('Sobrenome')
     }
     else
     {
         perfil.innerText = 'account_circle'
         perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/index.php'
+        menuSide_span.innerText = 'Faça login'
     }
 
     responsivity()

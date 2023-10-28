@@ -20,7 +20,7 @@ var remover = 0;
 counter_menu = 0;
 var on = 0;
 var logado = sessionStorage.getItem('N1');
-const urlId = sessionStorage.getItem('Id')
+
 
 // PARTE QUE FOI COPIADA }
 
@@ -693,11 +693,13 @@ window.onload = function()
         perfil.innerText = 'circle'
         perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/logout.php'
         Login.innerText = 'Bem vindo, ' + sessionStorage.getItem('Nome') + '!'
+        menuSide_span.innerText = sessionStorage.getItem('Nome') + ' ' + sessionStorage.getItem('Sobrenome')
     }
     else
     {
         perfil.innerText = 'account_circle'
         perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/index.php'
+        menuSide_span.innerText = 'Faça login'
     }
 
     responsivity()

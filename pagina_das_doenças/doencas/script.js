@@ -385,11 +385,14 @@ window.onload = function()
         perfil.innerText = 'circle'
         perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/logout.php'
         Login.innerText = 'Bem vindo, ' + sessionStorage.getItem('Nome') + '!'
+        menuSide_span.innerText = sessionStorage.getItem('Nome') + ' ' + sessionStorage.getItem('Sobrenome')
+
     }
     else
     {
         perfil.innerText = 'account_circle'
         perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/index.php'
+        menuSide_span.innerText = 'Faça login'
     }
 
 }
