@@ -221,6 +221,8 @@ const animationCSS2 = 'animation2'
 let positionPorcentPx = 200;
 counter_modal = 0;
 var counter_description = 0;
+var logado = sessionStorage.getItem('N1');
+const urlId = sessionStorage.getItem('Id')
 
 function NotScroll()
 {
@@ -602,7 +604,15 @@ function menu_modal(container_sliders_window)
 
             const url_post = 'https://node-api-0bwb.onrender.com/form'
             comments_box_link[0].setAttribute('id', `${ids}`)
-            comments_box_link[0].setAttribute('href', `${url_post}?id=${ids}`)
+            
+            if(!sessionStorage.getItem('Id'))
+            {
+                comments_box_link[0].setAttribute('href', 'javascript:void(0)')
+            }
+            else
+            {
+                comments_box_link[0].setAttribute('href', `${url_post}?id_image=${ids}&id_usuario=${sessionStorage.getItem('Id')}&nome_usuario=${sessionStorage.getItem('Nome')}&sobrenome_usuario=${sessionStorage.getItem('Sobrenome')}`)
+            }
 
             medicine_description_p.innerText = json[ids].mediText
             
@@ -708,7 +718,7 @@ function takeComments(view_comments)
                             <p id="comment_content_informations_p" class="data-font">${item.comment_name}</p>
                             <div id="comment_content_informations_numbers" class="comment_content_informations_numbers">
     
-                                <div id="identificador" class="identificador data-font">${item.comment_id}</div>
+                                <div id="identificador" class="identificador data-font">${item.id_user}</div>
                                 <div id="data" class="data data-font">${item.comment_date}</div>
     
                             </div>
@@ -759,6 +769,18 @@ window.onload = function()
     if(window.innerWidth <= 1100)
     {
         remover = 1;
+    }
+
+    if(logado)
+    {
+        perfil.innerText = 'circle'
+        perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/logout.php'
+        Login.innerText = 'Bem vindo, ' + sessionStorage.getItem('Nome') + '!'
+    }
+    else
+    {
+        perfil.innerText = 'account_circle'
+        perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/index.php'
     }
 
     responsivity()
@@ -812,6 +834,22 @@ close_comments.addEventListener('click', () =>
     body.style.overflowY = 'scroll';
 })
 
+perfil.addEventListener('click', function()
+{
+    
+    if(logado)
+    {
+        sessionStorage.removeItem('N1')
+        sessionStorage.removeItem('Nome')
+        sessionStorage.removeItem('Id')
+        sessionStorage.removeItem('Sobrenome')
+    }
+    else
+    {
+        sessionStorage.setItem('N2', 'Deslogado')
+    }
+})
+
 function change(li)
 {
     console.log(li.target)
@@ -820,7 +858,7 @@ function change(li)
     if(li.target.tagName == 'UL')
     {
         medicine_search.focus()
-        alert('Coé, tu não escolheu uma das opções, ta moscando?')
+        alert('Escolha um remédio para ver seus comentários')
     }
     else
     {
@@ -842,7 +880,15 @@ function change(li)
 
         const url_post = 'http://localhost:3000/form'
         comments_box_link[0].setAttribute('id', `${ids}`)
-        comments_box_link[0].setAttribute('href', `${url_post}?id=${ids}`)
+
+        if(!sessionStorage.getItem('Id'))
+        {
+            comments_box_link[0].setAttribute('href', 'javascript:void(0)')
+        }
+        else
+        {
+            comments_box_link[0].setAttribute('href', `${url_post}?id_image=${ids}&id_usuario=${sessionStorage.getItem('Id')}&nome_usuario=${sessionStorage.getItem('Nome')}&sobrenome_usuario=${sessionStorage.getItem('Sobrenome')}`)
+        }
 
         view_comments.setAttribute('id', `${ids}`)
         console.log(view_comments)

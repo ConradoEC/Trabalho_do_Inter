@@ -1,6 +1,8 @@
 const sendInformations = document.getElementById('sendInformations');
 const account_name = document.getElementById('account_name')
 
+// console.log(account_id)
+
 function mistake()
 {
   const urlMistake = new URLSearchParams(window.location.search);
@@ -16,6 +18,7 @@ function mistake()
   {
       sessionStorage.removeItem('N1')
       sessionStorage.removeItem('Nome')
+      sessionStorage.removeItem('Id')
   }
 }
 
@@ -40,6 +43,7 @@ sendInformations.addEventListener('click', function()
     }
     
     sessionStorage.setItem('Nome', `${account}`)
+    // sessionStorage.setItem('Id', `${obj_id}`)
 })
 
 

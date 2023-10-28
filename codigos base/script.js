@@ -17,7 +17,8 @@ let text = document.querySelectorAll('.data-font');
 var remover = 0;
 counter_menu = 0;
 var on = 0;
-
+var logado = sessionStorage.getItem('N1');
+const urlId = sessionStorage.getItem('Id')
 
 
 
@@ -250,6 +251,18 @@ window.onload = function()
         remover = 1;
     }
 
+    if(logado)
+    {
+        perfil.innerText = 'circle'
+        perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/logout.php'
+        Login.innerText = 'Bem vindo, ' + sessionStorage.getItem('Nome') + '!'
+    }
+    else
+    {
+        perfil.innerText = 'account_circle'
+        perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/index.php'
+    }
+
     responsivity()
 }
 
@@ -259,3 +272,19 @@ window.addEventListener('resize', () =>
 })
 
 menuButton.addEventListener('click', menuBar)
+
+perfil.addEventListener('click', function()
+{
+    
+    if(logado)
+    {
+        sessionStorage.removeItem('N1')
+        sessionStorage.removeItem('Nome')
+        sessionStorage.removeItem('Id')
+        sessionStorage.removeItem('Sobrenome')
+    }
+    else
+    {
+        sessionStorage.setItem('N2', 'Deslogado')
+    }
+})

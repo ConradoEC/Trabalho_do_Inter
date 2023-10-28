@@ -24,13 +24,13 @@
                     $sql = "SELECT * FROM cadastro_intermedic WHERE nome = '$name' AND senha = '$password' AND email = '$email'";
                     mysqli_query($conexao, $sql);
                     $obj = mysqli_fetch_object(mysqli_query($conexao, $sql));
-                    if($obj->nome != '')
+                    if($obj->id != '')
                     {
                         $_SESSION['login'] = true;
                         setcookie('nome', $name, time() + 3600);
                         setcookie('senha', $password, time() + 3600);
                         setcookie('email', $email, time() + 3600);
-                        header('Location: https://conradoec.github.io/Trabalho_do_Inter/');
+                        header('Location: https://conradoec.github.io/Trabalho_do_Inter?id=' . $obj->id);
                     }
                     else
                     {  

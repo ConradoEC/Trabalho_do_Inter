@@ -27,6 +27,8 @@ const disease_advices_divs_id = document.getElementById('disease_advices_divs');
 const advice_icons = document.getElementsByClassName('advice_icon');
 const advice_text = document.getElementsByClassName('advice_text');
 const container_advice_icons = document.getElementById('container_advice_icons');
+var logado = sessionStorage.getItem('N1');
+const urlId = sessionStorage.getItem('Id')
 
 // fetch('https://conradoec.github.io/Trabalho_do_Inter/pagina_das_doen%C3%A7as/doen%C3%A7as/diseaseContent.json')
 fetch('./diseaseContent.json')
@@ -377,6 +379,19 @@ window.onload = function()
     {
         remover = 1;
     }
+    
+    if(logado)
+    {
+        perfil.innerText = 'circle'
+        perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/logout.php'
+        Login.innerText = 'Bem vindo, ' + sessionStorage.getItem('Nome') + '!'
+    }
+    else
+    {
+        perfil.innerText = 'account_circle'
+        perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/index.php'
+    }
+
 }
 
 window.addEventListener('resize', () =>
@@ -387,3 +402,19 @@ window.addEventListener('resize', () =>
 menuButton.addEventListener('click', menuBar)
 
 disease_advices_divs.addEventListener('click', showAdvices)
+
+perfil.addEventListener('click', function()
+{
+    
+    if(logado)
+    {
+        sessionStorage.removeItem('N1')
+        sessionStorage.removeItem('Nome')
+        sessionStorage.removeItem('Id')
+        sessionStorage.removeItem('Sobrenome')
+    }
+    else
+    {
+        sessionStorage.setItem('N2', 'Deslogado')
+    }
+})
