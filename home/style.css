@@ -324,7 +324,7 @@
         width: 80%;
         margin-bottom: 30px;
         font-size: max(3vw, 40px);
-        font-family: sans-serif;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-weight: bold;
         color: rgb(160, 160, 213);
     }
@@ -339,6 +339,8 @@
         /* background-color: rgb(78, 78, 206); */
         background-color: rgb(255, 78, 78);
         color: white;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;;
+        font-style: italic;
     }
     
     #doctor
@@ -387,7 +389,7 @@
         margin: auto;
         display: flex;
         align-items: center;
-        font-family: sans-serif;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-size: max(2vw, 20px);
     }
     
@@ -400,6 +402,8 @@
     {
         color: rgb(78, 78, 206);
         display: block;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-style: italic;
     }
     
     #space
@@ -626,7 +630,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        font-family: sans-serif;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         text-align: left;
         padding-bottom: 3%;
     }
@@ -657,6 +661,7 @@
         border: none;
         width: 30%;
         color: rgb(133, 109, 255);
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
     
     .right
