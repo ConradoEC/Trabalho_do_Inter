@@ -15,9 +15,7 @@
     
     #section1
     {
-        height: 100vh;
-        background-color: gray;
-        overflow: hidden;
+        height: auto;
     }
     
     header
