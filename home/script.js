@@ -90,8 +90,8 @@ var counter = 1;
 var news_size = 0;
 counter_menu = 0;
 
-sessionStorage.setItem('N1', 'logado')
-sessionStorage.setItem('Nome', 'Erick')
+// sessionStorage.setItem('N1', 'logado')
+// sessionStorage.setItem('Nome', 'Erick')
 
 var logado = sessionStorage.getItem('N1');
 const id_from_url = new URLSearchParams(window.location.search)

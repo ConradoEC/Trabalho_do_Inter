@@ -30,7 +30,7 @@
                         setcookie('nome', $name, time() + 3600);
                         setcookie('senha', $password, time() + 3600);
                         setcookie('email', $email, time() + 3600);
-                        header('Location: https://conradoec.github.io/Trabalho_do_Inter?id=' . $obj->id);
+                        header('Location: https://conradoec.github.io/Trabalho_do_Inter?id=' . $obj->id . '&lastName=' . $obj->sobrenome);
                     }
                     else
                     {  

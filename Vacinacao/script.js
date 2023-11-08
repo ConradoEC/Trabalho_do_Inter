@@ -21,7 +21,6 @@ counter_menu = 0;
 var on = 0;
 var logado = sessionStorage.getItem('N1');
 
-
 // PARTE QUE FOI COPIADA }
 
 
@@ -44,327 +43,341 @@ function NotScroll()
 const vaccination_card_close = document.getElementsByClassName('vaccination_card_close')[0]
 var ids;
 
-
-
-fetch('https://node-api-0bwb.onrender.com/vaccine')
-.then(res=>res.json())
-.then((json) =>
+if(logado)
 {
-    json.forEach(item =>
+    const urlId = sessionStorage.getItem('Id')
+
+    fetch('https://node-api-0bwb.onrender.com/vaccine')
+    .then(res=>res.json())
+    .then((json) =>
     {
-        if(urlId)
-        {
-            if(item.id_vaccines_account == urlId)
+        json.forEach(item =>
             {
-                switch (item.max_dose_vaccine)
+                if(item.id_vaccines_account == urlId)
                 {
-                    case 1:
-                        break
-                    case item.dose_vaccine:
-                        break
-                    default:
-                        const data = new Date()
-                        const day = String(data.getDate()).padStart(2,'0')
-                        const month = String(data.getMonth() + 1).padStart(2,'0')
-                        const year = data.getFullYear()
-                        const dataAtual = `${year}-${month}-${day}`
-
-                        const stringDataPrevista = new Date(item.date_vaccine)
-                        const newDataPrevista = `${stringDataPrevista.getFullYear()}-${String(stringDataPrevista.getMonth() + 2).padStart(2,'0')}-${String(stringDataPrevista.getDate() + 1).padStart(2,'0')}`
-
-                        switch (dataAtual)
-                        {
-                            case newDataPrevista:
-                                item.date_vaccine = ''
-                                break
-                            default:
-                        }
-                }
-
-                switch (item.dose_vaccine)
-                {
-                    case item.max_dose_vaccine:
-                        switch (item.reinforc_vaccine)
-                        {
-                            case 0:
-                                break
-                            default:
-                                if(item.counter_reinforc_vaccine != 1)
-                                {
-                                    const data = new Date()
-                                    const day = String(data.getDate()).padStart(2,'0')
-                                    const month = String(data.getMonth() + 1).padStart(2,'0')
-                                    const year = data.getFullYear()
-                                    const dataAtual = `${year}-${month}-${day}`
-                
-                                    const stringDataPrevista = new Date(item.date_vaccine)
-                                    const newDataPrevista = `${stringDataPrevista.getFullYear()}-${String(stringDataPrevista.getMonth() + 3).padStart(2,'0')}-${String(stringDataPrevista.getDate() + 1).padStart(2,'0')}`
-
-                                    switch (dataAtual)
-                                    {
-                                        case newDataPrevista:
-                                            item.date_vaccine = ''
-                                            break
-                                        default:
-                                    }
-                                }
-                        }
-                        break
-                    default:
-                }
-
-                switch (item.everyYear_vaccine)
-                {
-                    case 0:
-                        break
-                    default:
-                        const data = new Date()
-                        const day = String(data.getDate()).padStart(2,'0')
-                        const month = String(data.getMonth() + 1).padStart(2,'0')
-                        const year = data.getFullYear()
-                        const dataAtual = `${year}-${month}-${day}`
-
-                        const stringDataPrevista = new Date(item.date_vaccine)
-                        const newDataPrevista = `${stringDataPrevista.getFullYear() + 1}-${String(stringDataPrevista.getMonth() + 1).padStart(2,'0')}-${String(stringDataPrevista.getDate() + 1).padStart(2,'0')}`
-
-                        // COLOCAR UMA DATA ESPECÍFICA, PORQUE A CAMPANHA É SEMPRE NO MESMO PERÍODO
-
-                        switch (dataAtual)
-                        {
-                            case newDataPrevista:
-                                item.date_vaccine = ''
-                                break
-                            default:
-                        }
-                        break
-                }
-
-                if(item.date_vaccine == '')
-                {
-                    const div_grade = document.createElement('div')
-                    div_grade.setAttribute('class', 'vaccination_grade_box')
-                    div_grade.setAttribute('id', `${item.id_vaccine}`)
-                    div_grade.setAttribute('data-backgrounds_darkGray', `backgrounds_darkGray`)
-                    div_grade.innerHTML = `
-                        <p class="vaccination_grade_box_p">${item.name_vaccine}</p>
-                    `;
-                    
-                    vaccination_grade.appendChild(div_grade)
-                }
-                else
-                {
-                    var newReinforc;
-                    var neweveryYear;
-
-                    switch (item.reinforc_vaccine)
+                    switch (item.max_dose_vaccine)
                     {
-                        case 0:
-                            newReinforc = 'Não possui'
-                            break
                         case 1:
-                            switch (item.counter_reinforc_vaccine)
+                            break
+                        case item.dose_vaccine:
+                            break
+                        default:
+                            const data = new Date()
+                            const day = String(data.getDate()).padStart(2,'0')
+                            const month = String(data.getMonth() + 1).padStart(2,'0')
+                            const year = data.getFullYear()
+                            const dataAtual = `${year}-${month}-${day}`
+
+                            const stringDataPrevista = new Date(item.date_vaccine)
+                            const newDataPrevista = `${stringDataPrevista.getFullYear()}-${String(stringDataPrevista.getMonth() + 2).padStart(2,'0')}-${String(stringDataPrevista.getDate() + 1).padStart(2,'0')}`
+
+                            switch (dataAtual)
                             {
-                                case 1:
-                                    newReinforc = 'Tomou'
+                                case newDataPrevista:
+                                    item.date_vaccine = ''
                                     break
                                 default:
-                                    newReinforc = 'Não tomou'
+                            }
+                            
+                            if(dataAtual > newDataPrevista)
+                            {
+                                item.date_vaccine = ''
+                            }
+                    }
+
+                    switch (item.dose_vaccine)
+                    {
+                        case item.max_dose_vaccine:
+                            switch (item.reinforc_vaccine)
+                            {
+                                case 0:
+                                    break
+                                default:
+                                    if(item.counter_reinforc_vaccine != 1)
+                                    {
+                                        const data = new Date()
+                                        const day = String(data.getDate()).padStart(2,'0')
+                                        const month = String(data.getMonth() + 1).padStart(2,'0')
+                                        const year = data.getFullYear()
+                                        const dataAtual = `${year}-${month}-${day}`
+                        
+                                        const stringDataPrevista = new Date(item.date_vaccine)
+                                        const newDataPrevista = `${stringDataPrevista.getFullYear()}-${String(stringDataPrevista.getMonth() + 3).padStart(2,'0')}-${String(stringDataPrevista.getDate() + 1).padStart(2,'0')}`
+
+                                        switch (dataAtual)
+                                        {
+                                            case newDataPrevista:
+                                                item.date_vaccine = ''
+                                                break
+                                            default:
+                                        }
+                                        
+                                        if(dataAtual > newDataPrevista)
+                                        {
+                                            item.date_vaccine = ''
+                                        }
+                                    }
                             }
                             break
                         default:
-                            console.log('Algo está errado')
                     }
 
                     switch (item.everyYear_vaccine)
                     {
                         case 0:
-                            neweveryYear = 'Não possui'
-                            break
-                        case 1:
-                            neweveryYear = 'Possui'
                             break
                         default:
-                            console.log('Algo está errado')
+                            const data = new Date()
+                            const day = String(data.getDate()).padStart(2,'0')
+                            const month = String(data.getMonth() + 1).padStart(2,'0')
+                            const year = data.getFullYear()
+                            const dataAtual = `${year}-${month}-${day}`
+
+                            const stringDataPrevista = new Date(item.date_vaccine)
+                            const newDataPrevista = `${stringDataPrevista.getFullYear() + 1}-${String(stringDataPrevista.getMonth() + 1).padStart(2,'0')}-${String(stringDataPrevista.getDate() + 1).padStart(2,'0')}`
+
+                            // COLOCAR UMA DATA ESPECÍFICA, PORQUE A CAMPANHA É SEMPRE NO MESMO PERÍODO
+
+                            switch (dataAtual)
+                            {
+                                case newDataPrevista:
+                                    item.date_vaccine = ''
+                                    break
+                                default:
+                            }
+                            
+                            if(dataAtual > newDataPrevista)
+                            {
+                                item.date_vaccine = ''
+                            }
                     }
 
-                    const div_vaccine = document.createElement('div')
-                    div_vaccine.setAttribute('class', 'vaccine_card')
-                    div_vaccine.setAttribute('data-backgrounds_darkGray', 'backgrounds_darkGray')
-                    div_vaccine.innerHTML = `
-                        <label for="vaccine_card_box1" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">NOME</label>
-                        <input type="text" value="${item.name_vaccine}" id="vaccine_card_box1" class="vaccine_card_box" disabled>
-                        <label for="vaccine_card_box2" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">DATA DE VACINAÇÃO</label>
-                        <input type="text" value="${item.date_vaccine}" id="vaccine_card_box2" class="vaccine_card_box" disabled>
-                        <label for="vaccine_card_box3" class="vaccine_card_box_label"  data-backgrounds_darkGray="backgrounds_darkGray">${item.max_dose_vaccine} DOSE/DOSES</label>
-                        <input type="text" value="${item.dose_vaccine}" id="vaccine_card_box3" class="vaccine_card_box" disabled>
-                        <label for="vaccine_card_box4" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">REFORÇO</label>
-                        <input type="text" value="${newReinforc}" id="vaccine_card_box4" class="vaccine_card_box" disabled>
-                        <label for="vaccine_card_box5" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">ANUAL</label>
-                        <input type="text" value="${neweveryYear}" id="vaccine_card_box5" class="vaccine_card_box" disabled>
-                    `;
-                    vaccination_card_view.appendChild(div_vaccine)
+                    if(item.date_vaccine == '')
+                    {
+                        const div_grade = document.createElement('div')
+                        div_grade.setAttribute('class', 'vaccination_grade_box')
+                        div_grade.setAttribute('id', `${item.id_vaccine}`)
+                        div_grade.setAttribute('data-backgrounds_darkGray', `backgrounds_darkGray`)
+                        div_grade.innerHTML = `
+                            <p class="vaccination_grade_box_p">${item.name_vaccine}</p>
+                        `;
+                            
+                        vaccination_grade.appendChild(div_grade)
+                    }
+                    else
+                    {
+                        var newReinforc;
+                        var neweveryYear;
+
+                        switch (item.reinforc_vaccine)
+                        {
+                            case 0:
+                                newReinforc = 'Não possui'
+                                break
+                            case 1:
+                                switch (item.counter_reinforc_vaccine)
+                                {
+                                    case 1:
+                                        newReinforc = 'Tomou'
+                                        break
+                                    default:
+                                        newReinforc = 'Não tomou'
+                                    }
+                                break
+                            default:
+                                console.log('Algo está errado')
+                        }
+
+                        switch (item.everyYear_vaccine)
+                        {
+                            case 0:
+                                neweveryYear = 'Não possui'
+                                break
+                            case 1:
+                                neweveryYear = 'Possui'
+                                break
+                            default:
+                                console.log('Algo está errado')
+                        }
+
+                        const div_vaccine = document.createElement('div')
+                        div_vaccine.setAttribute('class', 'vaccine_card')
+                        div_vaccine.setAttribute('data-backgrounds_darkGray', 'backgrounds_darkGray')
+                        div_vaccine.innerHTML = `
+                            <label for="vaccine_card_box1" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">NOME</label>
+                            <input type="text" value="${item.name_vaccine}" id="vaccine_card_box1" class="vaccine_card_box" disabled>
+                            <label for="vaccine_card_box2" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">DATA DE VACINAÇÃO</label>
+                            <input type="text" value="${item.date_vaccine}" id="vaccine_card_box2" class="vaccine_card_box" disabled>
+                            <label for="vaccine_card_box3" class="vaccine_card_box_label"  data-backgrounds_darkGray="backgrounds_darkGray">${item.max_dose_vaccine} DOSE/DOSES</label>
+                            <input type="text" value="${item.dose_vaccine}" id="vaccine_card_box3" class="vaccine_card_box" disabled>
+                            <label for="vaccine_card_box4" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">REFORÇO</label>
+                            <input type="text" value="${newReinforc}" id="vaccine_card_box4" class="vaccine_card_box" disabled>
+                            <label for="vaccine_card_box5" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">ANUAL</label>
+                            <input type="text" value="${neweveryYear}" id="vaccine_card_box5" class="vaccine_card_box" disabled>
+                        `;
+                        vaccination_card_view.appendChild(div_vaccine)
+                    }
                 }
+        })
+
+        if(vaccination_grade.innerHTML == '')
+        {
+            vaccination_grade.innerHTML = '<p class="grade_alert">Não há nenhuma vacina em espera, por enquanto.</p>'
+        }
+
+        if(vaccine_card.length > 3)
+        {
+            vaccination_card_horizontalBar.style.setProperty('display', 'block')
+        }
+
+        const vaccination_grade_box = document.getElementsByClassName('vaccination_grade_box')
+
+        function updateGrade()
+        {
+            // d
+            // d
+            var newReinforc;
+            var newCounterReinforc = json[ids - 1].counter_reinforc_vaccine
+            var doseVaccine_forReinforc = json[ids - 1].dose_vaccine
+            var neweveryYear;
+            var newMax_dose_vaccine;
+
+            if(json[ids - 1].dose_vaccine < json[ids - 1].max_dose_vaccine)
+            {
+                newMax_dose_vaccine = json[ids - 1].dose_vaccine + 1
+            }
+            else
+            {
+                newMax_dose_vaccine = json[ids - 1].dose_vaccine
+            }
+
+            switch (json[ids - 1].reinforc_vaccine)
+            {
+                case 0:
+                    newReinforc = 'Não possui'
+                    break
+                case 1:
+                    if(doseVaccine_forReinforc == json[ids - 1].max_dose_vaccine)
+                    {
+                        if(newCounterReinforc < 1)
+                        {
+                            newCounterReinforc = newCounterReinforc + 1
+                        }
+                    }
+                    else
+                    {
+                        newCounterReinforc = newCounterReinforc
+                    }
+
+                    switch (newCounterReinforc)
+                        {
+                            case 1:
+                                newReinforc = 'Tomou'
+                                break
+                            default:
+                                newReinforc = 'Não tomou'
+                        }
+                    break
+                default:
+                    console.log('Algo está errado')
+            }
+            
+            switch (json[ids - 1].everyYear_vaccine)
+            {
+                case 0:
+                    neweveryYear = 'Não possui'
+                    break
+                case 1:
+                    neweveryYear = 'Possui'
+                    break
+                default:
+                    console.log('Algo está errado')
+            }
+            // d
+
+            const form_vaccine = document.createElement('form')
+            form_vaccine.setAttribute('class', 'vaccine_card_update'), form_vaccine.setAttribute('action', 'https://node-api-0bwb.onrender.com/vaccine'), form_vaccine.setAttribute('method', 'POST'), form_vaccine.setAttribute('data-backgrounds_darkGray', 'backgrounds_darkGray')
+            form_vaccine.innerHTML = `
+                <label for="vaccine_card_box1" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">NOME</label>
+                <input type="text" value="${json[ids - 1].name_vaccine}" class="vaccine_card_box_update" disabled>
+                <label for="vaccine_card_box2" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">DATA DE VACINAÇÃO</label>
+                <input type="date" value="" class="vaccine_card_box_update" name="vaccine_date" id="vaccine_date" placeholder="Insira a data da consulta" required>
+                <label for="vaccine_card_box3" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">${json[ids - 1].max_dose_vaccine} DOSE/DOSES</label>
+                <input type="text" name="vaccine_newMax_dose" id="vaccine_newMax_dose" class="vaccine_card_box_update" readonly>
+                <label for="vaccine_card_box4" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">REFORÇO</label>
+                <input type="text" value="${newReinforc}" class="vaccine_card_box_update" disabled>
+                <label for="vaccine_card_box5" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">ANUAL</label>
+                <input type="text" value="${neweveryYear}" class="vaccine_card_box_update" disabled>
+                <input name="vaccine_id" id="vaccine_id" class="vaccine_card_box_update disable" readonly></input>
+                <input name="vaccine_reinforc" id="vaccine_reinforc" class="vaccine_card_box_update disable" readonly></input>
+                <input type="submit" value="Enviar" onclick="redirecionar()" class="vaccine_card_box vaccine_card_box_submit" data-backgrounds_whiteGray="backgrounds_whiteGray">
+            `;
+
+            vaccination_card.appendChild(form_vaccine)
+            vaccine_id.value = ids
+            vaccine_newMax_dose = document.getElementById('vaccine_newMax_dose')
+            vaccine_newMax_dose.value = newMax_dose_vaccine
+            vaccine_reinforc = document.getElementById('vaccine_reinforc')
+            vaccine_reinforc.value = newCounterReinforc
+
+            // d
+
+            if(on == 1)
+            {
+                const backgrounds_darkGray = document.querySelectorAll('[data-backgrounds_darkGray]');
+                const backgrounds_whiteGray = document.querySelectorAll('[data-backgrounds_whiteGray]');
+                const contraste_darkGray = 'contraste_darkGray';
+                const contraste_whiteGray = 'contraste_whiteGray';
+
+                backgrounds_whiteGray.forEach(items =>
+                {
+                    items.classList.add(contraste_whiteGray);
+                })
+            
+                backgrounds_darkGray.forEach(items =>
+                {
+                    items.classList.add(contraste_darkGray);
+                })
             }
         }
-        else
+
+        vaccination_grade.addEventListener('click', function(vaccination_grade)
         {
-            vaccination_card_view.innerHTML = '<p class="notLogin_alert">Faça login para ter acesso a sua carteira de vacinação digital!</p>'
-        }
-    })
+            // console.log(vaccination_grade.target.className)
 
-    if(vaccination_grade.innerHTML == '')
-    {
-        vaccination_grade.innerHTML = '<p class="grade_alert">Não há nenhuma vacina em espera, por enquanto.</p>'
-    }
-
-    if(vaccine_card.length > 3)
-    {
-        console.log('é maior que 3')
-        vaccination_card_horizontalBar.style.setProperty('display', 'block')
-    }
-
-    const vaccination_grade_box = document.getElementsByClassName('vaccination_grade_box')
-
-    function updateGrade()
-    {
-        var newReinforc;
-        var newCounterReinforc = json[ids - 1].counter_reinforc_vaccine
-        var doseVaccine_forReinforc = json[ids - 1].dose_vaccine
-        var neweveryYear;
-        var newMax_dose_vaccine;
-
-        if(json[ids - 1].dose_vaccine < json[ids - 1].max_dose_vaccine)
-        {
-            newMax_dose_vaccine = json[ids - 1].dose_vaccine + 1
-        }
-        else
-        {
-            newMax_dose_vaccine = json[ids - 1].dose_vaccine
-        }
-
-        switch (json[ids - 1].reinforc_vaccine)
-        {
-            case 0:
-                newReinforc = 'Não possui'
-                break
-            case 1:
-                if(doseVaccine_forReinforc == 1)
-                {
-                    if(newCounterReinforc < 1)
-                    {
-                        newCounterReinforc = newCounterReinforc + 1
-                    }
-                }
-                else if(doseVaccine_forReinforc == json[ids - 1].max_dose_vaccine)
-                {
-                    if(newCounterReinforc < 1)
-                    {
-                        newCounterReinforc = newCounterReinforc + 1
-                    }
-                }
-                else
-                {
-                    newCounterReinforc = newCounterReinforc
-                }
-
-                switch (newCounterReinforc)
-                    {
-                        case 1:
-                            newReinforc = 'Tomou'
-                            break
-                        default:
-                            newReinforc = 'Não tomou'
-                    }
-                break
-            default:
-                console.log('Algo está errado')
-        }
-        
-        switch (json[ids - 1].everyYear_vaccine)
-        {
-            case 0:
-                neweveryYear = 'Não possui'
-                break
-            case 1:
-                neweveryYear = 'Possui'
-                break
-            default:
-                console.log('Algo está errado')
-        }
-
-        const form_vaccine = document.createElement('form')
-        form_vaccine.setAttribute('class', 'vaccine_card_update'), form_vaccine.setAttribute('action', 'https://node-api-0bwb.onrender.com/vaccine'), form_vaccine.setAttribute('method', 'POST'), form_vaccine.setAttribute('data-backgrounds_darkGray', 'backgrounds_darkGray')
-        form_vaccine.innerHTML = `
-            <label for="vaccine_card_box1" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">NOME</label>
-            <input type="text" value="${json[ids - 1].name_vaccine}" class="vaccine_card_box_update" disabled>
-            <label for="vaccine_card_box2" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">DATA DE VACINAÇÃO</label>
-            <input type="date" value="" class="vaccine_card_box_update" name="vaccine_date" id="vaccine_date" placeholder="Insira a data da consulta" required>
-            <label for="vaccine_card_box3" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">${json[ids - 1].max_dose_vaccine} DOSE/DOSES</label>
-            <input type="text" name="vaccine_newMax_dose" id="vaccine_newMax_dose" class="vaccine_card_box_update" readonly>
-            <label for="vaccine_card_box4" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">REFORÇO</label>
-            <input type="text" value="${newReinforc}" class="vaccine_card_box_update" disabled>
-            <label for="vaccine_card_box5" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">ANUAL</label>
-            <input type="text" value="${neweveryYear}" class="vaccine_card_box_update" disabled>
-            <input name="vaccine_id" id="vaccine_id" class="vaccine_card_box_update disable" readonly></input>
-            <input name="vaccine_reinforc" id="vaccine_reinforc" class="vaccine_card_box_update disable" readonly></input>
-            <input type="submit" value="Enviar" onclick="redirecionar()" class="vaccine_card_box vaccine_card_box_submit" data-backgrounds_whiteGray="backgrounds_whiteGray">
-        `;
-        vaccination_card.appendChild(form_vaccine)
-        vaccine_id.value = ids
-        vaccine_newMax_dose.value = newMax_dose_vaccine
-        vaccine_reinforc.value = newCounterReinforc
-
-        if(on == 1)
-        {
-            const backgrounds_darkGray = document.querySelectorAll('[data-backgrounds_darkGray]');
-            const backgrounds_whiteGray = document.querySelectorAll('[data-backgrounds_whiteGray]');
-            const contraste_darkGray = 'contraste_darkGray';
-            const contraste_whiteGray = 'contraste_whiteGray';
-
-            backgrounds_whiteGray.forEach(items =>
+            switch (vaccination_grade.target.className)
             {
-                items.classList.add(contraste_whiteGray);
-            })
-        
-            backgrounds_darkGray.forEach(items =>
-            {
-                items.classList.add(contraste_darkGray);
-            })
-        }
-    }
-
-    vaccination_grade.addEventListener('click', function(vaccination_grade)
-    {
-        // console.log(vaccination_grade.target.className)
-
-        switch (vaccination_grade.target.className)
-        {
-            case 'vaccination_grade':
-                if(window.innerWidth >= 500)
-                {
-                    alert('Escolha a vacina que você queira atualizar.')
-                }
-                break
-            case 'vaccination_grade contraste_whiteGray':
-                if(window.innerWidth >= 500)
-                {
-                    alert('Escolha a vacina que você queira atualizar.')
-                }
-                break
-            case 'vaccination_grade_box_p':
-                ids = vaccination_grade.target.parentNode.id
-                vaccination_card.style.setProperty('display', 'flex')
-                NotScroll()
-                updateGrade()
-                break
-            default:
-                ids = vaccination_grade.target.id
-                vaccination_card.style.setProperty('display', 'flex')
-                NotScroll()
-                updateGrade()
-        }
+                case 'vaccination_grade':
+                    if(window.innerWidth >= 500)
+                    {
+                        alert('Escolha a vacina que você queira atualizar.')
+                    }
+                    break
+                case 'vaccination_grade contraste_whiteGray':
+                    if(window.innerWidth >= 500)
+                    {
+                        alert('Escolha a vacina que você queira atualizar.')
+                    }
+                    break
+                case 'vaccination_grade_box_p':
+                    ids = vaccination_grade.target.parentNode.id
+                    vaccination_card.style.setProperty('display', 'flex')
+                    NotScroll()
+                    updateGrade()
+                    break
+                default:
+                    ids = vaccination_grade.target.id
+                    vaccination_card.style.setProperty('display', 'flex')
+                    NotScroll()
+                    updateGrade()
+            }
+        })
     })
-})
+}
+else
+{
+    vaccination_card_view.innerHTML = '<p class="notLogin_alert">Faça login para ter acesso a sua carteira de vacinação digital!</p>'
+}
 
 
 // PARTE PRA CRIAR OS CARDS DA VACINA }
