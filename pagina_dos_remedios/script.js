@@ -223,6 +223,7 @@ counter_modal = 0;
 var counter_description = 0;
 var logado = sessionStorage.getItem('N1');
 
+
 function NotScroll()
 {
     if(view_modal.style.display != 'none') 
@@ -253,7 +254,6 @@ function animation()
             }
     })
 }
-
 
 function increase()
 {   
@@ -598,7 +598,8 @@ function menu_modal(container_sliders_window)
         fetch(url)
         .then(res=>res.json())
         .then((json) =>
-        {   var ids = container_sliders_window.target.id
+        {   
+            var ids = container_sliders_window.target.id
             console.log(container_sliders_window.target)
 
             const url_post = 'https://node-api-0bwb.onrender.com/form'
@@ -755,7 +756,6 @@ arrows[1].addEventListener('click', nextSlider)
 
 window.onload = function()
 {
-
     text = document.querySelectorAll('.data-font')
 
     fonts = [
@@ -776,7 +776,6 @@ window.onload = function()
         perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/logout.php'
         Login.innerText = 'Bem vindo, ' + sessionStorage.getItem('Nome') + '!'
         menuSide_span.innerText = sessionStorage.getItem('Nome') + ' ' + sessionStorage.getItem('Sobrenome')
-
     }
     else
     {
@@ -849,6 +848,21 @@ perfil.addEventListener('click', function()
     else
     {
         sessionStorage.setItem('N2', 'Deslogado')
+    }
+})
+
+comments_box_link[0].addEventListener('click', function()
+{
+    if(comments_box_link[0].getAttribute('href') == 'javascript:void(0)')
+    {
+        if(!sessionStorage.getItem('Id'))
+        {
+            alert('Faça login para poder fazer um comentário')
+        }
+        else
+        {
+            alert('Escolha o remédio que você deseja comentar sobre.')
+        }
     }
 })
 

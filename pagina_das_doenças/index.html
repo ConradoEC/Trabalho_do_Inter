@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,45 +12,54 @@
     <body>
         <section  id="section1">
             <header data-backgrounds="backgrounds">
-                <img src="https://i.im.ge/2023/08/09/j6qAE6.image-removebg-preview-1.png">
-
+                <img src="https://i.im.ge/2023/10/06/NBepR1.image-removebg-preview.png">
+                
                 <ul id="menu" data-backgrounds="backgrounds">
-                    <li class="item hidden" id="decreaseSize">-A</li>
-                    <li class="item hidden" id="normalSize">A</li>
-                    <li class="item hidden" id="increaseSize">+A</li>
-                    <li class="item hidden" id="btnContraste"><span class="material-symbols-outlined">clock_loader_80</span></li>
+                    <li class="item hidden data-font" id="decreaseSize">-A</li>
+                    <li class="item hidden data-font" id="normalSize">A</li>
+                    <li class="item hidden data-font" id="increaseSize">+A</li>
+                    <li class="item hidden data-font" id="btnContraste"><span class="material-symbols-outlined data-font">clock_loader_80</span></li>
                     <li class="item hidden data-font">Últimas notícias</li>
-                    <li class="item"><span id="perfil" class="material-symbols-outlined">account_circle</span></li>
+                    <li class="item hidden"><a href="https://conradoec.github.io/Trabalho_do_Inter/forms" class="header_links"><span id="Login">Login</span><span id="perfil" class="material-symbols-outlined">account_circle</span></a></li>
+                    <!-- <li class="item"></li> -->
                     <li class="item"><span id="menu_button" class="material-symbols-outlined">menu</span></li>
                 </ul>
 
-                <div id="menuSide_back">
-                </div>
-
+                <div id="menuSide_back"></div>
+                
                 <div id="menuSide">
                     <div id="menuSide_close"></div>
-                    <ul id="menuSide_ul_home">
-                        <li class="menuSide_li">Home</li>
+                    <ul id="menuSide_ul">
+                        <li class="menuSide_ul_li_perfil">
+                            <div class="menuSide_ul_perfil">
+                                <div class="img_div"></div>
+                                <div class="menuSide_ul_li_text">
+                                    <span id="menuSide_span">Faça login</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="menuSide_li"><a href=""><span class="material-symbols-outlined">home</span>Página principal</a></li>
+                        <li class="menuSide_li"><a href=""><span class="material-symbols-outlined">wallet</span>Carteira de Vacinação</a></li>
+                        <li class="menuSide_li"><a href=""><span class="material-symbols-outlined">mixture_med</span>Página dos remédios</a></li>
+                        <li class="menuSide_li"><a href=""><span class="material-symbols-outlined">account_circle</span>Teste 2</a></li>
+                        <li class="menuSide_li"><a href=""><span class="material-symbols-outlined">account_circle</span>Teste 2</a></li>
                     </ul>
-                    <ul id="menuSide_ul_vac">
-                        <li class="menuSide_li">Carteira de Vacinação</li>
-                    </ul>
-                    <ul id="menuSide_ul_far">
-                        <li class="menuSide_li">Farmacia</li>
-                    </ul>
-                    <ul id="menuSide_ul_rem">
-                        <li class="menuSide_li">Rémedios</li>
-                    </ul>  
                 </div>
-                
             </header>
+
+            <ul class="pages data-font" data-backgrounds="backgrounds">
+                <li class="page">fdfdfsfs</li>
+                <li class="page">efwesfc</li>
+                <li class="page">q3rr5gtge</li>
+                <li class="page">hy5ygrvgn</li>
+            </ul>
 
             <div id="content_header">
                 <div id="text-principal">
-                    <h1 class="phrase_principal">O que você está procurando?</h1>
+                    <h1 class="phrase_principal">O que você está sentindo?</h1>
                 </div>
                 
-                <div class="search_space">
+                <div class="search_space" id="search_space">
                     <div class="search-box">
                         <input type="text" class="search-text" id="search_text" placeholder="Pesquisar..." onkeyup="filtrar()">
                         <a class="search-btn">
@@ -67,7 +76,6 @@
                     </div>
                 </div>
             </div>
-            
 
             <section id="section2">
                 <div class="medicine">

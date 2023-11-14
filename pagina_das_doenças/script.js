@@ -12,6 +12,11 @@ const items = document.querySelectorAll('.hidden')
 const body = document.querySelector('body')
 // const paragraph = document.getElementsByTagName('p');
 let text = document.querySelectorAll('.data-font');
+const search_space = document.querySelector('#search_space');
+const medicine_text = document.getElementsByClassName('medicine_text')
+const medicine_img = document.getElementsByClassName('medicine_img')
+const medicine_title = document.getElementsByClassName('medicine_title')
+const medicine = document.getElementsByClassName('medicine')
 
 
 
@@ -30,7 +35,7 @@ fetch('./searchBar.json')
         const div = document.createElement('div')
 
         div.innerHTML = `
-        <a class="mini_search_space_link" href="https://conradoec.github.io/Trabalho_do_Inter/pagina_das_doencas/doencas?id=${item.id}">
+        <a class="mini_search_space_link" href="http://127.0.0.1:5501/pagina_das_doen%C3%A7as/doencas/index.html?id=${item.id}">
             <div class="mini_search_space_div">
                 <span class="mini_search_space_div_span">${item.content.name}</span>
             </div>
@@ -120,9 +125,7 @@ function normal()
 function contrastEffect()
 {
     const contraste = 'contraste';
-    const itemMenu = document.getElementsByTagName('li');
-
-
+    const itemMenu = document.getElementsByTagName('li')
 
     if(on == 0)
     {
@@ -188,11 +191,32 @@ function responsivity()
         perfil.style.setProperty('display', 'none')
         menuButton.style.setProperty('display', 'block')
         menuSide.style.setProperty('display', 'flex')
+        for(i = 0; i < medicine_img.length; i++)
+        {
+            medicine_img[i].style.setProperty('display', 'none')
+            medicine_title[i].style.setProperty('display', 'none')
+        }
+
+        for(i = 0; i < medicine_text.length; i++)
+        {
+            medicine_text[i].disabled = false
+        }
     }
     else
     {
         perfil.style.setProperty('display', 'block')
         menuButton.style.setProperty('display', 'none')
+        menuSide.style.setProperty('display', 'none')
+        for(i = 0; i < medicine_img.length; i++)
+        {
+            medicine_img[i].style.setProperty('display', 'block')
+            medicine_title[i].style.setProperty('display', 'block')
+        }
+        
+        for(i = 0; i < medicine_text.length; i++)
+        {
+            medicine_text[i].disabled = true
+        }
 
         if(counter_menu == 1)
         {
@@ -340,6 +364,70 @@ window.addEventListener('resize', () =>
 })
 
 menuButton.addEventListener('click', menuBar)
+
+search_space.addEventListener('focusin', function() 
+{
+    search_space.style.setProperty('transition', 'background 0.3s')
+    search_space.style.setProperty('background-color', 'rgb(220, 220, 255)')
+})
+
+search_space.addEventListener('focusout', function()
+{
+    search_text.value = ''
+    search_space.style.setProperty('background-color', 'transparent')
+    const divs = mini_search_space.getElementsByClassName('mini_search_space_div')
+
+    for(i = 0; i < divs.length; i++)
+    {
+        search_space.style.setProperty('transition', 'background 0s')
+        divs[i].style.setProperty('display', 'none')
+    }
+})
+
+medicine_text[0].addEventListener('click', function()
+{
+    medicine[0].classList.add('openAnimation')
+    medicine_img[0].style.setProperty('display', 'block')
+    medicine_title[0].style.setProperty('display', 'block')
+    medicine_img[1].style.setProperty('display', 'none')
+    medicine_title[1].style.setProperty('display', 'none')
+    medicine_img[2].style.setProperty('display', 'none')
+    medicine_title[2].style.setProperty('display', 'none')
+    medicine[0].addEventListener('animationend', function()
+    {
+        medicine[0].classList.remove('openAnimation')
+    })
+})
+
+medicine_text[1].addEventListener('click', function()
+{
+    medicine[1].classList.add('openAnimation')
+    medicine_img[1].style.setProperty('display', 'block')
+    medicine_title[1].style.setProperty('display', 'block')
+    medicine_img[2].style.setProperty('display', 'none')
+    medicine_title[2].style.setProperty('display', 'none')
+    medicine_img[0].style.setProperty('display', 'none')
+    medicine_title[0].style.setProperty('display', 'none')
+    medicine[1].addEventListener('animationend', function()
+    {
+        medicine[1].classList.remove('openAnimation')
+    })
+})
+
+medicine_text[2].addEventListener('click', function()
+{
+    medicine[2].classList.add('openAnimation')
+    medicine_img[2].style.setProperty('display', 'block')
+    medicine_title[2].style.setProperty('display', 'block')
+    medicine_img[1].style.setProperty('display', 'none')
+    medicine_title[1].style.setProperty('display', 'none')
+    medicine_img[0].style.setProperty('display', 'none')
+    medicine_title[0].style.setProperty('display', 'none')
+    medicine[2].addEventListener('animationend', function()
+    {
+        medicine[2].classList.remove('openAnimation')
+    })
+})
 
 
 /* SLIDER */

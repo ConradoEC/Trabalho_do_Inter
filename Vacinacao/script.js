@@ -15,7 +15,6 @@ const body = document.querySelector('body')
 
 let text = document.querySelectorAll('.data-font');
 
-
 var remover = 0;
 counter_menu = 0;
 var on = 0;

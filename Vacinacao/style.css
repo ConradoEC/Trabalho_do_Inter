@@ -426,7 +426,7 @@ header ul img
 
 .container_text_p
 {
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:' Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
     color: rgb(255, 78, 78);
     font-size: max(3.5vw, 4vh);
@@ -458,8 +458,9 @@ header ul img
 .notLogin_alert
 {
     color: white;
-    font-size: 3vw;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: max(3vw, 28px);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
     text-align: center;
 }
 
@@ -558,6 +559,7 @@ header ul img
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    z-index: 2;
 }
 
 .vaccine_card_box_label
@@ -568,7 +570,7 @@ header ul img
     font-weight: bold;
 }
 
-.vaccine_card_box
+.vaccine_card_box, .vaccine_card_box_update
 {
     width: 90%;
     height: 8%;
@@ -576,16 +578,12 @@ header ul img
     color: black;
     font-size: 18px;
     text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .vaccine_card_box_update
 {
     width: 16vw;
-    height: 8%;
-    background-color: white;
-    color: black;
-    font-size: 18px;
-    text-align: center;
 }
 
 .vaccination_grade
@@ -607,8 +605,7 @@ header ul img
     background-color: antiquewhite;
     padding: 10px 20px;
     display: inline-block;
-    font-family: sans-serif;
-    /* font-size: 20px; */
+    font-family: poppins;
     font-size: max(1.7vw, 17px);
     border-radius: 5px;
     transition: 0.2s;
@@ -635,7 +632,7 @@ header ul img
     height: 100vh;
     position: absolute;
     opacity: 0.7;
-    z-index: -1;
+    z-index: 1;
 }
 
 .vaccination_card_close
@@ -645,6 +642,7 @@ header ul img
     top: 1%;
     right: 1%;
     cursor: pointer;
+    z-index: 2;
 }
 
 .disable
@@ -680,6 +678,7 @@ header ul img
     align-items: center;
     position: relative;
     margin: 12vh 0px;
+    z-index: -2;
 }
 
 .titles_div
@@ -711,7 +710,7 @@ header ul img
   position: absolute;
   width: 25%;
   border-radius: 25px;
-  z-index: 1;
+  z-index: 0;
   border: 2px solid rgb(53, 204, 217);
   left: 33.5%;
   transform: translateX(-50%);
@@ -728,6 +727,8 @@ header ul img
   border-radius: 25px;
   border: 2px solid rgb(53, 204, 217);
   min-width: 250px;
+  z-index: -1;
+
 }
 
 .img-title3
@@ -740,6 +741,7 @@ header ul img
   border-radius: 25px;
   border: 2px solid rgb(53, 204, 217);
   min-width: 250px;
+  z-index: -1;
 }
 
 
