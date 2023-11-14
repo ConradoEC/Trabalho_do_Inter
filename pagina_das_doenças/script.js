@@ -35,7 +35,7 @@ fetch('./searchBar.json')
         const div = document.createElement('div')
 
         div.innerHTML = `
-        <a class="mini_search_space_link" href="http://127.0.0.1:5501/pagina_das_doen%C3%A7as/doencas/index.html?id=${item.id}">
+        <a class="mini_search_space_link" href="https://conradoec.github.io/Trabalho_do_Inter/pagina_das_doen%C3%A7as/index.html?id=${item.id}">
             <div class="mini_search_space_div">
                 <span class="mini_search_space_div_span">${item.content.name}</span>
             </div>
