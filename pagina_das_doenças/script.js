@@ -370,8 +370,8 @@ menuButton.addEventListener('click', menuBar)
 body.addEventListener('click', function(body)
 {
     searchBarTarget = body.target.id
-
-    if(searchBarTarget != 'search_text' && searchBarTarget != 'search_space')
+    console.log(searchBarTarget)
+    if(searchBarTarget != 'search_text' && searchBarTarget != 'search_space' && searchBarTarget != 'search-box' && searchBarTarget != 'loupe-red')
     {
         search_text.value = ''
         search_space.style.setProperty('background-color', 'transparent')
