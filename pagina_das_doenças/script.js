@@ -35,7 +35,7 @@ fetch('./searchBar.json')
         const div = document.createElement('div')
 
         div.innerHTML = `
-        <a class="mini_search_space_link" href="https://conradoec.github.io/Trabalho_do_Inter/pagina_das_doen%C3%A7as/index.html?id=${item.id}">
+        <a class="mini_search_space_link" href="https://conradoec.github.io/Trabalho_do_Inter/pagina_das_doen%C3%A7as/doencas?id=${item.id}">
             <div class="mini_search_space_div">
                 <span class="mini_search_space_div_span">${item.content.name}</span>
             </div>
@@ -52,6 +52,7 @@ fetch('./searchBar.json')
 var remover = 0;
 counter_menu = 0;
 var on = 0;
+var searchBarTarget;
 
 
 
@@ -363,7 +364,27 @@ window.addEventListener('resize', () =>
     responsivity()
 })
 
+
 menuButton.addEventListener('click', menuBar)
+
+body.addEventListener('click', function(body)
+{
+    searchBarTarget = body.target.id
+
+    if(searchBarTarget != 'search_text' && searchBarTarget != 'search_space')
+    {
+        search_text.value = ''
+        search_space.style.setProperty('background-color', 'transparent')
+        const divs = mini_search_space.getElementsByClassName('mini_search_space_div')
+        searchBarTarget = ''
+
+        for(i = 0; i < divs.length; i++)
+        {
+            search_space.style.setProperty('transition', 'background 0s')
+            divs[i].style.setProperty('display', 'none')
+        }
+    }
+})
 
 search_space.addEventListener('focusin', function() 
 {
@@ -371,18 +392,6 @@ search_space.addEventListener('focusin', function()
     search_space.style.setProperty('background-color', 'rgb(220, 220, 255)')
 })
 
-search_space.addEventListener('focusout', function()
-{
-    search_text.value = ''
-    search_space.style.setProperty('background-color', 'transparent')
-    const divs = mini_search_space.getElementsByClassName('mini_search_space_div')
-
-    for(i = 0; i < divs.length; i++)
-    {
-        search_space.style.setProperty('transition', 'background 0s')
-        divs[i].style.setProperty('display', 'none')
-    }
-})
 
 medicine_text[0].addEventListener('click', function()
 {
