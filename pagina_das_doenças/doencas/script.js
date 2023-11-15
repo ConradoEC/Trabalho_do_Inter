@@ -28,7 +28,6 @@ const advice_icons = document.getElementsByClassName('advice_icon');
 const advice_text = document.getElementsByClassName('advice_text');
 const container_advice_icons = document.getElementById('container_advice_icons');
 var logado = sessionStorage.getItem('N1');
-const urlId = sessionStorage.getItem('Id')
 
 // fetch('https://conradoec.github.io/Trabalho_do_Inter/pagina_das_doen%C3%A7as/doen%C3%A7as/diseaseContent.json')
 fetch('./diseaseContent.json')
@@ -114,7 +113,7 @@ function increase()
 
     //     news_size[i].style.fontSize = (fontSize_1 + 5) + 'px'
     // }
-    
+
     text.forEach(item => 
     {
 
@@ -166,8 +165,7 @@ function contrastEffect()
 {
     const contraste = 'contraste';
     const itemMenu = document.getElementsByTagName('li');
-
-
+    const pages_a = document.getElementsByClassName('pages_a')
 
     if(on == 0)
     {
@@ -181,14 +179,14 @@ function contrastEffect()
             // }
         }
 
-        // for( i = 0; i < paragraph.length; i++)
-        // {
-        //     paragraph[i].classList.add(contraste)
-        // }
-    
         for( i = 0; i < itemMenu.length; i++)
         {
             itemMenu[i].classList.add(contraste);
+        }
+                
+        for(i = 0; i < pages_a.length; i++)
+        {
+            pages_a[i].classList.add(contraste)
         }
 
         backgrounds.forEach(items =>
@@ -202,14 +200,14 @@ function contrastEffect()
     }
     else
     {
-        // for( i = 0; i < paragraph.length; i++)
-        // {
-        //     paragraph[i].classList.remove(contraste);
-        // }
-
         for( i = 0; i < itemMenu.length; i++)
         {
             itemMenu[i].classList.remove(contraste);
+        }
+                
+        for(i = 0; i < pages_a.length; i++)
+        {
+            pages_a[i].classList.remove(contraste)
         }
 
         backgrounds.forEach(items =>
@@ -386,7 +384,6 @@ window.onload = function()
         perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/logout.php'
         Login.innerText = 'Bem vindo, ' + sessionStorage.getItem('Nome') + '!'
         menuSide_span.innerText = sessionStorage.getItem('Nome') + ' ' + sessionStorage.getItem('Sobrenome')
-
     }
     else
     {

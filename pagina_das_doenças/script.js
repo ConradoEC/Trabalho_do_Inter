@@ -127,6 +127,7 @@ function contrastEffect()
 {
     const contraste = 'contraste';
     const itemMenu = document.getElementsByTagName('li')
+    const pages_a = document.getElementsByClassName('pages_a')
 
     if(on == 0)
     {
@@ -139,11 +140,6 @@ function contrastEffect()
             //     paragraph[0].style.color = 'yellow';
             // }
         }
-
-        // for( i = 0; i < paragraph.length; i++)
-        // {
-        //     paragraph[i].classList.add(contraste)
-        // }
     
         for( i = 0; i < itemMenu.length; i++)
         {
@@ -154,6 +150,11 @@ function contrastEffect()
         {
             items.classList.add(contraste);
         })
+        
+        for(i = 0; i < pages_a.length; i++)
+        {
+            pages_a[i].classList.add(contraste)
+        }
 
         backgrounds[2].style.setProperty('border-bottom', '2px solid yellow')
 
@@ -161,11 +162,6 @@ function contrastEffect()
     }
     else
     {
-        // for( i = 0; i < paragraph.length; i++)
-        // {
-        //     paragraph[i].classList.remove(contraste);
-        // }
-
         for( i = 0; i < itemMenu.length; i++)
         {
             itemMenu[i].classList.remove(contraste);
@@ -175,6 +171,11 @@ function contrastEffect()
         {
             items.classList.remove(contraste);
         })
+        
+        for(i = 0; i < pages_a.length; i++)
+        {
+            pages_a[i].classList.remove(contraste)
+        }
 
         backgrounds[2].style.setProperty('border-bottom', '2px solid black')
 

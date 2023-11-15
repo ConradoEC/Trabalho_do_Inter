@@ -29,11 +29,16 @@
         padding: 0px 8vw;
     }
     
-    header img
+    header a
     {
         height: 80%;
     }
     
+    header a img
+    {
+        height: 100%;
+    }
+
     header ul
     {
         min-width: 55%;
@@ -51,8 +56,16 @@
         user-select: none;
         cursor: pointer;
         display: flex;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
     }
     
+    .lastNotices
+    {
+        text-decoration: none;
+        color: inherit;
+    }
+
     header ul img
     {
         width: 70px;
@@ -268,12 +281,16 @@
         align-items: center;
         justify-content: space-around;
         list-style: none;
-        color: white;
-        font-size: max(2.7vh, 18px);
-        font-family: sans-serif;
         border-bottom: 2px solid black;
+        font-size: max(2.8vh, 18px);
     }
 
+    .pages_a
+    {
+        text-decoration: none;
+        color: white;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }  
 /* CONTEÚDO QUE NÃO FAZ PARTE DO CABEÇALHO */
 
 

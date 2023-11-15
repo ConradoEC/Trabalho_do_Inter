@@ -65,8 +65,7 @@ function filtrar()
     li = ul.getElementsByTagName('li');
     for(i = 0; i < li.length; i++)
     {
-        div = li[i].getElementsByTagName('div')[0]
-
+        div = li[i].getElementsByClassName('medicine_span')[0]
         textValue = div.innerText
 
         if(textValue.toLocaleUpperCase().indexOf(filter) > -1)
@@ -83,7 +82,7 @@ function filtrar()
             // console.log(count)
         }
 
-        span = li[i].querySelector('.medicine_span')
+        span = div
         // console.log(span)
         if(span)
         {
@@ -333,6 +332,7 @@ function contrastEffect()
     const backgrounds_darkGray = document.querySelectorAll('[data-backgrounds_darkGray]');
     const backgrounds_hr = document.querySelectorAll('[data-backgroundsHr]');
     const backgrounds_whiteGray = document.querySelectorAll('[data-backgrounds_whiteGray]');
+    const pages_a = document.getElementsByClassName('pages_a');
 
 
     console.log(backgrounds)
@@ -344,6 +344,11 @@ function contrastEffect()
                 itemMenu[i].classList.add(contraste);
             }
 
+            for(i = 0; i < pages_a.length; i++)
+            {
+                pages_a[i].classList.add(contraste)
+            }
+    
             backgrounds.forEach(items =>
             {
                 items.classList.add(contraste);
@@ -387,6 +392,11 @@ function contrastEffect()
                 itemMenu[i].classList.remove(contraste);
             }
 
+            for(i = 0; i < pages_a.length; i++)
+            {
+                pages_a[i].classList.remove(contraste)
+            }
+    
             backgrounds.forEach(items =>
             {
                 items.classList.remove(contraste);

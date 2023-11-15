@@ -70,16 +70,19 @@ const summary = document.querySelectorAll('.summary')
 const paragraph = document.getElementsByTagName('p');
 var veja_agora = paragraph[1].querySelector('#veja_agora')
 var father_2 = summary[1].parentNode
-console.log(veja_agora)
+const button_links = document.getElementById('button_links')
 
 var time = 0;
 var transition = 'transition';
 var transition2 = 'transition2';
-var phrases = ['ESTEJA <br> PREPARADO <br> PARA O FUTURO',
-                'NAO SEI O QUE ESCREVER AMIGOS',
-                'BLAAA BLAAAAA BLA',
-                'ESPERO QUE DE CERTO, MAS <br> ATE QUE FOI FACIL',
-                'AGORA EU SO TENHO QUE TER CUIDADO <br> COM O TAMANHO DAS FRASES']
+var phrases = ['NÃO OS CONSUMA, SEM CONHECÊ-LOS.',
+                'PODEMOS AUXILIÁ-LO <BR> COM SEUS SINTOMAS.',
+                'JÁ SE CADASTROU? FAÇA AINDA HOJE!',
+                'DEIXE SUA CADERNETA ATUALIZADA']
+var links_for_button_link = ['https://conradoec.github.io/Trabalho_do_Inter/pagina_dos_remedios',
+                            'https://conradoec.github.io/Trabalho_do_Inter/pagina_das_doenças',
+                            'https://conradoec.github.io/Trabalho_do_Inter/forms/forms-cadastro/cadastro.html',
+                            'https://conradoec.github.io/Trabalho_do_Inter/Vacinacao']
 var colors;
 var on = 0;
 var fonts;
@@ -89,10 +92,6 @@ var position = 0;
 var counter = 1;
 var news_size = 0;
 counter_menu = 0;
-
-// sessionStorage.setItem('N1', 'logado')
-// sessionStorage.setItem('Nome', 'Erick')
-
 var logado = sessionStorage.getItem('N1');
 const id_from_url = new URLSearchParams(window.location.search)
 const urlId = id_from_url.get('id')
@@ -194,6 +193,7 @@ function contrastEffect()
     const contraste = 'contraste';
     const itemMenu = document.getElementsByTagName('li');
     const buttons = document.querySelectorAll('[data-buttons]');
+    const pages_a = document.getElementsByClassName('pages_a')
 
     if(on == 0)
     {
@@ -242,6 +242,11 @@ function contrastEffect()
             itemMenu[i].classList.add(contraste);
         }
         
+        for(i = 0; i < pages_a.length; i++)
+        {
+            pages_a[i].classList.add(contraste)
+        }
+
         backgrounds.forEach(items =>
         {
             items.classList.add(contraste);
@@ -266,6 +271,11 @@ function contrastEffect()
         for( i = 0; i < itemMenu.length; i++)
         {
             itemMenu[i].classList.remove(contraste);
+        }
+
+        for(i = 0; i < pages_a.length; i++)
+        {
+            pages_a[i].classList.remove(contraste)
         }
 
         backgrounds.forEach(items =>
@@ -322,6 +332,7 @@ function contrastEffect()
 function changePhrase()
 {
     phrase.innerHTML = phrases[time]
+    button_links.href = links_for_button_link[time]
 }
 
 

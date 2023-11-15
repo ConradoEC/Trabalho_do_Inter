@@ -468,12 +468,18 @@ function contrastEffect()
     const backgrounds_darkGray = document.querySelectorAll('[data-backgrounds_darkGray]');
     const backgrounds_whiteGray = document.querySelectorAll('[data-backgrounds_whiteGray]');
     const img_border = document.getElementsByClassName('img_border')
+    const pages_a = document.getElementsByClassName('pages_a')
 
     if(on == 0)
     {
         for( i = 0; i < itemMenu.length; i++)
         {
             itemMenu[i].classList.add(contraste);
+        }
+
+        for(i = 0; i < pages_a.length; i++)
+        {
+            pages_a[i].classList.add(contraste)
         }
 
         backgrounds.forEach(items =>
@@ -512,6 +518,11 @@ function contrastEffect()
         for( i = 0; i < itemMenu.length; i++)
         {
             itemMenu[i].classList.remove(contraste);
+        }
+
+        for(i = 0; i < pages_a.length; i++)
+        {
+            pages_a[i].classList.remove(contraste)
         }
 
         backgrounds.forEach(items =>
