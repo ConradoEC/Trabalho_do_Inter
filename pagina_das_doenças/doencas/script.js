@@ -225,6 +225,33 @@ function contrastEffect()
 
 function responsivity()
 {
+    if(window.innerWidth <= 500)
+    {
+        perfil.style.setProperty('display', 'none')
+        menuButton.style.setProperty('display', 'block')
+        menuSide.style.setProperty('display', 'flex')
+    }
+    else
+    {
+        perfil.style.setProperty('display', 'block')
+        menuButton.style.setProperty('display', 'none')
+
+        if(counter_menu == 1)
+        {
+            body.style.setProperty('overflow-y', 'scroll')
+            menuSide.style.setProperty('display', 'none')
+            menuSide_back.style.setProperty('display', 'none')
+            menu.appendChild(menuButton);
+            menuButton.innerText = 'menu';
+            menuSide.style.setProperty('right', '-100%')
+            menuButton.style.setProperty('position', 'relative')
+            menu.style.setProperty('position', 'static')
+            menuSide_back.classList.remove('menu_transition')
+            menuSide_back.classList.add('menu_transition2')
+            counter_menu = 0;
+        }
+    }
+
     if(counter_replace_advices_icons == 0)
     {
         if(window.innerWidth <= 800)
@@ -252,33 +279,6 @@ function responsivity()
             }
             disease_advices_divs_id.style.setProperty('height', '70vh')
             counter_replace_advices_icons = 0
-        }
-    }
-
-    if(window.innerWidth <= 500)
-    {
-        perfil.style.setProperty('display', 'none')
-        menuButton.style.setProperty('display', 'block')
-        menuSide.style.setProperty('display', 'flex')
-    }
-    else
-    {
-        perfil.style.setProperty('display', 'block')
-        menuButton.style.setProperty('display', 'none')
-
-        if(counter_menu == 1)
-        {
-            body.style.setProperty('overflow-y', 'scroll')
-            menuSide.style.setProperty('display', 'none')
-            menuSide_back.style.setProperty('display', 'none')
-            menu.appendChild(menuButton);
-            menuButton.innerText = 'menu';
-            menuSide.style.setProperty('right', '-100%')
-            menuButton.style.setProperty('position', 'relative')
-            menu.style.setProperty('position', 'static')
-            menuSide_back.classList.remove('menu_transition')
-            menuSide_back.classList.add('menu_transition2')
-            counter_menu = 0;
         }
     }
 }
@@ -367,7 +367,6 @@ btnContraste.addEventListener('click', contrastEffect)
 
 window.onload = function()
 {
-
     fonts = [
     text[0].style.fontSize,
     text[1].style.fontSize,
@@ -392,6 +391,7 @@ window.onload = function()
         menuSide_span.innerText = 'Faça login'
     }
 
+    responsivity()
 }
 
 window.addEventListener('resize', () =>

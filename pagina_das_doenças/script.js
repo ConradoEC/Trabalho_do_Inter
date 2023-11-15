@@ -346,7 +346,6 @@ btnContraste.addEventListener('click', contrastEffect)
 
 window.onload = function()
 {
-
     fonts = [
     text[0].style.fontSize,
     text[1].style.fontSize,
