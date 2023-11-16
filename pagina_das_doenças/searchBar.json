@@ -19,7 +19,7 @@
         "id": "3",
         "content": 
         {
-            "name": "Dor de cabeça"
+            "name": "Enxaqueca"
         }
     },
 
@@ -52,6 +52,46 @@
         "content": 
         {
             "name": "Colesterol alto"
+        }
+    },
+
+    {
+        "id": "8",
+        "content": 
+        {
+            "name": "Herpes"
+        }
+    },
+
+    {
+        "id": "9",
+        "content": 
+        {
+            "name": "Refluxo gastroesofágico"
+        }
+    },
+
+    {
+        "id": "10",
+        "content": 
+        {
+            "name": "Covid-19"
+        }
+    },
+
+    {
+        "id": "11",
+        "content": 
+        {
+            "name": "Diabetes"
+        }
+    },
+
+    {
+        "id": "12",
+        "content": 
+        {
+            "name": "Pneumonia"
         }
     }
 ]
