@@ -554,6 +554,11 @@ header ul img
     {
         text-align: center;
     }
+    
+    .advice_icon
+    {
+        cursor: pointer;
+    }
 }
 
 @media(max-width: 500px)

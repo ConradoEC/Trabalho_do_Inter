@@ -329,26 +329,29 @@ function menuBar()
 
 function showAdvices(disease_advices_divs)
 {
-    if(disease_advices_divs.target.id == 'advice_icon')
+    if(window.innerWidth <= 800)
     {
-        disease_advices_divs_id.style.setProperty('height', '55vh')
-        switch(disease_advices_divs.target)
+        if(disease_advices_divs.target.id == 'advice_icon')
         {
-            case advice_icons[0]:
-                disease_advices_div[0].style.setProperty('display', 'flex')
-                disease_advices_div[1].style.setProperty('display', 'none')
-                disease_advices_div[2].style.setProperty('display', 'none')
-                break
-            case advice_icons[1]:
-                disease_advices_div[1].style.setProperty('display', 'flex')
-                disease_advices_div[2].style.setProperty('display', 'none')
-                disease_advices_div[0].style.setProperty('display', 'none')
-                break
-            case advice_icons[2]:
-                disease_advices_div[2].style.setProperty('display', 'flex')
-                disease_advices_div[1].style.setProperty('display', 'none')
-                disease_advices_div[0].style.setProperty('display', 'none')
-                break
+            disease_advices_divs_id.style.setProperty('height', '55vh')
+            switch(disease_advices_divs.target)
+            {
+                case advice_icons[0]:
+                    disease_advices_div[0].style.setProperty('display', 'flex')
+                    disease_advices_div[1].style.setProperty('display', 'none')
+                    disease_advices_div[2].style.setProperty('display', 'none')
+                    break
+                case advice_icons[1]:
+                    disease_advices_div[1].style.setProperty('display', 'flex')
+                    disease_advices_div[2].style.setProperty('display', 'none')
+                    disease_advices_div[0].style.setProperty('display', 'none')
+                    break
+                case advice_icons[2]:
+                    disease_advices_div[2].style.setProperty('display', 'flex')
+                    disease_advices_div[1].style.setProperty('display', 'none')
+                    disease_advices_div[0].style.setProperty('display', 'none')
+                    break
+            }
         }
     }
 }
