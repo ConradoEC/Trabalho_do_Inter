@@ -237,6 +237,11 @@
         font-size: 35px;
     }
     
+    #menuSide_li_login_or_logout_text
+    {
+        font-size: inherit;
+    }
+
     .menu_transition
     {
         animation: menuBack 0.6s;

@@ -31,19 +31,19 @@ sendInformations.addEventListener('click', function()
   const urlParams = new URLSearchParams(window.location.search)
   const indice = urlParams.get('indice')
 
-    const deslogado = sessionStorage.getItem('N2')
-    if(deslogado)
-    {
-        sessionStorage.removeItem('N2')
-        sessionStorage.setItem('N1', 'Logado')
-    }
-    else
-    {
-      sessionStorage.setItem('N1', 'Logado')
-    }
+  const deslogado = sessionStorage.getItem('N2')
+  if(deslogado)
+  {
+    sessionStorage.removeItem('N2')
+    sessionStorage.setItem('N1', 'Logado')
+  }
+  else
+  {
+    sessionStorage.setItem('N1', 'Logado')
+  }
     
-    sessionStorage.setItem('Nome', `${account}`)
-    // sessionStorage.setItem('Id', `${obj_id}`)
+  sessionStorage.setItem('Nome', `${account}`)
+  // sessionStorage.setItem('Id', `${obj_id}`)
 })
 
 

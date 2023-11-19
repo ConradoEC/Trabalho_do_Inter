@@ -717,12 +717,18 @@ window.onload = function()
         perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/logout.php'
         Login.innerText = 'Bem vindo, ' + sessionStorage.getItem('Nome') + '!'
         menuSide_span.innerText = sessionStorage.getItem('Nome') + ' ' + sessionStorage.getItem('Sobrenome')
+        menuSide_li_login_or_logout.innerText = 'Logout'
+        menuSide_li_login_or_logout.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/logout.php'
+        menuSide_li_login_or_logout_text.innerText = 'Logout'
     }
     else
     {
         perfil.innerText = 'account_circle'
         perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/index.php'
         menuSide_span.innerText = 'Faça login'
+        menuSide_li_login_or_logout.innerText = 'account_circle'
+        menuSide_li_login_or_logout.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/index.php'
+        menuSide_li_login_or_logout_text.innerText = 'Login'
     }
 
     responsivity()
@@ -802,7 +808,6 @@ vaccination_card_close.addEventListener('click', function()
 
 perfil.addEventListener('click', function()
 {
-    
     if(logado)
     {
         sessionStorage.removeItem('N1')
@@ -816,6 +821,20 @@ perfil.addEventListener('click', function()
     }
 })
 
+menuSide_li_login_or_logout.parentNode.addEventListener('click', function()
+{
+    if(logado)
+    {
+        sessionStorage.removeItem('N1')
+        sessionStorage.removeItem('Nome')
+        sessionStorage.removeItem('Id')
+        sessionStorage.removeItem('Sobrenome')
+    }
+    else
+    {
+        sessionStorage.setItem('N2', 'Deslogado')
+    }
+})
 
 var timer = setInterval( function()
 {

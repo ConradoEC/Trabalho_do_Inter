@@ -93,6 +93,7 @@ var counter = 1;
 var news_size = 0;
 counter_menu = 0;
 var logado = sessionStorage.getItem('N1');
+var logado_Id = sessionStorage.getItem('Id');
 const id_from_url = new URLSearchParams(window.location.search)
 const urlId = id_from_url.get('id')
 const urlSobrenome = id_from_url.get('lastName')
@@ -497,15 +498,24 @@ window.onload = function()
         perfil.innerText = 'circle'
         perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/logout.php'
         Login.innerText = 'Bem vindo, ' + sessionStorage.getItem('Nome') + '!'
-        sessionStorage.setItem('Id', `${urlId}`)
-        sessionStorage.setItem('Sobrenome', `${urlSobrenome}`)
+        if(!logado_Id)
+        {
+            sessionStorage.setItem('Id', `${urlId}`)
+            sessionStorage.setItem('Sobrenome', `${urlSobrenome}`)
+        }
         menuSide_span.innerText = sessionStorage.getItem('Nome') + ' ' + sessionStorage.getItem('Sobrenome')
+        menuSide_li_login_or_logout.innerText = 'Logout'
+        menuSide_li_login_or_logout.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/logout.php'
+        menuSide_li_login_or_logout_text.innerText = 'Logout'
     }
-    else
+    else if(!logado)
     {
         perfil.innerText = 'account_circle'
         perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/index.php'
         menuSide_span.innerText = 'Faça login'
+        menuSide_li_login_or_logout.innerText = 'account_circle'
+        menuSide_li_login_or_logout.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/index.php'
+        menuSide_li_login_or_logout_text.innerText = 'Login'
     }
 
     responsivity()
@@ -596,7 +606,21 @@ arrows[1].addEventListener('click', function()
 
 perfil.addEventListener('click', function()
 {
-    
+    if(logado)
+    {
+        sessionStorage.removeItem('N1')
+        sessionStorage.removeItem('Nome')
+        sessionStorage.removeItem('Id')
+        sessionStorage.removeItem('Sobrenome')
+    }
+    else
+    {
+        sessionStorage.setItem('N2', 'Deslogado')
+    }
+})
+
+menuSide_li_login_or_logout.parentNode.addEventListener('click', function()
+{
     if(logado)
     {
         sessionStorage.removeItem('N1')
