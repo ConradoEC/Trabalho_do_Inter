@@ -19,6 +19,11 @@ var remover = 0;
 counter_menu = 0;
 var on = 0;
 var logado = sessionStorage.getItem('N1');
+const userDate = new Date(sessionStorage.getItem('DataNascimento'))
+const nowDate = new Date()
+const userYear = userDate.getFullYear()
+const nowYear = nowDate.getFullYear()
+const userAge = nowYear - userYear
 
 // PARTE QUE FOI COPIADA }
 
@@ -151,71 +156,78 @@ if(logado)
                             }
                     }
 
-                    if(item.date_vaccine == '')
+                    if(item.age_vaccine > userAge)
                     {
-                        const div_grade = document.createElement('div')
-                        div_grade.setAttribute('class', 'vaccination_grade_box')
-                        div_grade.setAttribute('id', `${item.id_vaccine}`)
-                        div_grade.setAttribute('data-backgrounds_darkGray', `backgrounds_darkGray`)
-                        div_grade.innerHTML = `
-                            <p class="vaccination_grade_box_p">${item.name_vaccine}</p>
-                        `;
-                            
-                        vaccination_grade.appendChild(div_grade)
+                        console.log('Não vai ser gerado')
                     }
                     else
                     {
-                        var newReinforc;
-                        var neweveryYear;
-
-                        switch (item.reinforc_vaccine)
+                        if(item.date_vaccine == '')
                         {
-                            case 0:
-                                newReinforc = 'Não possui'
-                                break
-                            case 1:
-                                switch (item.counter_reinforc_vaccine)
-                                {
-                                    case 1:
-                                        newReinforc = 'Tomou'
-                                        break
-                                    default:
-                                        newReinforc = 'Não tomou'
-                                    }
-                                break
-                            default:
-                                console.log('Algo está errado')
+                            const div_grade = document.createElement('div')
+                            div_grade.setAttribute('class', 'vaccination_grade_box')
+                            div_grade.setAttribute('id', `${item.id_vaccine}`)
+                            div_grade.setAttribute('data-backgrounds_darkGray', `backgrounds_darkGray`)
+                            div_grade.innerHTML = `
+                                <p class="vaccination_grade_box_p">${item.name_vaccine}</p>
+                            `;
+                                
+                            vaccination_grade.appendChild(div_grade)
                         }
-
-                        switch (item.everyYear_vaccine)
+                        else
                         {
-                            case 0:
-                                neweveryYear = 'Não possui'
-                                break
-                            case 1:
-                                neweveryYear = 'Possui'
-                                break
-                            default:
-                                console.log('Algo está errado')
-                        }
+                            var newReinforc;
+                            var neweveryYear;
 
-                        const div_vaccine = document.createElement('div')
-                        div_vaccine.setAttribute('class', 'vaccine_card')
-                        div_vaccine.setAttribute('data-backgrounds_darkGray', 'backgrounds_darkGray')
-                        div_vaccine.innerHTML = `
-                            <label for="vaccine_card_box1" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">NOME</label>
-                            <input type="text" value="${item.name_vaccine}" id="vaccine_card_box1" class="vaccine_card_box" disabled>
-                            <label for="vaccine_card_box2" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">DATA DE VACINAÇÃO</label>
-                            <input type="text" value="${item.date_vaccine}" id="vaccine_card_box2" class="vaccine_card_box" disabled>
-                            <label for="vaccine_card_box3" class="vaccine_card_box_label"  data-backgrounds_darkGray="backgrounds_darkGray">${item.max_dose_vaccine} DOSE/DOSES</label>
-                            <input type="text" value="${item.dose_vaccine}" id="vaccine_card_box3" class="vaccine_card_box" disabled>
-                            <label for="vaccine_card_box4" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">REFORÇO</label>
-                            <input type="text" value="${newReinforc}" id="vaccine_card_box4" class="vaccine_card_box" disabled>
-                            <label for="vaccine_card_box5" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">ANUAL</label>
-                            <input type="text" value="${neweveryYear}" id="vaccine_card_box5" class="vaccine_card_box" disabled>
-                        `;
-                        vaccination_card_view.appendChild(div_vaccine)
-                    }
+                            switch (item.reinforc_vaccine)
+                            {
+                                case 0:
+                                    newReinforc = 'Não possui'
+                                    break
+                                case 1:
+                                    switch (item.counter_reinforc_vaccine)
+                                    {
+                                        case 1:
+                                            newReinforc = 'Tomou'
+                                            break
+                                        default:
+                                            newReinforc = 'Não tomou'
+                                        }
+                                    break
+                                default:
+                                    console.log('Algo está errado')
+                            }
+
+                            switch (item.everyYear_vaccine)
+                            {
+                                case 0:
+                                    neweveryYear = 'Não possui'
+                                    break
+                                case 1:
+                                    neweveryYear = 'Possui'
+                                    break
+                                default:
+                                    console.log('Algo está errado')
+                            }
+
+                            const div_vaccine = document.createElement('div')
+                            div_vaccine.setAttribute('class', 'vaccine_card')
+                            div_vaccine.setAttribute('data-backgrounds_darkGray', 'backgrounds_darkGray')
+                            div_vaccine.innerHTML = `
+                                <label for="vaccine_card_box1" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">NOME</label>
+                                <input type="text" value="${item.name_vaccine}" id="vaccine_card_box1" class="vaccine_card_box" disabled>
+                                <label for="vaccine_card_box2" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">DATA DE VACINAÇÃO</label>
+                                <input type="text" value="${item.date_vaccine}" id="vaccine_card_box2" class="vaccine_card_box" disabled>
+                                <label for="vaccine_card_box3" class="vaccine_card_box_label"  data-backgrounds_darkGray="backgrounds_darkGray">${item.max_dose_vaccine} DOSE/DOSES</label>
+                                <input type="text" value="${item.dose_vaccine}" id="vaccine_card_box3" class="vaccine_card_box" disabled>
+                                <label for="vaccine_card_box4" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">REFORÇO</label>
+                                <input type="text" value="${newReinforc}" id="vaccine_card_box4" class="vaccine_card_box" disabled>
+                                <label for="vaccine_card_box5" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">ANUAL</label>
+                                <input type="text" value="${neweveryYear}" id="vaccine_card_box5" class="vaccine_card_box" disabled>
+                            `;
+                            vaccination_card_view.appendChild(div_vaccine)
+                        }
+                    } 
                 }
         })
 
@@ -720,6 +732,7 @@ window.onload = function()
         menuSide_li_login_or_logout.innerText = 'Logout'
         menuSide_li_login_or_logout.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/logout.php'
         menuSide_li_login_or_logout_text.innerText = 'Logout'
+        faixaEtaria.innerText = userAge
     }
     else
     {

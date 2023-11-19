@@ -97,6 +97,7 @@ var logado_Id = sessionStorage.getItem('Id');
 const id_from_url = new URLSearchParams(window.location.search)
 const urlId = id_from_url.get('id')
 const urlSobrenome = id_from_url.get('lastName')
+const urlNascimento = id_from_url.get('WasBorn')
 
 if(titles[0].classList.contains('data-font'))
 {
@@ -502,6 +503,7 @@ window.onload = function()
         {
             sessionStorage.setItem('Id', `${urlId}`)
             sessionStorage.setItem('Sobrenome', `${urlSobrenome}`)
+            sessionStorage.setItem('DataNascimento', `${urlNascimento}`)
         }
         menuSide_span.innerText = sessionStorage.getItem('Nome') + ' ' + sessionStorage.getItem('Sobrenome')
         menuSide_li_login_or_logout.innerText = 'Logout'
