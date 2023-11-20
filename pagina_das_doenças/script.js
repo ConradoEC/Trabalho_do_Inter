@@ -323,14 +323,14 @@ function filtrar()
         }
     }
 
-    if(count < -5) //  ÉRA "0" O VALOR DE COMPARAÇÃO
-    {
-        mini_search_space.style.setProperty('display', 'none')
-    }
-    else
-    {
-        mini_search_space.style.setProperty('display', '')
-    }
+    // if(count < -5) //  ÉRA "0" O VALOR DE COMPARAÇÃO
+    // {
+    //     mini_search_space.style.setProperty('display', 'none')
+    // }
+    // else
+    // {
+    //     mini_search_space.style.setProperty('display', '')
+    // }
 }
 
 

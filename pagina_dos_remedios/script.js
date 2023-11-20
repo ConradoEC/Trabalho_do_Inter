@@ -100,15 +100,18 @@ function filtrar()
             li[i].style.setProperty('display', 'none')
         }
     }
+    
+    ul.style.setProperty('display', 'flex')
 
-    if(count < -5) //  ÉRA "0" O VALOR DE COMPARAÇÃO
-    {
-        ul.style.setProperty('display', 'none')
-    }
-    else
-    {
-        ul.style.setProperty('display', 'flex')
-    }
+    // if(count < -5) //  ÉRA "0" O VALOR DE COMPARAÇÃO
+    // {
+    //     ul.style.setProperty('display', 'none')
+    //     console.log(count)
+    // }
+    // else
+    // {
+    //     ul.style.setProperty('display', 'flex')
+    // }
 
     ul.addEventListener('click', change)
 }
