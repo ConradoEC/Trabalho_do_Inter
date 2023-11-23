@@ -13,94 +13,13 @@ const body = document.querySelector('body')
 // const paragraph = document.getElementsByTagName('p');
 let text = document.querySelectorAll('.data-font');
 
+
 var remover = 0;
 counter_menu = 0;
 var on = 0;
-counter_replace_advices_icons = 0;
-
-// PARTE COPIADA }
-
-const urlParams = new URLSearchParams(window.location.search);
-const ids = urlParams.get('id');
-const disease_img = document.getElementById('disease_img');
-const disease_advices_divs_id = document.getElementById('disease_advices_divs');
-const advice_icons = document.getElementsByClassName('advice_icon');
-const advice_text = document.getElementsByClassName('advice_text');
-const container_advice_icons = document.getElementById('container_advice_icons');
 var logado = sessionStorage.getItem('N1');
 
-// fetch('https://conradoec.github.io/Trabalho_do_Inter/pagina_das_doen%C3%A7as/doen%C3%A7as/diseaseContent.json')
-fetch('./diseaseContent.json')
-.then(res=>res.json())
-.then((json) =>
-{
-    disease_img.src = `${json[ids - 1].content.image}`
-    disease_description.innerHTML = `${json[ids - 1].content.description}`
 
-    json[ids - 1].content.symptoms.forEach(item =>
-    {
-        const issueLi = document.createElement('li')
-        issueLi.innerHTML = `<li class="disease_symptoms_li">${item}</li>`
-
-        disease_symptoms.appendChild(issueLi)
-    })
-
-    disease_h1.innerText = `Relacionados com ${json[ids - 1].content.name}`
-
-    for(i = 0; i < json[ids - 1].content.news.length; i++)
-    {
-        const div = document.createElement('div')
-        div.setAttribute('class', 'disease_related_newspaper_news')
-
-        if(i % 2 != 0 )
-        {
-            div.innerHTML = `
-            <p class="news_text">${json[ids - 1].content.news[i].new[0]}</p>
-            <a href="${json[ids - 1].content.news[i].new[2]}" target="blanck"><div class="news_img"></div></a>
-            `
-            div.getElementsByClassName('news_img')[0].style.backgroundImage = `url(${json[ids - 1].content.news[i].new[1]})`
-        }
-        else
-        {
-            div.innerHTML = `
-            <a href="${json[ids - 1].content.news[i].new[2]}" target="blanck"><div class="news_img"></div></a>
-            <p class="news_text">${json[ids - 1].content.news[i].new[0]}</p>
-            `
-
-            div.getElementsByClassName('news_img')[0].style.backgroundImage = `url(${json[ids - 1].content.news[i].new[1]})`
-        }
-
-        disease_related_newspaper.appendChild(div)
-    }
-
-    for(i = 0; i < json[ids - 1].content.advices.length; i++)
-    {
-        const div = document.createElement('div')
-        div.setAttribute('class', 'disease_advices_div')
-        div.setAttribute('id', 'disease_advices_div')
-        
-        div.innerHTML = `
-        <span id="advice_title" class="advice_title">${json[ids - 1].content.advices[i].title}</span>
-        <span id="advice_icon" class="advice_icon">${json[ids - 1].content.advices[i].icon}</span>
-        <p class="advice_text">${json[ids - 1].content.advices[i].text}</p>
-        `        
-        disease_advices_divs.appendChild(div)
-    }
-
-    if(counter_replace_advices_icons == 0)
-    {
-        if(window.innerWidth <= 800)
-        {
-            container_advice_icons.style.setProperty('display', 'flex')
-            for(i = 0; i < 3; i++)
-            {
-                container_advice_icons.appendChild(advice_icons[i])
-                disease_advices_div[i].style.setProperty('display', 'none')
-            }
-            counter_replace_advices_icons = 1
-        }
-    }
-})
 
 
 function increase()
@@ -113,7 +32,7 @@ function increase()
 
     //     news_size[i].style.fontSize = (fontSize_1 + 5) + 'px'
     // }
-
+    
     text.forEach(item => 
     {
 
@@ -125,6 +44,8 @@ function increase()
     })
 
 }
+
+
 
 function decrease()
 {
@@ -150,6 +71,8 @@ function decrease()
     })
 }
 
+
+
 function normal()
 {
     text[0].style.fontSize = fonts[0]
@@ -161,11 +84,14 @@ function normal()
     }
 }
 
+
+
 function contrastEffect()
 {
     const contraste = 'contraste';
     const itemMenu = document.getElementsByTagName('li');
-    const pages_a = document.getElementsByClassName('pages_a')
+
+
 
     if(on == 0)
     {
@@ -179,14 +105,14 @@ function contrastEffect()
             // }
         }
 
+        // for( i = 0; i < paragraph.length; i++)
+        // {
+        //     paragraph[i].classList.add(contraste)
+        // }
+    
         for( i = 0; i < itemMenu.length; i++)
         {
             itemMenu[i].classList.add(contraste);
-        }
-                
-        for(i = 0; i < pages_a.length; i++)
-        {
-            pages_a[i].classList.add(contraste)
         }
 
         backgrounds.forEach(items =>
@@ -196,19 +122,19 @@ function contrastEffect()
 
         backgrounds[2].style.setProperty('border-bottom', '2px solid yellow')
         footer.style.setProperty('border-top', '2px solid yellow')
-
+        
         on = 1;
     }
     else
     {
+        // for( i = 0; i < paragraph.length; i++)
+        // {
+        //     paragraph[i].classList.remove(contraste);
+        // }
+
         for( i = 0; i < itemMenu.length; i++)
         {
             itemMenu[i].classList.remove(contraste);
-        }
-                
-        for(i = 0; i < pages_a.length; i++)
-        {
-            pages_a[i].classList.remove(contraste)
         }
 
         backgrounds.forEach(items =>
@@ -224,6 +150,7 @@ function contrastEffect()
         on = 0;
     }
 }
+
 
 function responsivity()
 {
@@ -260,36 +187,6 @@ function responsivity()
         footer_first_ul.style.setProperty('display', 'flex')
         footer_second_ul.style.setProperty('display', 'flex')
         footer_third_ul.style.setProperty('display', 'flex')
-    }
-
-    if(counter_replace_advices_icons == 0)
-    {
-        if(window.innerWidth <= 800)
-        {
-            container_advice_icons.style.setProperty('display', 'flex')
-            for(i = 0; i < 3; i++)
-            {
-                container_advice_icons.appendChild(advice_icons[i])
-                disease_advices_div[i].style.setProperty('display', 'none')
-                console.log('Valor do i: ' + i)
-            }
-            disease_advices_divs_id.style.setProperty('height', 'auto')
-            counter_replace_advices_icons = 1
-        }
-    }
-    else
-    {
-        if(window.innerWidth > 800)
-        {
-            container_advice_icons.style.setProperty('display', 'none')
-            for(i = 0; i < 3; i++)
-            {
-                disease_advices_div[i].insertBefore(advice_icons[0], advice_text[i])
-                disease_advices_div[i].style.setProperty('display', 'flex')
-            }
-            disease_advices_divs_id.style.setProperty('height', '70vh')
-            counter_replace_advices_icons = 0
-        }
     }
 }
 
@@ -337,35 +234,6 @@ function menuBar()
     }
 }
 
-function showAdvices(disease_advices_divs)
-{
-    if(window.innerWidth <= 800)
-    {
-        if(disease_advices_divs.target.id == 'advice_icon')
-        {
-            disease_advices_divs_id.style.setProperty('height', '55vh')
-            switch(disease_advices_divs.target)
-            {
-                case advice_icons[0]:
-                    disease_advices_div[0].style.setProperty('display', 'flex')
-                    disease_advices_div[1].style.setProperty('display', 'none')
-                    disease_advices_div[2].style.setProperty('display', 'none')
-                    break
-                case advice_icons[1]:
-                    disease_advices_div[1].style.setProperty('display', 'flex')
-                    disease_advices_div[2].style.setProperty('display', 'none')
-                    disease_advices_div[0].style.setProperty('display', 'none')
-                    break
-                case advice_icons[2]:
-                    disease_advices_div[2].style.setProperty('display', 'flex')
-                    disease_advices_div[1].style.setProperty('display', 'none')
-                    disease_advices_div[0].style.setProperty('display', 'none')
-                    break
-            }
-        }
-    }
-}
-
 
 
 
@@ -380,6 +248,7 @@ btnContraste.addEventListener('click', contrastEffect)
 
 window.onload = function()
 {
+
     fonts = [
     text[0].style.fontSize,
     text[1].style.fontSize,
@@ -389,25 +258,19 @@ window.onload = function()
     {
         remover = 1;
     }
-    
+
     if(logado)
     {
         perfil.innerText = 'circle'
-        perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/logout.php'
+        perfil.parentNode.href = 'http://localhost/Trabalho_do_inter/forms/logout.php'
         Login.innerText = 'Bem vindo, ' + sessionStorage.getItem('Nome') + '!'
         menuSide_span.innerText = sessionStorage.getItem('Nome') + ' ' + sessionStorage.getItem('Sobrenome')
-        menuSide_li_login_or_logout.innerText = 'Logout'
-        menuSide_li_login_or_logout.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/logout.php'
-        menuSide_li_login_or_logout_text.innerText = 'Logout'
     }
     else
     {
         perfil.innerText = 'account_circle'
-        perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/index.php'
+        perfil.parentNode.href = 'http://localhost/Trabalho_do_inter/forms/index.php'
         menuSide_span.innerText = 'Faça login'
-        menuSide_li_login_or_logout.innerText = 'account_circle'
-        menuSide_li_login_or_logout.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/index.php'
-        menuSide_li_login_or_logout_text.innerText = 'Login'
     }
 
     responsivity()
@@ -420,10 +283,9 @@ window.addEventListener('resize', () =>
 
 menuButton.addEventListener('click', menuBar)
 
-disease_advices_divs.addEventListener('click', showAdvices)
-
 perfil.addEventListener('click', function()
 {
+    
     if(logado)
     {
         sessionStorage.removeItem('N1')
@@ -438,20 +300,6 @@ perfil.addEventListener('click', function()
     }
 })
 
-menuSide_li_login_or_logout.parentNode.addEventListener('click', function()
-{
-    if(logado)
-    {
-        sessionStorage.removeItem('N1')
-        sessionStorage.removeItem('Nome')
-        sessionStorage.removeItem('Id')
-        sessionStorage.removeItem('Sobrenome')
-    }
-    else
-    {
-        sessionStorage.setItem('N2', 'Deslogado')
-    }
-})
 
 footer_first_span.addEventListener('click', function()
 {

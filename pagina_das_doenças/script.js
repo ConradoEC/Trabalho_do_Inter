@@ -157,6 +157,7 @@ function contrastEffect()
         }
 
         backgrounds[2].style.setProperty('border-bottom', '2px solid yellow')
+        footer.style.setProperty('border-top', '2px solid yellow')
 
         on = 1;
     }
@@ -178,6 +179,7 @@ function contrastEffect()
         }
 
         backgrounds[2].style.setProperty('border-bottom', '2px solid black')
+        footer.style.setProperty('border-top', 'none')
 
         // paragraph[0].style.setProperty('color', `${colors[0]}`)
 
@@ -203,6 +205,10 @@ function responsivity()
         {
             medicine_text[i].disabled = false
         }
+
+        footer_first_ul.style.setProperty('display', 'none')
+        footer_second_ul.style.setProperty('display', 'none')
+        footer_third_ul.style.setProperty('display', 'none')
     }
     else
     {
@@ -234,6 +240,10 @@ function responsivity()
             menuSide_back.classList.add('menu_transition2')
             counter_menu = 0;
         }
+
+        footer_first_ul.style.setProperty('display', 'flex')
+        footer_second_ul.style.setProperty('display', 'flex')
+        footer_third_ul.style.setProperty('display', 'flex')
     }
 }
 
@@ -412,50 +422,58 @@ search_space.addEventListener('focusin', function()
     search_space.style.setProperty('background-color', 'rgb(220, 220, 255)')
 })
 
-
 medicine_text[0].addEventListener('click', function()
 {
-    medicine[0].classList.add('openAnimation')
-    medicine_img[0].style.setProperty('display', 'block')
-    medicine_title[0].style.setProperty('display', 'block')
-    medicine_img[1].style.setProperty('display', 'none')
-    medicine_title[1].style.setProperty('display', 'none')
-    medicine_img[2].style.setProperty('display', 'none')
-    medicine_title[2].style.setProperty('display', 'none')
-    medicine[0].addEventListener('animationend', function()
+    if(window.innerWidth <= 500)
     {
-        medicine[0].classList.remove('openAnimation')
-    })
+        medicine[0].classList.add('openAnimation')
+        medicine_img[0].style.setProperty('display', 'block')
+        medicine_title[0].style.setProperty('display', 'block')
+        medicine_img[1].style.setProperty('display', 'none')
+        medicine_title[1].style.setProperty('display', 'none')
+        medicine_img[2].style.setProperty('display', 'none')
+        medicine_title[2].style.setProperty('display', 'none')
+        medicine[0].addEventListener('animationend', function()
+        {
+            medicine[0].classList.remove('openAnimation')
+        })
+    }
 })
 
 medicine_text[1].addEventListener('click', function()
 {
-    medicine[1].classList.add('openAnimation')
-    medicine_img[1].style.setProperty('display', 'block')
-    medicine_title[1].style.setProperty('display', 'block')
-    medicine_img[2].style.setProperty('display', 'none')
-    medicine_title[2].style.setProperty('display', 'none')
-    medicine_img[0].style.setProperty('display', 'none')
-    medicine_title[0].style.setProperty('display', 'none')
-    medicine[1].addEventListener('animationend', function()
+    if(window.innerWidth <= 500)
     {
-        medicine[1].classList.remove('openAnimation')
-    })
+        medicine[1].classList.add('openAnimation')
+        medicine_img[1].style.setProperty('display', 'block')
+        medicine_title[1].style.setProperty('display', 'block')
+        medicine_img[2].style.setProperty('display', 'none')
+        medicine_title[2].style.setProperty('display', 'none')
+        medicine_img[0].style.setProperty('display', 'none')
+        medicine_title[0].style.setProperty('display', 'none')
+        medicine[1].addEventListener('animationend', function()
+        {
+            medicine[1].classList.remove('openAnimation')
+        })
+    }
 })
 
 medicine_text[2].addEventListener('click', function()
 {
-    medicine[2].classList.add('openAnimation')
-    medicine_img[2].style.setProperty('display', 'block')
-    medicine_title[2].style.setProperty('display', 'block')
-    medicine_img[1].style.setProperty('display', 'none')
-    medicine_title[1].style.setProperty('display', 'none')
-    medicine_img[0].style.setProperty('display', 'none')
-    medicine_title[0].style.setProperty('display', 'none')
-    medicine[2].addEventListener('animationend', function()
+    if(window.innerWidth <= 500)
     {
-        medicine[2].classList.remove('openAnimation')
-    })
+        medicine[2].classList.add('openAnimation')
+        medicine_img[2].style.setProperty('display', 'block')
+        medicine_title[2].style.setProperty('display', 'block')
+        medicine_img[1].style.setProperty('display', 'none')
+        medicine_title[1].style.setProperty('display', 'none')
+        medicine_img[0].style.setProperty('display', 'none')
+        medicine_title[0].style.setProperty('display', 'none')
+        medicine[2].addEventListener('animationend', function()
+        {
+            medicine[2].classList.remove('openAnimation')
+        })
+    }
 })
 
 perfil.addEventListener('click', function()
@@ -466,6 +484,7 @@ perfil.addEventListener('click', function()
         sessionStorage.removeItem('Nome')
         sessionStorage.removeItem('Id')
         sessionStorage.removeItem('Sobrenome')
+        sessionStorage.removeItem('DataNascimento')
     }
     else
     {
@@ -485,6 +504,37 @@ menuSide_li_login_or_logout.parentNode.addEventListener('click', function()
     else
     {
         sessionStorage.setItem('N2', 'Deslogado')
+    }
+})
+
+
+footer_first_span.addEventListener('click', function()
+{
+    if(window.innerWidth <= 500)
+    {
+        footer_first_ul.style.setProperty('display', 'flex')
+        footer_second_ul.style.setProperty('display', 'none')
+        footer_third_ul.style.setProperty('display', 'none')
+    }
+})
+
+footer_second_span.addEventListener('click', function()
+{
+    if(window.innerWidth <= 500)
+    {
+        footer_second_ul.style.setProperty('display', 'flex')
+        footer_third_ul.style.setProperty('display', 'none')
+        footer_first_ul.style.setProperty('display', 'none')
+    }
+})
+
+footer_third_span.addEventListener('click', function()
+{
+    if(window.innerWidth <= 500)
+    {
+        footer_third_ul.style.setProperty('display', 'flex')
+        footer_second_ul.style.setProperty('display', 'none')
+        footer_first_ul.style.setProperty('display', 'none')
     }
 })
 

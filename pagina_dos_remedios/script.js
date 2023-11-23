@@ -380,6 +380,7 @@ function contrastEffect()
             backgrounds[3].style.setProperty('border-bottom', '2px solid yellow')
             medicine_informations.style.setProperty('color', 'black')
             medicine_image.style.setProperty('border', '2px solid black')
+            footer.style.setProperty('border-top', '2px solid yellow')
 
             on = 1;
     }
@@ -428,6 +429,7 @@ function contrastEffect()
             backgrounds[3].style.setProperty('border-bottom', '2px solid black')
             medicine_informations.style.setProperty('color', 'none')
             medicine_image.style.setProperty('border', '2px solid red')
+            footer.style.setProperty('border-top', 'none')
 
             // paragraph[0].style.setProperty('color', `${colors[0]}`)
 
@@ -495,6 +497,9 @@ function responsivity()
         view_comments.innerHTML = 'Visualizar <span class="material-symbols-outlined">comment</span>'
         create_comments.innerHTML = 'Criar <span class="material-symbols-outlined">comment</span>'
         
+        footer_first_ul.style.setProperty('display', 'none')
+        footer_second_ul.style.setProperty('display', 'none')
+        footer_third_ul.style.setProperty('display', 'none')
     }
     else
     {
@@ -521,6 +526,10 @@ function responsivity()
             menuSide_back.classList.add('menu_transition2')
             counter_menu = 0;
         }
+
+        footer_first_ul.style.setProperty('display', 'flex')
+        footer_second_ul.style.setProperty('display', 'flex')
+        footer_third_ul.style.setProperty('display', 'flex')
     }
 }
 
@@ -862,6 +871,7 @@ perfil.addEventListener('click', function()
         sessionStorage.removeItem('Nome')
         sessionStorage.removeItem('Id')
         sessionStorage.removeItem('Sobrenome')
+        sessionStorage.removeItem('DataNascimento')
     }
     else
     {
@@ -883,6 +893,37 @@ menuSide_li_login_or_logout.parentNode.addEventListener('click', function()
         sessionStorage.setItem('N2', 'Deslogado')
     }
 })
+
+footer_first_span.addEventListener('click', function()
+{
+    if(window.innerWidth <= 500)
+    {
+        footer_first_ul.style.setProperty('display', 'flex')
+        footer_second_ul.style.setProperty('display', 'none')
+        footer_third_ul.style.setProperty('display', 'none')
+    }
+})
+
+footer_second_span.addEventListener('click', function()
+{
+    if(window.innerWidth <= 500)
+    {
+        footer_second_ul.style.setProperty('display', 'flex')
+        footer_third_ul.style.setProperty('display', 'none')
+        footer_first_ul.style.setProperty('display', 'none')
+    }
+})
+
+footer_third_span.addEventListener('click', function()
+{
+    if(window.innerWidth <= 500)
+    {
+        footer_third_ul.style.setProperty('display', 'flex')
+        footer_second_ul.style.setProperty('display', 'none')
+        footer_first_ul.style.setProperty('display', 'none')
+    }
+})
+
 
 comments_box_link[0].addEventListener('click', function()
 {

@@ -255,6 +255,7 @@ function contrastEffect()
         })
         
         backgrounds[2].style.setProperty('border-bottom', '2px solid yellow')
+        footer.style.setProperty('border-top', '2px solid yellow')
         
         buttons.forEach(items =>
         {
@@ -307,6 +308,7 @@ function contrastEffect()
         // }
 
         backgrounds[2].style.setProperty('border-bottom', '2px solid black')
+        footer.style.setProperty('border-top', 'none')
 
         // if(window.innerWidth > 1100)
         // {
@@ -375,6 +377,10 @@ function responsivity()
         arrows_box.style.setProperty('display', 'flex')
         paragraph[1].innerText = 'Últimas notícias'
         menuSide.style.setProperty('display', 'flex')
+
+        footer_first_ul.style.setProperty('display', 'none')
+        footer_second_ul.style.setProperty('display', 'none')
+        footer_third_ul.style.setProperty('display', 'none')
     }
     else
     {
@@ -401,7 +407,10 @@ function responsivity()
             menuSide_back.classList.add('menu_transition2')
             counter_menu = 0;
         }
-        
+
+        footer_first_ul.style.setProperty('display', 'flex')
+        footer_second_ul.style.setProperty('display', 'flex')
+        footer_third_ul.style.setProperty('display', 'flex')
     }
 }
 
@@ -614,6 +623,7 @@ perfil.addEventListener('click', function()
         sessionStorage.removeItem('Nome')
         sessionStorage.removeItem('Id')
         sessionStorage.removeItem('Sobrenome')
+        sessionStorage.removeItem('DataNascimento')
     }
     else
     {
@@ -633,6 +643,36 @@ menuSide_li_login_or_logout.parentNode.addEventListener('click', function()
     else
     {
         sessionStorage.setItem('N2', 'Deslogado')
+    }
+})
+
+footer_first_span.addEventListener('click', function()
+{
+    if(window.innerWidth <= 500)
+    {
+        footer_first_ul.style.setProperty('display', 'flex')
+        footer_second_ul.style.setProperty('display', 'none')
+        footer_third_ul.style.setProperty('display', 'none')
+    }
+})
+
+footer_second_span.addEventListener('click', function()
+{
+    if(window.innerWidth <= 500)
+    {
+        footer_second_ul.style.setProperty('display', 'flex')
+        footer_third_ul.style.setProperty('display', 'none')
+        footer_first_ul.style.setProperty('display', 'none')
+    }
+})
+
+footer_third_span.addEventListener('click', function()
+{
+    if(window.innerWidth <= 500)
+    {
+        footer_third_ul.style.setProperty('display', 'flex')
+        footer_second_ul.style.setProperty('display', 'none')
+        footer_first_ul.style.setProperty('display', 'none')
     }
 })
 
