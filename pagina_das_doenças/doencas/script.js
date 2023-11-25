@@ -56,14 +56,14 @@ fetch('./diseaseContent.json')
         {
             div.innerHTML = `
             <p class="news_text data-font">${json[ids - 1].content.news[i].new[0]}</p>
-            <a href="${json[ids - 1].content.news[i].new[2]}" target="blanck"><div class="news_img"></div></a>
+            <a href="${json[ids - 1].content.news[i].new[2]}" target="blanck"><div class="news_img" data-backgroundImage="backgrounds_image"></div></a>
             `
             div.getElementsByClassName('news_img')[0].style.backgroundImage = `url(${json[ids - 1].content.news[i].new[1]})`
         }
         else
         {
             div.innerHTML = `
-            <a href="${json[ids - 1].content.news[i].new[2]}" target="blanck"><div class="news_img"></div></a>
+            <a href="${json[ids - 1].content.news[i].new[2]}" target="blanck"><div class="news_img" data-backgroundImage="backgrounds_image"></div></a>
             <p class="news_text  ">${json[ids - 1].content.news[i].new[0]}</p>
             `
 

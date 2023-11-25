@@ -1353,6 +1353,11 @@ footer div ul a:hover
     /* background-color: rgb(146, 146, 146); */
 }
 
+.contraste_image
+{
+    filter: saturate(0);
+}
+
 .responsivity1
 {
     flex-direction: column;

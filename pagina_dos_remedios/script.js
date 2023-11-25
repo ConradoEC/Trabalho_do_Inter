@@ -32,7 +32,7 @@ fetch(url)
         const li = document.createElement('li')
         li.innerHTML = `
         <div data-backgrounds="backgrounds" class="section_medicine_ul_li_div data-font" id="${item.id - 1}">
-            <img src="${item.image}" alt="">
+            <img data-backgroundImage="backgrounds_image" src="${item.image}" alt="">
             <span class="medicine_span">${item.title}</span>
         </div>
         `;
@@ -324,8 +324,8 @@ function normal()
 
 function contrastEffect()
 {
-
     const contraste = 'contraste';
+    const contraste_image = 'contraste_image'
     const contraste_hr = 'contraste_hr';
     const contraste_darkGray = 'contraste_darkGray';
     const contraste_whiteGray = 'contraste_whiteGray';
@@ -334,9 +334,10 @@ function contrastEffect()
     const backgrounds = document.querySelectorAll('[data-backgrounds]');
     const backgrounds_darkGray = document.querySelectorAll('[data-backgrounds_darkGray]');
     const backgrounds_hr = document.querySelectorAll('[data-backgroundsHr]');
+    const backgroundImage = document.querySelectorAll('[data-backgroundImage]')
     const backgrounds_whiteGray = document.querySelectorAll('[data-backgrounds_whiteGray]');
     const pages_a = document.getElementsByClassName('pages_a');
-
+    data_modal = document.querySelectorAll('[data-modal]')
 
     console.log(backgrounds)
 
@@ -372,6 +373,11 @@ function contrastEffect()
                 items.classList.add(contraste_whiteGray);
             })
 
+            backgroundImage.forEach(items =>
+            {
+                items.classList.add(contraste_image);
+            })
+            
             medicine_list_li.forEach(item => 
             {
                 item.style.setProperty('color', 'black')
@@ -421,6 +427,11 @@ function contrastEffect()
                 items.classList.remove(contraste_whiteGray);
             })
 
+            backgroundImage.forEach(items =>
+            {
+                items.classList.remove(contraste_image);
+            })
+            
             medicine_list_li.forEach(item => 
             {
                 item.style.setProperty('color', 'none')
@@ -704,7 +715,7 @@ function takeComments(view_comments)
         {
             comment_informations.innerHTML = 
                 `<div class="comment_image" id="comment_image">
-                    <img id="comment_image_img" src="" alt="">
+                    <img data-backgroundImage="backgrounds_image" id="comment_image_img" src="" alt="">
                 </div>`
 
             const comment_image_img = document.getElementById('comment_image_img')
@@ -944,6 +955,7 @@ function change(li)
 {
     console.log(li.target)
     var alvo = li.target
+    const contraste_image = 'contraste_image'
 
     if(li.target.tagName == 'UL')
     {
@@ -991,6 +1003,16 @@ function change(li)
         newSlider.style.setProperty('width', '100%')
 
         newText.setAttribute('class', 'slider_p data-font')
+        newImg.setAttribute('data-backgroundImage', 'backgrounds_image')
+
+        if(on == 1)
+        {
+            newImg.classList.add(contraste_image)
+        }
+        else
+        {
+            newImg.classList.remove(contraste_image)
+        }
         // newImg.classList.add('')
         // newText.classList.add('')
 
@@ -1040,6 +1062,7 @@ function change(li)
             horizontalBar.style.setProperty('overflow-x', 'hidden'), horizontalBar.style.setProperty('justify-content', 'center') 
             
             newImg.src = json[ids].image
+
             if(on == 1)
             {
                 const contraste_darkGray = 'contraste_darkGray';

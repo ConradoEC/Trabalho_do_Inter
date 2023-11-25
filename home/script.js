@@ -194,10 +194,14 @@ function contrastEffect()
 {
     const contraste = 'contraste';
     const contraste_image = 'contraste_image'
+    const contraste_darkGray = 'contraste_darkGray'
+    const contraste_whiteGray = 'contraste_whiteGray'
     const itemMenu = document.getElementsByTagName('li');
     const buttons = document.querySelectorAll('[data-buttons]');
     const pages_a = document.getElementsByClassName('pages_a')
     const backgroundImage = document.querySelectorAll('[data-backgroundImage]')
+    const backgrounds_darkGray = document.querySelectorAll('[data-backgrounds_darkGray]');
+    const backgrounds_whiteGray = document.querySelectorAll('[data-backgrounds_whiteGray]');
 
     if(on == 0)
     {
@@ -261,6 +265,16 @@ function contrastEffect()
             items.classList.add(contraste_image);
         })
         
+        backgrounds_darkGray.forEach(items =>
+        {
+            items.classList.add(contraste_darkGray);
+        })
+                
+        backgrounds_whiteGray.forEach(items =>
+        {
+            items.classList.add(contraste_whiteGray);
+        })
+                
         backgrounds[2].style.setProperty('border-bottom', '2px solid yellow')
         footer.style.setProperty('border-top', '2px solid yellow')
         
@@ -298,6 +312,16 @@ function contrastEffect()
             items.classList.remove(contraste_image);
         })
             
+        backgrounds_darkGray.forEach(items =>
+        {
+            items.classList.remove(contraste_darkGray);
+        })
+                
+        backgrounds_whiteGray.forEach(items =>
+        {
+            items.classList.remove(contraste_whiteGray);
+        })
+                
         buttons.forEach(items =>
         {
             items.classList.remove(contraste);

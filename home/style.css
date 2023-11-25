@@ -369,7 +369,6 @@ header ul img
     background-color: rgb(255, 78, 78);
     color: white;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    ;
     font-style: italic;
 }
 
@@ -847,8 +846,21 @@ footer div ul a:hover
 
 .contraste_image
 {
-    filter: grayscale(1);
-    background-image: ;
+    filter: saturate(0);
+}
+
+.contraste_darkGray
+{
+    background-color: rgb(146, 146, 146);
+    background-image: none;
+    color: yellow;
+}
+
+.contraste_whiteGray
+{
+    background-color: rgb(226, 226, 226);
+    color: black;
+    /* background-color: rgb(146, 146, 146); */
 }
 
 
