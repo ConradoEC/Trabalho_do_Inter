@@ -193,9 +193,11 @@ function normal()
 function contrastEffect()
 {
     const contraste = 'contraste';
+    const contraste_image = 'contraste_image'
     const itemMenu = document.getElementsByTagName('li');
     const buttons = document.querySelectorAll('[data-buttons]');
     const pages_a = document.getElementsByClassName('pages_a')
+    const backgroundImage = document.querySelectorAll('[data-backgroundImage]')
 
     if(on == 0)
     {
@@ -253,6 +255,11 @@ function contrastEffect()
         {
             items.classList.add(contraste);
         })
+
+        backgroundImage.forEach(items =>
+        {
+            items.classList.add(contraste_image);
+        })
         
         backgrounds[2].style.setProperty('border-bottom', '2px solid yellow')
         footer.style.setProperty('border-top', '2px solid yellow')
@@ -286,6 +293,11 @@ function contrastEffect()
             items.classList.remove(contraste);
         })
 
+        backgroundImage.forEach(items =>
+        {
+            items.classList.remove(contraste_image);
+        })
+            
         buttons.forEach(items =>
         {
             items.classList.remove(contraste);

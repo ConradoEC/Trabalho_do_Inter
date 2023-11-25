@@ -40,7 +40,7 @@ fetch('./diseaseContent.json')
     json[ids - 1].content.symptoms.forEach(item =>
     {
         const issueLi = document.createElement('li')
-        issueLi.innerHTML = `<li class="disease_symptoms_li">${item}</li>`
+        issueLi.innerHTML = `<li class="disease_symptoms_li data-font">${item}</li>`
 
         disease_symptoms.appendChild(issueLi)
     })
@@ -55,7 +55,7 @@ fetch('./diseaseContent.json')
         if(i % 2 != 0 )
         {
             div.innerHTML = `
-            <p class="news_text">${json[ids - 1].content.news[i].new[0]}</p>
+            <p class="news_text data-font">${json[ids - 1].content.news[i].new[0]}</p>
             <a href="${json[ids - 1].content.news[i].new[2]}" target="blanck"><div class="news_img"></div></a>
             `
             div.getElementsByClassName('news_img')[0].style.backgroundImage = `url(${json[ids - 1].content.news[i].new[1]})`
@@ -64,7 +64,7 @@ fetch('./diseaseContent.json')
         {
             div.innerHTML = `
             <a href="${json[ids - 1].content.news[i].new[2]}" target="blanck"><div class="news_img"></div></a>
-            <p class="news_text">${json[ids - 1].content.news[i].new[0]}</p>
+            <p class="news_text  ">${json[ids - 1].content.news[i].new[0]}</p>
             `
 
             div.getElementsByClassName('news_img')[0].style.backgroundImage = `url(${json[ids - 1].content.news[i].new[1]})`
@@ -80,9 +80,9 @@ fetch('./diseaseContent.json')
         div.setAttribute('id', 'disease_advices_div')
         
         div.innerHTML = `
-        <span id="advice_title" class="advice_title">${json[ids - 1].content.advices[i].title}</span>
+        <span id="advice_title" class="advice_title data-font">${json[ids - 1].content.advices[i].title}</span>
         <span id="advice_icon" class="advice_icon">${json[ids - 1].content.advices[i].icon}</span>
-        <p class="advice_text">${json[ids - 1].content.advices[i].text}</p>
+        <p class="advice_text data-font">${json[ids - 1].content.advices[i].text}</p>
         `        
         disease_advices_divs.appendChild(div)
     }
@@ -100,6 +100,8 @@ fetch('./diseaseContent.json')
             counter_replace_advices_icons = 1
         }
     }
+
+    text = document.querySelectorAll('.data-font');
 })
 
 
@@ -164,8 +166,16 @@ function normal()
 function contrastEffect()
 {
     const contraste = 'contraste';
+    const contraste_image = 'contraste_image';
+    const contraste_whiteGray = 'contraste_whiteGray';
+    const contraste_darkGray = 'contraste_darkGray';
+    const backgroundImage = document.querySelectorAll('[data-backgroundImage]')
+    const backgrounds_darkGray = document.querySelectorAll('[data-backgrounds_darkGray]')
+    const backgrounds_whiteGray = document.querySelectorAll('[data-backgrounds_whiteGray]')
     const itemMenu = document.getElementsByTagName('li');
     const pages_a = document.getElementsByClassName('pages_a')
+    const disease_related_newspaper_news = document.getElementsByClassName('disease_related_newspaper_news')
+    const disease_advices_div = document.getElementsByClassName('disease_advices_div') 
 
     if(on == 0)
     {
@@ -194,8 +204,33 @@ function contrastEffect()
             items.classList.add(contraste);
         })
 
+        backgrounds_darkGray.forEach(items =>
+        {
+            items.classList.add(contraste_darkGray);
+        })
+
+        backgrounds_whiteGray.forEach(items =>
+        {
+            items.classList.add(contraste_whiteGray);
+        })
+
+        backgroundImage.forEach(items =>
+        {
+            items.classList.add(contraste_image);
+        })
+
         backgrounds[2].style.setProperty('border-bottom', '2px solid yellow')
         footer.style.setProperty('border-top', '2px solid yellow')
+
+        for(i = 0; i < disease_related_newspaper_news.length; i++)
+        {
+            disease_related_newspaper_news[i].style.setProperty('border', '2px solid yellow')
+        }
+
+        for(i = 0; i < disease_advices_div.length; i++)
+        {
+            disease_advices_div[i].style.setProperty('border', '2px solid yellow')
+        }
 
         on = 1;
     }
@@ -215,9 +250,34 @@ function contrastEffect()
         {
             items.classList.remove(contraste);
         })
+        
+        backgrounds_darkGray.forEach(items =>
+        {
+            items.classList.remove(contraste_darkGray);
+        })
+        
+        backgrounds_whiteGray.forEach(items =>
+        {
+            items.classList.remove(contraste_whiteGray);
+        })
+    
+        backgroundImage.forEach(items =>
+        {
+            items.classList.remove(contraste_image);
+        })
 
         backgrounds[2].style.setProperty('border-bottom', '2px solid black')
         footer.style.setProperty('border-top', 'none')
+
+        for(i = 0; i < disease_related_newspaper_news.length; i++)
+        {
+            disease_related_newspaper_news[i].style.setProperty('border', '2px solid red')
+        }
+
+        for(i = 0; i < disease_advices_div.length; i++)
+        {
+            disease_advices_div[i].style.setProperty('border', '2px solid rgba(78, 78, 255, 1)')
+        }
 
         // paragraph[0].style.setProperty('color', `${colors[0]}`)
 

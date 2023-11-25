@@ -37,13 +37,15 @@ fetch('./searchBar.json')
         div.innerHTML = `
         <a class="mini_search_space_link" href="https://conradoec.github.io/Trabalho_do_Inter/pagina_das_doen%C3%A7as/doencas?id=${item.id}">
             <div class="mini_search_space_div">
-                <span class="mini_search_space_div_span">${item.content.name}</span>
+                <span class="mini_search_space_div_span data-font">${item.content.name}</span>
             </div>
         </a>
         `;
 
         mini_search_space.appendChild(div)
     })
+    
+    text = document.querySelectorAll('.data-font');
 })
 
 // PARTE DA BARRA DE PESQUISA }
@@ -126,6 +128,11 @@ function normal()
 function contrastEffect()
 {
     const contraste = 'contraste';
+    const contraste_image = 'contraste_image'
+    const contraste_darkGray = 'contraste_darkGray'
+    const backgroundImage = document.querySelectorAll('[data-backgroundImage]')
+    const backgrounds = document.querySelectorAll('[data-backgrounds]');
+    const backgrounds_darkGray = document.querySelectorAll('[data-backgrounds_darkGray]');
     const itemMenu = document.getElementsByTagName('li')
     const pages_a = document.getElementsByClassName('pages_a')
 
@@ -150,6 +157,16 @@ function contrastEffect()
         {
             items.classList.add(contraste);
         })
+
+        backgroundImage.forEach(items =>
+        {
+            items.classList.add(contraste_image);
+        })
+
+        backgrounds_darkGray.forEach(items =>
+        {
+            items.classList.add(contraste_darkGray);
+        })
         
         for(i = 0; i < pages_a.length; i++)
         {
@@ -158,6 +175,9 @@ function contrastEffect()
 
         backgrounds[2].style.setProperty('border-bottom', '2px solid yellow')
         footer.style.setProperty('border-top', '2px solid yellow')
+        title_text.style.setProperty('color', 'black')
+        search_space.style.setProperty('background-color', 'rgb(146, 146, 146)')
+        document.getElementsByClassName('search-box')[0].style.setProperty('border-bottom', '2px solid black')
 
         on = 1;
     }
@@ -173,6 +193,16 @@ function contrastEffect()
             items.classList.remove(contraste);
         })
         
+        backgroundImage.forEach(items =>
+        {
+            items.classList.remove(contraste_image);
+        })
+        
+        backgrounds_darkGray.forEach(items =>
+        {
+            items.classList.remove(contraste_darkGray);
+        })
+            
         for(i = 0; i < pages_a.length; i++)
         {
             pages_a[i].classList.remove(contraste)
@@ -180,6 +210,9 @@ function contrastEffect()
 
         backgrounds[2].style.setProperty('border-bottom', '2px solid black')
         footer.style.setProperty('border-top', 'none')
+        title_text.style.setProperty('color', '#4764ad')
+        search_space.style.setProperty('background-color', 'rgb(220, 220, 255)')
+        document.getElementsByClassName('search-box')[0].style.setProperty('border-bottom', '2px solid red')
 
         // paragraph[0].style.setProperty('color', `${colors[0]}`)
 
@@ -419,7 +452,14 @@ body.addEventListener('click', function(body)
 search_space.addEventListener('focusin', function() 
 {
     search_space.style.setProperty('transition', 'background 0.3s')
-    search_space.style.setProperty('background-color', 'rgb(220, 220, 255)')
+    if(on == 1)
+    {
+        search_space.style.setProperty('background-color', 'rgb(146, 146, 146)')
+    }
+    else
+    {
+        search_space.style.setProperty('background-color', 'rgb(220, 220, 255)')
+    }
 })
 
 medicine_text[0].addEventListener('click', function()

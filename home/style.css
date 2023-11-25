@@ -317,6 +317,7 @@ header ul img
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
+    backdrop-filter: saturate(0);
     height: 79.5vh;
     /* height: calc(100vh - 10.5vw); */
     position: relative;
@@ -844,6 +845,11 @@ footer div ul a:hover
     background-image: none;
 }
 
+.contraste_image
+{
+    filter: grayscale(1);
+    background-image: ;
+}
 
 
 

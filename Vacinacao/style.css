@@ -587,6 +587,7 @@ header ul img
     font-family: sans-serif;
     color: white;
     font-weight: bold;
+    text-align: center
 }
 
 .vaccine_card_box, .vaccine_card_box_update
@@ -879,6 +880,12 @@ footer div ul a:hover
     color: black;
     /* background-color: rgb(146, 146, 146); */
 }
+
+.contraste_image
+{
+    filter: saturate(0);
+}
+
 
 
 

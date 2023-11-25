@@ -7,13 +7,13 @@
         <link rel="stylesheet" href="style.css">
         <title>Pagina dos remédios</title>
     </head>
-    <body>
+    <body data-backgrounds="backgrounds">
 
         <section id="section1">
             <header data-backgrounds="backgrounds">
                 <a href="https://conradoec.github.io/Trabalho_do_Inter"><img src="https://i.im.ge/2023/10/06/NBepR1.image-removebg-preview.png"></a>
                 
-                <ul id="menu" data-backgrounds="backgrounds">
+                <ul id="menu">
                     <li class="item hidden data-font" id="decreaseSize">-A</li>
                     <li class="item hidden data-font" id="normalSize">A</li>
                     <li class="item hidden data-font" id="increaseSize">+A</li>
@@ -25,6 +25,7 @@
                 </ul>
 
                 <div id="menuSide_back"></div>
+
                 <div id="menuSide">
                     <div id="menuSide_close"></div>
                     <ul id="menuSide_ul">
@@ -51,13 +52,12 @@
                 <li class="page"><a href="https://conradoec.github.io/Trabalho_do_Inter/forms/forms-cadastro/cadastro.html" class="pages_a">Cadastro</a></li>
                 <li class="page"><a href="https://conradoec.github.io/Trabalho_do_Inter/Vacinacao" class="pages_a">Caderneta de vacinação</a></li>
             </ul>
-            
         </section>
 
         <section id="section2">
             <div class="disease_container">
-                <img src="" id="disease_img" class="disease_img"></img>
-                <p id="disease_description" class="disease_description"></p>
+                <img data-backgroundImage="backgrounds_image" src="" id="disease_img" class="disease_img"></img>
+                <p id="disease_description" class="disease_description data-font" data-backgrounds_whiteGray="backgrounds_whiteGray"></p>
             </div>
 
             <ul id="disease_symptoms" class="disease_symptoms">
@@ -65,7 +65,7 @@
             </ul>
 
             <div class="disease_related">
-                <h1 id="disease_h1" class="disease_h1"></h1>
+                <h1 id="disease_h1" class="disease_h1 data-font" data-backgrounds_darkGray="backgrounds_darkGray"></h1>
                 <div id="disease_related_newspaper" class="disease_related_newspaper">
                     <!-- <div class="disease_related_newspaper_news">
                         <a href=""><img src="https://th.bing.com/th/id/OIP.niNk6bxxw24c8uc7onyiMQHaHa?w=180&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="" class="news_img"></a>
@@ -75,7 +75,7 @@
             </div>
 
             <div class="disease_advices">
-                <h1 class="disease_h1">Indicações</h1>
+                <h1 class="disease_h1 data-font" data-backgrounds_darkGray="backgrounds_darkGray">Indicações</h1>
 
                 <div id="disease_advices_divs" class="disease_advices_divs">
                     <div id="container_advice_icons" class="container_advice_icons"></div>

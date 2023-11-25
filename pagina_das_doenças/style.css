@@ -330,6 +330,7 @@ header ul img
   text-align: center;
   text-align: center;
   margin-top: -100px;
+  color: black;
 }
 
 .search_space
@@ -417,7 +418,7 @@ header ul img
 
 
 
-#section2
+.section2
 {
   /* background-color: rgb(196, 196, 253); */
   background-image: linear-gradient(to bottom right, white, rgb(234, 58, 58));
@@ -505,7 +506,7 @@ header ul img
   line-height: 28px;
 }
 
-.title-text
+#title_text
 {
     text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -516,16 +517,17 @@ header ul img
 
 .phrase-text
 {
-
+  color: black;
   width: 60%;
   text-align: justify;
   font-family: Poppins;
   margin-top: -20px;
+  height: fit-content;
 }
 
 /* SLIDER */
 
-#background-ocean
+.background-ocean
 {
   background-image: linear-gradient(to bottom right, rgb(131, 254, 252), rgb(17, 179, 176));
   display: flex;
@@ -802,6 +804,30 @@ footer div ul a:hover
     background-image: none;
 }
 
+.contraste_image
+{
+    filter: saturate(0);
+}
+
+.contraste_hr
+{
+    background-color: yellow;
+}
+
+.contraste_darkGray
+{
+    background-color: rgb(146, 146, 146);
+    background-image: none;
+    color: yellow;
+}
+
+.contraste_whiteGray
+{
+    background-color: rgb(226, 226, 226);
+    color: black;
+    /* background-color: rgb(146, 146, 146); */
+}
+
 
 
 
@@ -839,7 +865,7 @@ footer div ul a:hover
 
 @media(max-width: 800px)
 {
-  #section2
+  .section2
   {
     flex-direction: column;
     gap: 40px;
@@ -898,7 +924,7 @@ footer div ul a:hover
     width: 80%;
   }
 
-  #section2
+  .section2
   {
     flex-direction: column;
     gap: 30px;

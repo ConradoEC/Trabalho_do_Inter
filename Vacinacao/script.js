@@ -24,6 +24,9 @@ const nowDate = new Date()
 const userYear = userDate.getFullYear()
 const nowYear = nowDate.getFullYear()
 const userAge = nowYear - userYear
+var valorX = 0;
+var valorY = 0;
+var text2
 
 // PARTE QUE FOI COPIADA }
 
@@ -169,10 +172,11 @@ if(logado)
                             div_grade.setAttribute('id', `${item.id_vaccine}`)
                             div_grade.setAttribute('data-backgrounds_darkGray', `backgrounds_darkGray`)
                             div_grade.innerHTML = `
-                                <p class="vaccination_grade_box_p">${item.name_vaccine}</p>
+                                <p class="vaccination_grade_box_p data-font">${item.name_vaccine}</p>
                             `;
                                 
                             vaccination_grade.appendChild(div_grade)
+                            text = document.querySelectorAll('.data-font');
                         }
                         else
                         {
@@ -214,16 +218,16 @@ if(logado)
                             div_vaccine.setAttribute('class', 'vaccine_card')
                             div_vaccine.setAttribute('data-backgrounds_darkGray', 'backgrounds_darkGray')
                             div_vaccine.innerHTML = `
-                                <label for="vaccine_card_box1" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">NOME</label>
-                                <input type="text" value="${item.name_vaccine}" id="vaccine_card_box1" class="vaccine_card_box" disabled>
-                                <label for="vaccine_card_box2" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">DATA DE VACINAÇÃO</label>
-                                <input type="text" value="${item.date_vaccine}" id="vaccine_card_box2" class="vaccine_card_box" disabled>
-                                <label for="vaccine_card_box3" class="vaccine_card_box_label"  data-backgrounds_darkGray="backgrounds_darkGray">${item.max_dose_vaccine} DOSE/DOSES</label>
-                                <input type="text" value="${item.dose_vaccine}" id="vaccine_card_box3" class="vaccine_card_box" disabled>
-                                <label for="vaccine_card_box4" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">REFORÇO</label>
-                                <input type="text" value="${newReinforc}" id="vaccine_card_box4" class="vaccine_card_box" disabled>
-                                <label for="vaccine_card_box5" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">ANUAL</label>
-                                <input type="text" value="${neweveryYear}" id="vaccine_card_box5" class="vaccine_card_box" disabled>
+                                <label for="vaccine_card_box1" class="vaccine_card_box_label data-font" data-backgrounds_darkGray="backgrounds_darkGray">NOME</label>
+                                <input type="text" value="${item.name_vaccine}" id="vaccine_card_box1" class="vaccine_card_box data-font" disabled>
+                                <label for="vaccine_card_box2" class="vaccine_card_box_label data-font" data-backgrounds_darkGray="backgrounds_darkGray">DATA DE VACINAÇÃO</label>
+                                <input type="text" value="${item.date_vaccine}" id="vaccine_card_box2" class="vaccine_card_box data-font" disabled>
+                                <label for="vaccine_card_box3" class="vaccine_card_box_label data-font"  data-backgrounds_darkGray="backgrounds_darkGray">${item.max_dose_vaccine} DOSE/DOSES</label>
+                                <input type="text" value="${item.dose_vaccine}" id="vaccine_card_box3" class="vaccine_card_box data-font" disabled>
+                                <label for="vaccine_card_box4" class="vaccine_card_box_label data-font" data-backgrounds_darkGray="backgrounds_darkGray">REFORÇO</label>
+                                <input type="text" value="${newReinforc}" id="vaccine_card_box4" class="vaccine_card_box data-font" disabled>
+                                <label for="vaccine_card_box5" class="vaccine_card_box_label data-font" data-backgrounds_darkGray="backgrounds_darkGray">ANUAL</label>
+                                <input type="text" value="${neweveryYear}" id="vaccine_card_box5" class="vaccine_card_box data-font" disabled>
                             `;
                             vaccination_card_view.appendChild(div_vaccine)
                         }
@@ -233,7 +237,7 @@ if(logado)
 
         if(vaccination_grade.innerHTML == '')
         {
-            vaccination_grade.innerHTML = '<p class="grade_alert">Não há nenhuma vacina em espera, por enquanto.</p>'
+            vaccination_grade.innerHTML = '<p class="grade_alert data-font">Não há nenhuma vacina em espera, por enquanto.</p>'
         }
 
         if(vaccine_card.length > 3)
@@ -309,19 +313,19 @@ if(logado)
             const form_vaccine = document.createElement('form')
             form_vaccine.setAttribute('class', 'vaccine_card_update'), form_vaccine.setAttribute('action', 'https://node-api-0bwb.onrender.com/vaccine'), form_vaccine.setAttribute('method', 'POST'), form_vaccine.setAttribute('data-backgrounds_darkGray', 'backgrounds_darkGray')
             form_vaccine.innerHTML = `
-                <label for="vaccine_card_box1" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">NOME</label>
-                <input type="text" value="${json[ids - 1].name_vaccine}" class="vaccine_card_box_update" disabled>
-                <label for="vaccine_card_box2" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">DATA DE VACINAÇÃO</label>
-                <input type="date" value="" class="vaccine_card_box_update" name="vaccine_date" id="vaccine_date" placeholder="Insira a data da consulta" required>
-                <label for="vaccine_card_box3" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">${json[ids - 1].max_dose_vaccine} DOSE/DOSES</label>
-                <input type="text" name="vaccine_newMax_dose" id="vaccine_newMax_dose" class="vaccine_card_box_update" readonly>
-                <label for="vaccine_card_box4" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">REFORÇO</label>
-                <input type="text" value="${newReinforc}" class="vaccine_card_box_update" disabled>
-                <label for="vaccine_card_box5" class="vaccine_card_box_label" data-backgrounds_darkGray="backgrounds_darkGray">ANUAL</label>
-                <input type="text" value="${neweveryYear}" class="vaccine_card_box_update" disabled>
-                <input name="vaccine_id" id="vaccine_id" class="vaccine_card_box_update disable" readonly></input>
-                <input name="vaccine_reinforc" id="vaccine_reinforc" class="vaccine_card_box_update disable" readonly></input>
-                <input type="submit" value="Enviar" onclick="redirecionar()" class="vaccine_card_box vaccine_card_box_submit" data-backgrounds_whiteGray="backgrounds_whiteGray">
+                <label for="vaccine_card_box1" class="vaccine_card_box_label data-font2" data-backgrounds_darkGray="backgrounds_darkGray">NOME</label>
+                <input type="text" value="${json[ids - 1].name_vaccine}" class="vaccine_card_box_update data-font2" disabled>
+                <label for="vaccine_card_box2" class="vaccine_card_box_label data-font2" data-backgrounds_darkGray="backgrounds_darkGray">DATA DE VACINAÇÃO</label>
+                <input type="date" value="" class="vaccine_card_box_update data-font2" name="vaccine_date" id="vaccine_date" placeholder="Insira a data da consulta" required>
+                <label for="vaccine_card_box3" class="vaccine_card_box_label data-font2" data-backgrounds_darkGray="backgrounds_darkGray">${json[ids - 1].max_dose_vaccine} DOSE/DOSES</label>
+                <input type="text" name="vaccine_newMax_dose" id="vaccine_newMax_dose" class="vaccine_card_box_update data-font2" readonly>
+                <label for="vaccine_card_box4" class="vaccine_card_box_label data-font2" data-backgrounds_darkGray="backgrounds_darkGray">REFORÇO</label>
+                <input type="text" value="${newReinforc}" class="vaccine_card_box_update data-font2" disabled>
+                <label for="vaccine_card_box5" class="vaccine_card_box_label data-font2" data-backgrounds_darkGray="backgrounds_darkGray">ANUAL</label>
+                <input type="text" value="${neweveryYear}" class="vaccine_card_box_update data-font2" disabled>
+                <input name="vaccine_id" id="vaccine_id" class="vaccine_card_box_update disable data-font2" readonly></input>
+                <input name="vaccine_reinforc" id="vaccine_reinforc" class="vaccine_card_box_update disable data-font2" readonly></input>
+                <input type="submit" value="Enviar" onclick="redirecionar()" class="vaccine_card_box vaccine_card_box_submit data-font2" data-backgrounds_whiteGray="backgrounds_whiteGray">
             `;
 
             vaccination_card.appendChild(form_vaccine)
@@ -350,7 +354,11 @@ if(logado)
                     items.classList.add(contraste_darkGray);
                 })
             }
+
+            decrease2()
         }
+
+        text = document.querySelectorAll('.data-font');
 
         vaccination_grade.addEventListener('click', function(vaccination_grade)
         {
@@ -370,7 +378,7 @@ if(logado)
                         alert('Escolha a vacina que você queira atualizar.')
                     }
                     break
-                case 'vaccination_grade_box_p':
+                case 'vaccination_grade_box_p data-font':
                     ids = vaccination_grade.target.parentNode.id
                     vaccination_card.style.setProperty('display', 'flex')
                     NotScroll()
@@ -387,7 +395,9 @@ if(logado)
 }
 else
 {
-    vaccination_card_view.innerHTML = '<p class="notLogin_alert">Faça login para ter acesso a sua carteira de vacinação digital!</p>'
+    vaccination_card_view.innerHTML = '<p class="notLogin_alert data-font">Faça login para ter acesso a sua carteira de vacinação digital!</p>'
+
+    text = document.querySelectorAll('.data-font');
 }
 
 
@@ -404,6 +414,39 @@ const vaccination_card_horizontalBar = document.querySelectorAll('.vaccination_c
 countLeft = 0;
 
 
+function increase2()
+{
+    text2 = document.querySelectorAll('.data-font2')
+    text2.forEach(item => 
+    {
+        let fontSize_1 = window.getComputedStyle(item).getPropertyValue('font-size');
+    
+        fontSize_1 = parseFloat(fontSize_1);
+    
+        item.style.fontSize = (fontSize_1 + (5 * valorX)) + 'px'
+    })
+}
+
+function decrease2()
+{
+    text2 = document.querySelectorAll('.data-font2')
+    text2.forEach(item => 
+    {
+        let fontSize_1 = window.getComputedStyle(item).getPropertyValue('font-size');
+        fontSize_1 = parseFloat(fontSize_1);
+        
+        if(valorY == 0)
+        {
+            item.style.fontSize == '16px'
+        }
+            
+        item.style.fontSize = (fontSize_1 - (5 * valorY)) + 'px'
+
+        console.log((fontSize_1 - (5 * valorY)))
+    })
+
+    console.log(valorY)
+}
 
 function increase()
 {   
@@ -426,6 +469,8 @@ function increase()
         item.style.fontSize = (fontSize_1 + 5) + 'px'
     })
 
+    valorX++
+    valorY--
 }
 
 
@@ -452,6 +497,9 @@ function decrease()
 
         item.style.fontSize = (fontSize_1 - 5) + 'px'
     })
+
+    valorX--
+    valorY++
 }
 
 
@@ -465,6 +513,9 @@ function normal()
     {
         text[i].style.setProperty('font-size', `${fonts[0]}`)
     }
+
+    valorX = 0
+    valorY = 0
 }
 
 
@@ -472,11 +523,13 @@ function normal()
 function contrastEffect()
 {
     const contraste = 'contraste';
+    const contraste_image = 'contraste_image'
     const contraste_input = 'contraste_input';
     const contraste_darkGray = 'contraste_darkGray';
     const contraste_whiteGray = 'contraste_whiteGray';
     const itemMenu = document.getElementsByTagName('li');
     const backgrounds = document.querySelectorAll('[data-backgrounds]');
+    const backgroundImage = document.querySelectorAll('[data-backgroundImage]')
     const backgrounds_darkGray = document.querySelectorAll('[data-backgrounds_darkGray]');
     const backgrounds_whiteGray = document.querySelectorAll('[data-backgrounds_whiteGray]');
     const img_border = document.getElementsByClassName('img_border')
@@ -512,6 +565,11 @@ function contrastEffect()
         backgrounds_darkGray.forEach(items =>
         {
             items.classList.add(contraste_darkGray);
+        })
+
+        backgroundImage.forEach(items =>
+        {
+            items.classList.add(contraste_image);
         })
 
         backgrounds[3].style.setProperty('border-bottom', '2px solid yellow')
@@ -558,6 +616,11 @@ function contrastEffect()
             items.classList.remove(contraste_darkGray);
         })
 
+        backgroundImage.forEach(items =>
+        {
+            items.classList.remove(contraste_image);
+        })
+    
         backgrounds[3].style.setProperty('border-bottom', '2px solid black')
         footer.style.setProperty('border-top', 'none')
 

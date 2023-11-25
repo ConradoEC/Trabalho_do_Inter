@@ -139,9 +139,9 @@
                 },
 
                 {
-                    "title": "Evitar remédios sem prescrição",
+                    "title": "Evitar automedicação",
                     "icon": "I",
-                    "text": "repellendus eaque dicta incidunt at velit quidem tempora 3"
+                    "text": "Evitar remédios sem prescrição"
                 }
             ]
         }
@@ -385,7 +385,7 @@
             "advices":
             [
                 {
-                    "title": "Reduzir o consumo de açucar",
+                    "title": "Baixo consumo de açucar",
                     "icon": "G",
                     "text": "Lorem ipsum dolor, sit amet consectetur adipisicing 3"
                 },
