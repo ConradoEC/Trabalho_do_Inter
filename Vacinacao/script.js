@@ -764,7 +764,7 @@ function redirecionar()
        setTimeout((() =>
         {
             // COLOCAR O LINK DA MESMA PAGINA
-            window.location = 'https://conradoec.github.io/Trabalho_do_Inter/vacinacao/index.html'
+            window.location = 'https://conradoec.github.io/Trabalho_do_Inter/Vacinacao/index.html'
         }), 150) 
     }
 }

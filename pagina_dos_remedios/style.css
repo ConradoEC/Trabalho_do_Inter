@@ -566,7 +566,8 @@
     font-size: max(5vw, 8vh);
     cursor: pointer;
     padding: 5px;
-    border-radius: 50%
+    border-radius: 50%;
+    user-select: none;
 }
 
 .arrow:nth-child(3)
