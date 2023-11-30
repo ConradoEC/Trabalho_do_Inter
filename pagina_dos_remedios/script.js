@@ -22,10 +22,10 @@ const url = 'https://node-api-0bwb.onrender.com/bd';
 
 // fetch('https://fakestoreapi.com/products?limit=5')
 fetch(url)
-.then(res=>res.json())
+.then(res => res.json())
 .then((json) =>
 {
-
+    console.log(json)
     const ul = document.getElementById('section_medicine_ul');
     json.forEach((item) =>
     {
