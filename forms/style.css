@@ -290,6 +290,7 @@ header ul img
     list-style: none;
     border-bottom: 2px solid black;
     font-size: max(2.8vh, 18px);
+    gap: 20px
 }
 
 .pages_a 

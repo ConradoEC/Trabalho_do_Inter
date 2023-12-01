@@ -285,25 +285,7 @@ header ul img
     list-style: none;
     border-bottom: 2px solid black;
     font-size: max(2.8vh, 18px);
-}
-
-.pages_a 
-{
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-family: Poppins;
-}.pages 
-{
-    height: 8vh;
-    padding: 0% 15%;
-    background-color: rgb(149, 149, 255);
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    list-style: none;
-    border-bottom: 2px solid black;
-    font-size: max(2.8vh, 18px);
+    gap: 20px
 }
 
 .pages_a 
