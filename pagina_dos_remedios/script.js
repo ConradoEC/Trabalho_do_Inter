@@ -275,7 +275,14 @@ function increase()
     var exemResult;
     
     // console.log(sliders[0])
-    exem = parseFloat(window.getComputedStyle(sliders[0]).getPropertyValue('height')) - parseFloat(window.getComputedStyle(document.getElementById('container_sliders')).getPropertyValue('height'))
+    if(menu_counter == 1)
+    {
+        exem = parseFloat(window.getComputedStyle(sliders[0]).getPropertyValue('height')) - parseFloat(window.getComputedStyle(document.getElementById('container_sliders')).getPropertyValue('height'))
+    }
+    else
+    {
+        exem = parseFloat(window.getComputedStyle(sliders[1]).getPropertyValue('height')) - parseFloat(window.getComputedStyle(document.getElementById('container_sliders')).getPropertyValue('height'))
+    }
     exemResult = parseFloat(window.getComputedStyle(document.getElementById('container_sliders')).getPropertyValue('height')) + exem
 
     document.getElementById('container_sliders').style.setProperty('min-height', `${exemResult}px`)
@@ -297,7 +304,15 @@ function decrease()
 
     var exem;
 
-    exem = parseFloat(window.getComputedStyle(sliders[0]).getPropertyValue('height'))
+    if(menu_counter == 1)
+    {
+        exem = parseFloat(window.getComputedStyle(sliders[0]).getPropertyValue('height'))
+    }
+    else
+    {
+        exem = parseFloat(window.getComputedStyle(sliders[1]).getPropertyValue('height'))
+    }
+
     console.log(exem)
     console.log(parseFloat(window.getComputedStyle(document.getElementById('container_sliders')).getPropertyValue('max-height')))
 

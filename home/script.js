@@ -228,7 +228,7 @@ function contrastEffect()
 
             for( i = 0; i < paragraph.length; i++)
             {
-                paragraph[0].style.color = 'yellow';
+                // paragraph[0].style.color = 'yellow';
                 paragraph[1].style.color = 'yellow';
 
                 veja_agora.style.color = 'yellow'

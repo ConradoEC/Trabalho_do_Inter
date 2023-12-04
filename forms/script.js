@@ -33,27 +33,6 @@ if(window.innerWidth <= 1100)
     remover = 1;
 
 }
-  
-if(logado)
-{
-    perfil.innerText = 'circle'
-    perfil.parentNode.href = 'http://localhost/Trabalho_do_inter/forms/logout.php'
-    Login.innerText = 'Bem vindo, ' + sessionStorage.getItem('Nome') + '!'
-    menuSide_span.innerText = sessionStorage.getItem('Nome') + ' ' + sessionStorage.getItem('Sobrenome')
-    menuSide_li_login_or_logout.innerText = 'Logout'
-    menuSide_li_login_or_logout.parentNode.href = 'http://localhost/Trabalho_do_inter/forms/logout.php'
-    menuSide_li_login_or_logout_text.innerText = 'Logout'
-}
-else
-{
-    perfil.innerText = 'account_circle'
-    perfil.parentNode.href = 'http://localhost/Trabalho_do_inter/forms/index.php'
-    menuSide_span.innerText = 'Faça login'
-    menuSide_li_login_or_logout.innerText = 'account_circle'
-    menuSide_li_login_or_logout.parentNode.href = 'http://localhost/Trabalho_do_inter/forms/index.php'
-    menuSide_li_login_or_logout_text.innerText = 'Login'
-}
-
 
 
 
@@ -287,8 +266,51 @@ normalA.addEventListener('click', normal)
 
 btnContraste.addEventListener('click', contrastEffect)
 
+function mistake()
+{
+  const urlMistake = new URLSearchParams(window.location.search);
+  const algoEstaErrado = urlMistake.get('indice')
+  
+  if(algoEstaErrado == 'algoEstaErrado')
+  {
+    statusLogin.innerText = 'Algo está errado'
+  }
+
+  const deslogadoMasLogado = sessionStorage.getItem('N1')
+  if(deslogadoMasLogado)
+  {
+      sessionStorage.removeItem('N1')
+      sessionStorage.removeItem('Nome')
+      sessionStorage.removeItem('Id')
+    //   sessionStorage.removeItem('DataNascimento')
+    //   sessionStorage.removeItem('Sobrenome')
+  }
+}
+
 window.onload = function()
 {
+    mistake()
+
+    if(logado)
+    {
+        perfil.innerText = 'circle'
+        perfil.parentNode.href = 'http://localhost/Trabalho_do_inter/forms/logout.php'
+        Login.innerText = 'Bem vindo, ' + sessionStorage.getItem('Nome') + '!'
+        menuSide_span.innerText = sessionStorage.getItem('Nome') + ' ' + sessionStorage.getItem('Sobrenome')
+        menuSide_li_login_or_logout.innerText = 'Logout'
+        menuSide_li_login_or_logout.parentNode.href = 'http://localhost/Trabalho_do_inter/forms/logout.php'
+        menuSide_li_login_or_logout_text.innerText = 'Logout'
+    }
+    else
+    {
+        perfil.innerText = 'account_circle'
+        perfil.parentNode.href = 'http://localhost/Trabalho_do_inter/forms/index.php'
+        menuSide_span.innerText = 'Faça login'
+        menuSide_li_login_or_logout.innerText = 'account_circle'
+        menuSide_li_login_or_logout.parentNode.href = 'http://localhost/Trabalho_do_inter/forms/index.php'
+        menuSide_li_login_or_logout_text.innerText = 'Login'
+    }
+
     responsivity()
 }
 
@@ -317,28 +339,6 @@ perfil.addEventListener('click', function()
 })
 
 // console.log(account_id)
-
-function mistake()
-{
-  const urlMistake = new URLSearchParams(window.location.search);
-  const algoEstaErrado = urlMistake.get('indice')
-  
-  if(algoEstaErrado == 'algoEstaErrado')
-  {
-    statusLogin.innerText = 'Algo está errado'
-  }
-
-  const deslogadoMasLogado = sessionStorage.getItem('N1')
-  if(deslogadoMasLogado)
-  {
-      sessionStorage.removeItem('N1')
-      sessionStorage.removeItem('Nome')
-      sessionStorage.removeItem('Id')
-  }
-}
-
-window.onload = mistake()
-
 
 sendInformations.addEventListener('click', function()
 {
