@@ -401,7 +401,7 @@ window.onload = function()
 
     if(logado)
     {
-        perfil.innerText = 'circle'
+        perfil.innerText = 'person'
         perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/logout.php'
         Login.innerText = 'Bem vindo, ' + sessionStorage.getItem('Nome') + '!'
         menuSide_span.innerText = sessionStorage.getItem('Nome') + ' ' + sessionStorage.getItem('Sobrenome')
