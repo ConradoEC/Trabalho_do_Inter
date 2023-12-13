@@ -542,7 +542,7 @@ window.onload = function()
     if(logado)
     {
         perfil.innerText = 'person'
-        perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/logout.php'
+        perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/'
         Login.innerText = 'Bem vindo, ' + sessionStorage.getItem('Nome') + '!'
         if(!logado_Id)
         {
@@ -552,16 +552,16 @@ window.onload = function()
         }
         menuSide_span.innerText = sessionStorage.getItem('Nome') + ' ' + sessionStorage.getItem('Sobrenome')
         menuSide_li_login_or_logout.innerText = 'Logout'
-        menuSide_li_login_or_logout.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/logout.php'
+        menuSide_li_login_or_logout.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/'
         menuSide_li_login_or_logout_text.innerText = 'Logout'
     }
     else if(!logado)
     {
         perfil.innerText = 'account_circle'
-        perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/index.php'
+        perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/login.html'
         menuSide_span.innerText = 'Faça login'
         menuSide_li_login_or_logout.innerText = 'account_circle'
-        menuSide_li_login_or_logout.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/index.php'
+        menuSide_li_login_or_logout.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/login.html'
         menuSide_li_login_or_logout_text.innerText = 'Login'
     }
 
