@@ -9,5 +9,5 @@
     // setcookie('PHPSESSID', null, -1);
     session_destroy();
 
-    header('Location: https://conradoec.github.io/Trabalho_do_Inter/');
+    header('Location: http://selectedteste1.rf.gd');
 ?>

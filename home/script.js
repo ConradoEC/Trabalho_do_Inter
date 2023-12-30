@@ -79,10 +79,10 @@ var phrases = ['NÃO OS CONSUMA, SEM CONHECÊ-LOS.',
                 'PODEMOS AUXILIÁ-LO <BR> COM SEUS SINTOMAS.',
                 'JÁ SE CADASTROU? FAÇA AINDA HOJE!',
                 'DEIXE SUA CADERNETA ATUALIZADA']
-var links_for_button_link = ['https://conradoec.github.io/Trabalho_do_Inter/pagina_dos_remedios',
-                            'https://conradoec.github.io/Trabalho_do_Inter/pagina_das_doenças',
-                            'https://conradoec.github.io/Trabalho_do_Inter/forms/forms-cadastro/cadastro.html',
-                            'https://conradoec.github.io/Trabalho_do_Inter/Vacinacao']
+var links_for_button_link = ['http://selectedteste1.rf.gd/pagina_dos_remedios',
+                            'http://selectedteste1.rf.gd/pagina_das_doenças',
+                            'http://selectedteste1.rf.gd/forms/forms-cadastro/cadastro.html',
+                            'http://selectedteste1.rf.gd/vacinacao']
 var colors;
 var on = 0;
 var fonts;
@@ -542,7 +542,7 @@ window.onload = function()
     if(logado)
     {
         perfil.innerText = 'person'
-        perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/'
+        perfil.parentNode.href = 'http://selectedteste1.rf.gd'
         Login.innerText = 'Bem vindo, ' + sessionStorage.getItem('Nome') + '!'
         if(!logado_Id)
         {
@@ -552,16 +552,16 @@ window.onload = function()
         }
         menuSide_span.innerText = sessionStorage.getItem('Nome') + ' ' + sessionStorage.getItem('Sobrenome')
         menuSide_li_login_or_logout.innerText = 'Logout'
-        menuSide_li_login_or_logout.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/'
+        menuSide_li_login_or_logout.parentNode.href = 'http://selectedteste1.rf.gd'
         menuSide_li_login_or_logout_text.innerText = 'Logout'
     }
     else if(!logado)
     {
         perfil.innerText = 'account_circle'
-        perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/login.html'
+        perfil.parentNode.href = 'http://selectedteste1.rf.gd/forms/login.html'
         menuSide_span.innerText = 'Faça login'
         menuSide_li_login_or_logout.innerText = 'account_circle'
-        menuSide_li_login_or_logout.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/login.html'
+        menuSide_li_login_or_logout.parentNode.href = 'http://selectedteste1.rf.gd/forms/login.html'
         menuSide_li_login_or_logout_text.innerText = 'Login'
     }
 

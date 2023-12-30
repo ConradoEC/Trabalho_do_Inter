@@ -764,7 +764,7 @@ function redirecionar()
        setTimeout((() =>
         {
             // COLOCAR O LINK DA MESMA PAGINA
-            window.location = 'https://conradoec.github.io/Trabalho_do_Inter/Vacinacao/index.html'
+            window.location = 'http://selectedteste1.rf.gd/vacinacao/index.html'
         }), 150) 
     }
 }
@@ -799,21 +799,21 @@ window.onload = function()
     if(logado)
     {
         perfil.innerText = 'person'
-        perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/logout.php'
+        perfil.parentNode.href = 'http://selectedteste1.rf.gd/forms/logout.php'
         Login.innerText = 'Bem vindo, ' + sessionStorage.getItem('Nome') + '!'
         menuSide_span.innerText = sessionStorage.getItem('Nome') + ' ' + sessionStorage.getItem('Sobrenome')
         menuSide_li_login_or_logout.innerText = 'Logout'
-        menuSide_li_login_or_logout.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/logout.php'
+        menuSide_li_login_or_logout.parentNode.href = 'http://selectedteste1.rf.gd/forms/logout.php'
         menuSide_li_login_or_logout_text.innerText = 'Logout'
         faixaEtaria.innerText = userAge
     }
     else
     {
         perfil.innerText = 'account_circle'
-        perfil.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/index.php'
+        perfil.parentNode.href = 'http://selectedteste1.rf.gd/forms/index.php'
         menuSide_span.innerText = 'Faça login'
         menuSide_li_login_or_logout.innerText = 'account_circle'
-        menuSide_li_login_or_logout.parentNode.href = 'https://conradoec.github.io/Trabalho_do_Inter/forms/index.php'
+        menuSide_li_login_or_logout.parentNode.href = 'http://selectedteste1.rf.gd/forms/index.php'
         menuSide_li_login_or_logout_text.innerText = 'Login'
     }
 
