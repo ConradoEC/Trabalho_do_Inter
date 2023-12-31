@@ -472,6 +472,10 @@ header ul img
     background-image: none;
 }
 
+.contraste_image 
+{
+    filter: saturate(0);
+}
 
 
 

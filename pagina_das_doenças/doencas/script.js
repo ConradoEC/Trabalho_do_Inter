@@ -453,7 +453,6 @@ window.onload = function()
     if(logado)
     {
         perfil.innerText = 'person'
-        perfil.parentNode.href = 'http://selectedteste1.rf.gd/forms/logout.php'
         Login.innerText = 'Bem vindo, ' + sessionStorage.getItem('Nome') + '!'
         menuSide_span.innerText = sessionStorage.getItem('Nome') + ' ' + sessionStorage.getItem('Sobrenome')
         menuSide_li_login_or_logout.innerText = 'Logout'
@@ -463,7 +462,6 @@ window.onload = function()
     else
     {
         perfil.innerText = 'account_circle'
-        perfil.parentNode.href = 'http://selectedteste1.rf.gd/forms/index.php'
         menuSide_span.innerText = 'Faça login'
         menuSide_li_login_or_logout.innerText = 'account_circle'
         menuSide_li_login_or_logout.parentNode.href = 'http://selectedteste1.rf.gd/forms/index.php'
@@ -482,7 +480,7 @@ menuButton.addEventListener('click', menuBar)
 
 disease_advices_divs.addEventListener('click', showAdvices)
 
-perfil.addEventListener('click', function()
+document.getElementsByClassName('header_links')[0].addEventListener('click', function()
 {
     if(logado)
     {
@@ -491,10 +489,12 @@ perfil.addEventListener('click', function()
         sessionStorage.removeItem('Id')
         sessionStorage.removeItem('Sobrenome')
         sessionStorage.removeItem('DataNascimento')
+        window.location="http://selectedteste1.rf.gd"
     }
     else
     {
         sessionStorage.setItem('N2', 'Deslogado')
+        window.location="http://selectedteste1.rf.gd/forms"
     }
 })
 
@@ -506,6 +506,7 @@ menuSide_li_login_or_logout.parentNode.addEventListener('click', function()
         sessionStorage.removeItem('Nome')
         sessionStorage.removeItem('Id')
         sessionStorage.removeItem('Sobrenome')
+        sessionStorage.removeItem('DataNascimento')
     }
     else
     {

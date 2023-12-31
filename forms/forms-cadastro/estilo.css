@@ -556,6 +556,11 @@ footer div ul a:hover
     background-image: none;
 }
 
+.contraste_image 
+{
+    filter: saturate(0);
+}
+
 
 
 

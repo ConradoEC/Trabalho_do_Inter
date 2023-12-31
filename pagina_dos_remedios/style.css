@@ -1197,7 +1197,7 @@
     background-color: green;
 } */
 
-.health p
+.health_p
 {
     width: 100%;
     /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
@@ -1561,7 +1561,7 @@ footer div ul a:hover
         padding: 5% 0%;
     }
 
-    .health p
+    .health_p
     {
         text-align: justify;
         padding-left: 5%;
@@ -1737,7 +1737,7 @@ footer div ul a:hover
         text-align: center;
     }
 
-    .health p
+    .health_p
     {
         font-size: 25px;
         padding: 0%;

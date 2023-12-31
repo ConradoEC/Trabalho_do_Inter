@@ -89,7 +89,9 @@ function normal()
 function contrastEffect()
 {
     const contraste = 'contraste';
+    const contraste_image = 'contraste_image';
     const itemMenu = document.getElementsByTagName('li');
+    const backgroundImage = document.querySelectorAll('[data-backgroundImage]')
 
 
 
@@ -119,6 +121,11 @@ function contrastEffect()
         {
             items.classList.add(contraste);
         })
+        
+        backgroundImage.forEach(items =>
+        {
+            items.classList.add(contraste_image);
+        })    
 
         backgrounds[2].style.setProperty('border-bottom', '2px solid yellow')
         footer.style.setProperty('border-top', '2px solid yellow')
@@ -141,6 +148,11 @@ function contrastEffect()
         {
             items.classList.remove(contraste);
         })
+        
+        backgroundImage.forEach(items =>
+        {
+            items.classList.remove(contraste_image);
+        })    
 
         backgrounds[2].style.setProperty('border-bottom', '2px solid black')
         footer.style.setProperty('border-top', 'none')
@@ -262,7 +274,6 @@ window.onload = function()
     if(logado)
     {
         perfil.innerText = 'person'
-        perfil.parentNode.href = 'http://selectedteste1.rf.gd/forms/logout.php'
         Login.innerText = 'Bem vindo, ' + sessionStorage.getItem('Nome') + '!'
         menuSide_span.innerText = sessionStorage.getItem('Nome') + ' ' + sessionStorage.getItem('Sobrenome')
         menuSide_li_login_or_logout.innerText = 'Logout'
@@ -272,7 +283,6 @@ window.onload = function()
     else
     {
         perfil.innerText = 'account_circle'
-        perfil.parentNode.href = 'http://selectedteste1.rf.gd/forms/index.php'
         menuSide_span.innerText = 'Faça login'
         menuSide_li_login_or_logout.innerText = 'account_circle'
         menuSide_li_login_or_logout.parentNode.href = 'http://selectedteste1.rf.gd/forms/index.php'
@@ -289,9 +299,27 @@ window.addEventListener('resize', () =>
 
 menuButton.addEventListener('click', menuBar)
 
-perfil.addEventListener('click', function()
+document.getElementsByClassName('header_links')[0].addEventListener('click', function()
 {
     
+    if(logado)
+    {
+        sessionStorage.removeItem('N1')
+        sessionStorage.removeItem('Nome')
+        sessionStorage.removeItem('Id')
+        sessionStorage.removeItem('Sobrenome')
+        sessionStorage.removeItem('DataNascimento')
+        window.location="http://selectedteste1.rf.gd"
+    }
+    else
+    {
+        sessionStorage.setItem('N2', 'Deslogado')
+        window.location="http://selectedteste1.rf.gd/forms"
+    }
+})
+
+menuSide_li_login_or_logout.parentNode.addEventListener('click', function()
+{
     if(logado)
     {
         sessionStorage.removeItem('N1')
@@ -305,7 +333,6 @@ perfil.addEventListener('click', function()
         sessionStorage.setItem('N2', 'Deslogado')
     }
 })
-
 
 footer_first_span.addEventListener('click', function()
 {
