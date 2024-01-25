@@ -18,7 +18,7 @@ newHr.setAttribute('data-backgroundsHr', 'backgrounds_hr')
 const newText = document.createElement('p')
 
 // const url = 'http://localhost:3000/bd';
-const url = 'https://node-api-0bwb.onrender.com/bd';
+const url = 'https://api-interdisciplinar-nvn0.onrender.com/bd';
 
 // fetch('https://fakestoreapi.com/products?limit=5')
 fetch(url)
@@ -650,7 +650,7 @@ function menu_modal(container_sliders_window)
             var ids = container_sliders_window.target.id
             console.log(container_sliders_window.target)
 
-            const url_post = 'https://node-api-0bwb.onrender.com/form'
+            const url_post = 'https://api-interdisciplinar-nvn0.onrender.com/form'
             comments_box_link[0].setAttribute('id', `${ids}`)
             
             if(!sessionStorage.getItem('Id'))
@@ -704,7 +704,7 @@ function takeComments(view_comments)
 
     var indicator = 1
 
-    fetch('https://node-api-0bwb.onrender.com/form/takeData')
+    fetch('https://api-interdisciplinar-nvn0.onrender.com/form/takeData')
     .then(res=>res.json())
     .then((json) =>
     {
