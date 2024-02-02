@@ -662,7 +662,7 @@ function menu_modal(container_sliders_window)
                 comments_box_link[0].setAttribute('href', `${url_post}?id_image=${ids}&id_usuario=${sessionStorage.getItem('Id')}&nome_usuario=${sessionStorage.getItem('Nome')}&sobrenome_usuario=${sessionStorage.getItem('Sobrenome')}`)
             }
 
-            medicine_description_p.innerText = json[ids].mediText
+            medicine_description_p.innerHTML = json[ids].mediText
             
             medicine_img.style.backgroundImage = `url(${json[ids].image})`
             const medicine_list1 = document.getElementsByClassName('medicine_list')
