@@ -169,7 +169,7 @@ if(logado)
                         {
                             const div_grade = document.createElement('div')
                             div_grade.setAttribute('class', 'vaccination_grade_box')
-                            div_grade.setAttribute('id', `${item.id_vaccine}`)
+                            div_grade.setAttribute('id', `${item.id}`)
                             div_grade.setAttribute('data-backgrounds_darkGray', `backgrounds_darkGray`)
                             div_grade.innerHTML = `
                                 <p class="vaccination_grade_box_p data-font">${item.name_vaccine}</p>
@@ -441,8 +441,6 @@ function decrease2()
         }
             
         item.style.fontSize = (fontSize_1 - (5 * valorY)) + 'px'
-
-        console.log((fontSize_1 - (5 * valorY)))
     })
 
     console.log(valorY)
