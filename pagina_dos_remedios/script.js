@@ -728,8 +728,8 @@ function takeComments(view_comments)
         }
         else
         {
-            comment_informations.innerHTML = 
-                `<div class="comment_image" id="comment_image">
+            comment_informations.comment_imageinnerHTML = 
+                `<div class="" id="comment_image">
                     <img data-backgroundImage="backgrounds_image" id="comment_image_img" src="" alt="">
                 </div>`
 

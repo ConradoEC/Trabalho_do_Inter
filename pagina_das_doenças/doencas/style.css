@@ -481,7 +481,7 @@ header ul img
 
 .advice_icon
 {
-    font-size: 80px;
+    width: max(8vw, 60px);
 }
 
 .advice_text

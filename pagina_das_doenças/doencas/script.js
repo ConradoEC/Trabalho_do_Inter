@@ -81,7 +81,7 @@ fetch('./diseaseContent.json')
         
         div.innerHTML = `
         <span id="advice_title" class="advice_title data-font">${json[ids - 1].content.advices[i].title}</span>
-        <span id="advice_icon" class="advice_icon">${json[ids - 1].content.advices[i].icon}</span>
+        <img src="${json[ids - 1].content.advices[i].icon}" id="advice_icon" class="advice_icon"></img>
         <p class="advice_text data-font">${json[ids - 1].content.advices[i].text}</p>
         `        
         disease_advices_divs.appendChild(div)
