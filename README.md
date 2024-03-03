@@ -7,7 +7,7 @@ Equipe:
 * Evellyn Silva de Sousa - Pesquisadora
 * Alexia Vitoria da Silva Costa - Pesquisadora
 
-AVISOS: Para testar todas as funcionalidades do site, incluindo as funcionalidados do servidor em Node, aconselhamos utilizar para login o seguinte cadastro: 
+AVISOS: Para testar todas as funcionalidades do site, incluindo as funcionalidades do servidor em Node, aconselhamos utilizar para login o seguinte cadastro: 
 NOME: Erick; EMAIL: erick.silva309@etec.sp.gov.br; SENHA: erick.
 
 Qual o nosso projeto:
